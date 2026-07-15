@@ -1,0 +1,227 @@
+(() => {
+  window.SmartRosaryHowtoI18n.registerLanguage("fr", {
+    common: {
+      navigationLabel: "Navigation du tutoriel",
+      progressLabel: "Progression du tutoriel",
+      language: "Langue",
+      previous: "Précédent",
+      next: "Suivant",
+      stepCounter: "Étape {current} sur {total}",
+    },
+    tutorials: {
+      onoff: {
+        documentTitle: "Smart Rosary : Allumer et éteindre",
+        panelTitle: "Allumer et éteindre",
+        panelBody: "Parcourez les étapes avec Suivant ou Précédent. La carte indique le bouton utilisé à chaque étape.",
+        steps: [
+          {
+            title: "Appuyer brièvement une fois",
+            body: "Appuyez brièvement une fois sur le bouton de l’appareil. SmartRosary s’allume.",
+            off: true,
+            pressed: true,
+          },
+          {
+            title: "Le fond d’écran est affiché",
+            body: "Le fond d’écran sélectionné est affiché pendant 2 secondes.",
+            booting: true,
+          },
+          {
+            title: "L’écran du rosaire est actif",
+            body: "L’écran du rosaire est actif et prêt à être utilisé.",
+            on: true,
+          },
+          {
+            title: "Maintenir pendant 5 secondes pour éteindre",
+            body: "Maintenez le bouton de l’appareil pendant 5 secondes pour éteindre SmartRosary.",
+            on: true,
+            pressed: true,
+          },
+          {
+            title: "SmartRosary est éteint",
+            body: "L’écran est éteint. SmartRosary est complètement éteint.",
+            off: true,
+          },
+        ],
+      },
+      charging: {
+        documentTitle: "Smart Rosary Howto: Charge",
+        panelTitle: "Charge",
+        panelBody: "Chargez l'appareil à l'aide d'un câble USB-C. Il s'allume automatiquement lorsqu'il est branché.",
+        steps: [
+          {
+            title: "Brancher le câble de charge",
+            body: "Branchez le câble USB-C sur le côté gauche de l'appareil.",
+            off: true,
+            plugged: false,
+          },
+          {
+            title: "L'indicateur de batterie montre la charge",
+            body: "L'appareil démarre automatiquement. Après le démarrage, l'indicateur de batterie s'anime pour montrer que SmartRosary charge.",
+            booting: true,
+            plugged: true,
+          },
+          {
+            title: "La charge est indiquée sur l'icône de la batterie",
+            body: "L'icône de la batterie affiche une animation de charge lorsqu'il est branché.",
+            on: true,
+            plugged: true,
+            charging: true,
+          },
+          {
+            title: "Débrancher éteint le chapelet automatiquement",
+            body: "Lorsque vous débranchez le câble, l'appareil s'éteint.",
+            off: true,
+            plugged: false,
+          },
+        ],
+      },
+      nav: {
+        documentTitle: "Smart Rosary : Navigation",
+        panelTitle: "Navigation",
+        panelBody: "Touchez l’appareil et balayez vers une position indiquée sur la carte de navigation en forme de croix.",
+        miniNavLabel: "Carte de navigation en forme de croix",
+        optionalNote: "(facultatif si installé et activé)",
+        touchHint: "Touchez l’appareil et balayez dans la direction souhaitée.",
+        intentionPlaceholder: "L'intention apparaîtrait à cet endroit si elle était configurée.",
+        intentionSubtitle: "Juin 2026",
+        intentionItems: ["Mai 2026", "Juin 2026", "Personnelle"],
+        points: {
+          wallpaper: {
+            short: "Fond",
+            title: "Changer le fond d’écran",
+            body: "Balayez vers le haut depuis l’écran du rosaire. SmartRosary reste sur l’écran de prière et affiche l’image de fond suivante.",
+          },
+          mystery: {
+            short: "Mystère",
+            title: "Choisir un Mystère",
+            body: "L’écran tout à gauche sert à choisir le numéro du mystère. Utilisez-le pour commencer le rosaire à une dizaine précise.",
+          },
+          mysteries: {
+            short: "Mystères",
+            title: "Choisir un groupe de Mystères",
+            body: "Choisissez ici le groupe de mystères, par exemple joyeux, lumineux, douloureux ou glorieux. Depuis ce point, le balayage vers le bas ouvre les statistiques.",
+          },
+          rosary: {
+            short: "Rosaire",
+            title: "Écran du rosaire",
+            body: "C’est l’écran central de prière. Il mène aux Mystères à gauche, aux Intentions à droite, aux Réglages en bas et au fond d’écran en haut.",
+          },
+          intentions: {
+            short: "Intention",
+            title: "Voir l’Intention actuelle",
+            body: "Si des intentions sont configurées, elles apparaissent ici. Tu vois ainsi l’intention de prière sélectionnée directement sur l’appareil.",
+          },
+          statsHistory: {
+            short: "Historique",
+            title: "Historique",
+            body: "Cette tuile affiche votre historique de prières pour la période sélectionnée. Elle présente un graphique des prières terminées par groupe de mystères.",
+          },
+          intentionsList: {
+            short: "Intentions",
+            title: "Choisir une Intention",
+            body: "Cette liste permet de passer d’une intention de prière disponible à une autre. L’élément choisi s’affiche ensuite sur l’écran Intention.",
+          },
+          statsDurations: {
+            short: "Temps",
+            title: "Statistiques : temps",
+            body: "Cette tuile affiche les durées moyennes typiques, par perle, dizaine, rosaire et chapelet.",
+          },
+          statsTotals: {
+            short: "Totaux",
+            title: "Statistiques : temps total",
+            body: "Cette tuile affiche le temps de prière cumulé et donne une vue d’ensemble du temps passé en prière.",
+          },
+          statsSets: {
+            short: "Groupes",
+            title: "Statistiques : groupes de Mystères",
+            body: "Le graphique indique combien de fois chaque groupe de mystères a été prié, afin de lire rapidement la répartition.",
+          },
+          statsParts: {
+            short: "Parties",
+            title: "Statistiques : parties I-V",
+            body: "Les barres montrent la répartition des parties I à V dans les groupes de mystères.",
+          },
+          settings1: {
+            short: "Régl. 1",
+            title: "Réglages 1/7 : démarrage",
+            body: "Choisissez si le rosaire commence avec le mystère sélectionné ou reprend le dernier état enregistré.",
+          },
+          settings2: {
+            short: "Régl. 2",
+            title: "Réglages 2/7 : retour haptique",
+            body: "Activez ou désactivez le retour haptique. Une courte vibration confirme les interactions.",
+          },
+          settings3: {
+            short: "Régl. 3",
+            title: "Réglages 3/7 : luminosité de l’écran",
+            body: "Réglez la luminosité de l’écran. Baissez-la pour plus d’autonomie ou augmentez-la dans un environnement lumineux.",
+          },
+          settings4: {
+            short: "Régl. 4",
+            title: "Réglages 4/7 : luminosité du fond",
+            body: "Définissez l’intensité avec laquelle le fond apparaît derrière l’écran du rosaire.",
+          },
+          settings5: {
+            short: "Régl. 5",
+            title: "Réglages 5/7 : orientation",
+            body: "Tournez l’orientation de l’écran pour l’adapter à la manière dont l’appareil est porté ou tenu.",
+          },
+          settings6: {
+            short: "Régl. 6",
+            title: "Réglages 6/7 : arrêt automatique",
+            body: "Choisissez le délai d’inactivité après lequel SmartRosary s’éteint automatiquement.",
+          },
+          settings7: {
+            short: "Infos appareil",
+            title: "Réglages 7/7 : informations appareil",
+            body: "La dernière page affiche l’identifiant de l’appareil, les versions du firmware et de la langue, ainsi que le QR code SmartRosary.",
+          },
+        },
+        wallpaper: {
+          short: "Fond",
+          title: "Changer le fond d’écran",
+          body: "Balayez vers le haut sur l’écran du rosaire pour afficher le fond suivant.",
+        },
+        settings: {
+          short: "Réglages",
+          title: "Ouvrir les Réglages",
+          body: "Balayez vers le bas sur l’écran du rosaire pour ouvrir les Réglages.",
+          screenBody: "Sélectionnez un réglage",
+        },
+        deviceInfo: {
+          short: "Infos appareil",
+          title: "Informations sur l’appareil",
+          body: "Affiche l’identifiant de l’appareil, les versions du firmware et de la langue, ainsi qu’un code QR vers le site SmartRosary.",
+          qrLabel: "Code QR vers le site SmartRosary : https://drlechk.github.io/smartrosary/",
+        },
+        steps: [
+          {
+            short: "Mystère",
+            title: "Sélectionner le Mystère",
+            body: "Choisissez le numéro du mystère utilisé pour le rosaire.",
+          },
+          {
+            short: "Mystères",
+            title: "Sélectionner les Mystères",
+            body: "Choisissez le groupe de mystères.",
+          },
+          {
+            short: "Rosaire",
+            title: "Rosaire – position de départ",
+            body: "L’écran principal de prière et le point de départ de la navigation.",
+          },
+          {
+            short: "Intention",
+            title: "Afficher l’Intention",
+            body: "Affiche l’intention de prière actuellement sélectionnée.",
+          },
+          {
+            short: "Intentions",
+            title: "Sélectionner les Intentions",
+            body: "Choisissez une intention de prière disponible.",
+          },
+        ],
+      },
+    },
+  });
+})();

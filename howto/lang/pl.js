@@ -1,0 +1,227 @@
+(() => {
+  window.SmartRosaryHowtoI18n.registerLanguage("pl", {
+    common: {
+      navigationLabel: "Nawigacja samouczka",
+      progressLabel: "Postęp samouczka",
+      language: "Język",
+      previous: "Wstecz",
+      next: "Dalej",
+      stepCounter: "Krok {current} z {total}",
+    },
+    tutorials: {
+      onoff: {
+        documentTitle: "Smart Rosary: Włączanie i wyłączanie",
+        panelTitle: "Włączanie i wyłączanie",
+        panelBody: "Przechodź między krokami za pomocą przycisków Dalej i Wstecz. Karta wskazuje przycisk używany w danym kroku.",
+        steps: [
+          {
+            title: "Naciśnij krótko jeden raz",
+            body: "Naciśnij krótko przycisk urządzenia. SmartRosary zostanie włączony.",
+            off: true,
+            pressed: true,
+          },
+          {
+            title: "Wyświetlanie tapety",
+            body: "Wybrana tapeta jest wyświetlana przez 2 sekundy.",
+            booting: true,
+          },
+          {
+            title: "Ekran różańca jest aktywny",
+            body: "Ekran różańca jest aktywny i gotowy do użycia.",
+            on: true,
+          },
+          {
+            title: "Przytrzymaj 5 sekund, aby wyłączyć",
+            body: "Przytrzymaj przycisk urządzenia przez 5 sekund, aby wyłączyć SmartRosary.",
+            on: true,
+            pressed: true,
+          },
+          {
+            title: "SmartRosary jest wyłączony",
+            body: "Ekran jest wyłączony. SmartRosary jest całkowicie wyłączony.",
+            off: true,
+          },
+        ],
+      },
+      charging: {
+        documentTitle: "Smart Rosary Howto: Ładowanie",
+        panelTitle: "Ładowanie",
+        panelBody: "Naładuj urządzenie za pomocą kabla USB-C. Włącza się ono automatycznie po podłączeniu.",
+        steps: [
+          {
+            title: "Podłącz kabel ładowania",
+            body: "Podłącz kabel USB-C z lewej strony urządzenia.",
+            off: true,
+            plugged: false,
+          },
+          {
+            title: "Wskaźnik baterii pokazuje ładowanie",
+            body: "Urządzenie uruchamia się automatycznie. Po uruchomieniu wskaźnik baterii animacją pokazuje, że SmartRosary się ładuje.",
+            booting: true,
+            plugged: true,
+          },
+          {
+            title: "Ładowanie jest sygnalizowane na ikonie baterii",
+            body: "Ikona baterii wyświetla animację ładowania po podłączeniu.",
+            on: true,
+            plugged: true,
+            charging: true,
+          },
+          {
+            title: "Odłączenie automatycznie wyłącza różaniec",
+            body: "Po odłączeniu kabla urządzenie się wyłącza.",
+            off: true,
+            plugged: false,
+          },
+        ],
+      },
+      nav: {
+        documentTitle: "Smart Rosary: Nawigacja",
+        panelTitle: "Nawigacja",
+        panelBody: "Dotknij urządzenia i przesuń palcem w stronę pozycji pokazanej na krzyżowej mapie nawigacji.",
+        miniNavLabel: "Krzyżowa mapa nawigacji",
+        optionalNote: "(opcjonalne, jeśli zainstalowano i włączono)",
+        touchHint: "Dotknij urządzenia i przesuń palcem w wybranym kierunku.",
+        intentionPlaceholder: "W tym miejscu pojawiłaby się intencja, jeśli została skonfigurowana.",
+        intentionSubtitle: "Czerwiec 2026",
+        intentionItems: ["Maj 2026", "Czerwiec 2026", "Osobista"],
+        points: {
+          wallpaper: {
+            short: "Tapeta",
+            title: "Zmiana tapety",
+            body: "Przesuń w górę z ekranu różańca. SmartRosary pozostaje na ekranie modlitwy i pokazuje następne zapisane tło.",
+          },
+          mystery: {
+            short: "Tajemnica",
+            title: "Wybór pojedynczej Tajemnicy",
+            body: "Skrajny lewy ekran służy do wyboru numeru tajemnicy. Użyj go, gdy chcesz rozpocząć różaniec od konkretnej dziesiątki.",
+          },
+          mysteries: {
+            short: "Tajemnice",
+            title: "Wybór grupy Tajemnic",
+            body: "Tutaj wybierasz grupę tajemnic, na przykład radosne, światła, bolesne lub chwalebne. Z tego miejsca gest w dół prowadzi do statystyk.",
+          },
+          rosary: {
+            short: "Różaniec",
+            title: "Ekran różańca",
+            body: "To główny ekran modlitwy. Stąd przejdziesz w lewo do tajemnic, w prawo do intencji, w dół do ustawień i w górę do zmiany tapety.",
+          },
+          intentions: {
+            short: "Intencja",
+            title: "Podgląd aktualnej Intencji",
+            body: "Jeśli intencje są skonfigurowane, pojawią się tutaj. Dzięki temu aktualnie wybrana intencja modlitewna jest widoczna bezpośrednio na urządzeniu.",
+          },
+          statsHistory: {
+            short: "Historia",
+            title: "Historia",
+            body: "Ten kafelek wyświetla historię modlitw w wybranym okresie. Przedstawia wykres ukończonych modlitw z podziałem na grupy tajemnic.",
+          },
+          intentionsList: {
+            short: "Intencje",
+            title: "Wybór Intencji",
+            body: "Na tej liście przełączasz dostępne intencje modlitewne. Wybrana pozycja pojawia się potem na ekranie Intencji.",
+          },
+          statsDurations: {
+            short: "Czasy",
+            title: "Statystyki: czasy",
+            body: "Ten kafelek pokazuje typowe średnie czasy, między innymi dla paciorka, dziesiątki, różańca i koronki.",
+          },
+          statsTotals: {
+            short: "Sumy",
+            title: "Statystyki: czas łączny",
+            body: "Tutaj widzisz zsumowany czas modlitwy. Dzięki temu łatwo sprawdzić, ile czasu łącznie spędzono na modlitwie.",
+          },
+          statsSets: {
+            short: "Grupy",
+            title: "Statystyki: grupy Tajemnic",
+            body: "Wykres pokazuje, jak często modlono się poszczególnymi grupami tajemnic, aby szybko zobaczyć rozkład praktyki modlitewnej.",
+          },
+          statsParts: {
+            short: "Części",
+            title: "Statystyki: części I-V",
+            body: "Słupki pokazują, jak części I do V rozkładają się w obrębie grup tajemnic.",
+          },
+          settings1: {
+            short: "Ustaw. 1",
+            title: "Ustawienia 1/7: sposób startu",
+            body: "Wybierz, czy różaniec ma zaczynać się od wybranej tajemnicy, czy od ostatnio zapisanego stanu.",
+          },
+          settings2: {
+            short: "Ustaw. 2",
+            title: "Ustawienia 2/7: haptyka",
+            body: "Włącz lub wyłącz informację haptyczną. Krótka wibracja potwierdza interakcje z urządzeniem.",
+          },
+          settings3: {
+            short: "Ustaw. 3",
+            title: "Ustawienia 3/7: jasność ekranu",
+            body: "Dostosuj jasność wyświetlacza. Zmniejsz ją dla dłuższej pracy lub zwiększ w jasnym otoczeniu.",
+          },
+          settings4: {
+            short: "Ustaw. 4",
+            title: "Ustawienia 4/7: jasność tapety",
+            body: "Ustaw, jak mocno tapeta ma być widoczna za ekranem różańca.",
+          },
+          settings5: {
+            short: "Ustaw. 5",
+            title: "Ustawienia 5/7: orientacja",
+            body: "Obróć orientację ekranu, aby wyświetlacz pasował do sposobu noszenia lub trzymania urządzenia.",
+          },
+          settings6: {
+            short: "Ustaw. 6",
+            title: "Ustawienia 6/7: automatyczne wyłączenie",
+            body: "Wybierz, po jakim czasie bez aktywności SmartRosary ma się automatycznie wyłączyć.",
+          },
+          settings7: {
+            short: "Info urządzenia",
+            title: "Ustawienia 7/7: informacje o urządzeniu",
+            body: "Ostatnia strona ustawień pokazuje identyfikator urządzenia, wersje firmware i języka oraz kod QR strony SmartRosary.",
+          },
+        },
+        wallpaper: {
+          short: "Tapeta",
+          title: "Zmiana tapety",
+          body: "Przesuń palcem w górę na ekranie różańca, aby wyświetlić następną tapetę.",
+        },
+        settings: {
+          short: "Ustawienia",
+          title: "Otwieranie Ustawień",
+          body: "Przesuń palcem w dół na ekranie różańca, aby otworzyć Ustawienia.",
+          screenBody: "Wybierz ustawienie",
+        },
+        deviceInfo: {
+          short: "Info urządzenia",
+          title: "Informacje o urządzeniu",
+          body: "Wyświetla identyfikator urządzenia, wersję firmware i języka oraz kod QR prowadzący do strony SmartRosary.",
+          qrLabel: "Kod QR prowadzący do strony SmartRosary: https://drlechk.github.io/smartrosary/",
+        },
+        steps: [
+          {
+            short: "Tajemnica",
+            title: "Wybór Tajemnicy",
+            body: "Wybierz numer tajemnicy używanej w różańcu.",
+          },
+          {
+            short: "Tajemnice",
+            title: "Wybór Tajemnic",
+            body: "Wybierz grupę tajemnic.",
+          },
+          {
+            short: "Różaniec",
+            title: "Różaniec – pozycja początkowa",
+            body: "Główny ekran modlitwy i punkt początkowy nawigacji.",
+          },
+          {
+            short: "Intencja",
+            title: "Wyświetlanie Intencji",
+            body: "Wyświetla aktualnie wybraną intencję modlitewną.",
+          },
+          {
+            short: "Intencje",
+            title: "Wybór Intencji",
+            body: "Wybierz dostępną intencję modlitewną.",
+          },
+        ],
+      },
+    },
+  });
+})();

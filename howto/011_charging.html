@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      :root {
+        --device-size: min(55vw, 600px);
+      }
+
+      body {
+        align-items: stretch;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(0, 0, 0, 0.08), transparent 42%),
+          #f5f6f4;
+      }
+
+      .howto-header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: 50;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding: 10px clamp(18px, 4vw, 64px);
+        border-bottom: 1px solid rgba(23, 34, 32, 0.12);
+        background: rgba(245, 246, 244, 0.9);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+      }
+
+      .howto-stage {
+        --device-size: min(30vw, 410px, calc(100svh - 180px));
+        --charge-head-width: clamp(56px, calc(var(--device-size) * 0.195), 88px);
+        --charge-head-height: clamp(49px, calc(var(--device-size) * 0.174), 78px);
+        --charge-metal-width: clamp(17px, calc(var(--device-size) * 0.06), 27px);
+        --charge-metal-height: clamp(32px, calc(var(--device-size) * 0.111), 50px);
+        --charge-wire-head-overlap: 0px;
+        --charge-metal-overlap: -1px;
+        --charge-wire-width: clamp(104px, calc(var(--device-size) * 0.525), 292px);
+        --charge-wire-height: clamp(13px, calc(var(--device-size) * 0.048), 23px);
+        --charge-unplug-offset: clamp(-46px, calc(var(--device-size) * -0.105), -28px);
+        --charge-callout-size: clamp(116px, calc(var(--device-size) * 0.414), 188px);
+        --charge-br-large: clamp(8.6px, calc(var(--device-size) * 0.035), 14px);
+        --charge-br-med: clamp(7.2px, calc(var(--device-size) * 0.029), 11.7px);
+        --charge-br-small: clamp(2.9px, calc(var(--device-size) * 0.011), 4.7px);
+        --charge-callout-left: clamp(29px, calc(var(--device-size) * 0.11), 44px);
+        --howto-card-width: min(310px, calc(100vw - 40px));
+        --case-padding: clamp(12px, calc(var(--device-size) * 0.033), 20px);
+        --bezel-padding: clamp(18px, calc(var(--device-size) * 0.077), 48px);
+        --howto-cross-scale: clamp(0.52, calc(var(--device-size) / 920), 0.68);
+        --screen-size: calc(var(--device-size) - (var(--case-padding) * 2) - (var(--bezel-padding) * 2));
+        min-height: 100svh;
+        padding: clamp(72px, 9svh, 118px) clamp(28px, 6vw, 128px) 32px;
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(340px, calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width) + 32px)) minmax(280px, 360px);
+        grid-template-rows: auto;
+        grid-template-areas:
+          "device side";
+        align-items: start;
+        justify-content: center;
+        row-gap: clamp(34px, 4vw, 64px);
+        column-gap: clamp(56px, 7vw, 120px);
+      }
+
+      .howto-stage .controls,
+      .howto-stage .controls-toggle {
+        display: none;
+      }
+
+      .howto-device-wrap {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        grid-template-columns: var(--charge-wire-width) var(--charge-head-width) var(--device-size);
+        grid-template-rows: auto;
+        justify-content: end;
+        justify-items: end;
+        align-items: center;
+        width: min(100%, calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width) + 32px));
+        min-width: 0;
+        padding-top: calc(var(--device-size) * 0.2);
+        padding-inline: 0;
+        grid-area: device;
+      }
+
+      .howto-card {
+        grid-area: side;
+        position: relative;
+        justify-self: start;
+        width: var(--howto-card-width);
+        max-width: 100%;
+        min-height: 132px;
+        padding: 15px 16px 16px;
+        border: 1px solid rgba(23, 34, 32, 0.16);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.94);
+        color: #172220;
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+      }
+
+      .howto-connector {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 15;
+        overflow: visible;
+      }
+
+      .howto-connector path {
+        fill: none;
+        stroke: #2196f3;
+        stroke-width: 2;
+      }
+
+      .howto-step-kicker {
+        margin: 0 0 7px;
+        color: #57615f;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .howto-card h1 {
+        margin: 0 0 8px;
+        color: #0e1817;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1.12;
+      }
+
+      .howto-card p {
+        margin: 0;
+        color: #26302f;
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .howto-panel {
+        display: grid;
+        justify-self: start;
+        margin-top: 232px;
+        max-width: 360px;
+        gap: 18px;
+        color: #172220;
+        grid-area: side;
+      }
+
+      .howto-panel h2 {
+        margin: 0;
+        font-size: clamp(30px, 5vw, 54px);
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .howto-panel p {
+        margin: 0;
+        max-width: 34ch;
+        color: #3d4745;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      .howto-language {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .howto-language span {
+        color: #57615f;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .howto-language select {
+        width: 180px;
+        height: 40px;
+        padding: 0 36px 0 12px;
+        border: 1px solid rgba(23, 34, 32, 0.2);
+        border-radius: 8px;
+        background: #fff;
+        color: #172220;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .howto-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .howto-controls button {
+        height: 40px;
+        min-width: 112px;
+        border: 1px solid rgba(23, 34, 32, 0.2);
+        border-radius: 8px;
+        background: #fff;
+        color: #172220;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .howto-controls button:last-child {
+        background: #172220;
+        color: #fff;
+      }
+
+      .howto-controls button:disabled {
+        opacity: 0.42;
+        cursor: default;
+      }
+
+      .howto-progress {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+        width: min(320px, 100%);
+      }
+
+      .howto-progress span {
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(23, 34, 32, 0.18);
+      }
+
+      .howto-progress span[aria-current="step"] {
+        background: #2196f3;
+      }
+
+      .howto-stage .device__knob {
+        top: calc(var(--device-size) * -0.028);
+        z-index: 0;
+      }
+
+      .howto-stage .device::before {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: inherit;
+        content: "";
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .howto-stage .device__bezel {
+        position: relative;
+        z-index: 2;
+      }
+
+      .howto-stage .device {
+        position: relative;
+        grid-column: 3;
+        grid-row: 1;
+        justify-self: start;
+        z-index: 2;
+        max-width: 100%;
+      }
+
+      .howto-stage .device__knob-hit {
+        z-index: 22;
+      }
+
+      .howto-stage .device__knob-hit::after {
+        position: absolute;
+        inset: -10px;
+        border: 2px solid #2196f3;
+        border-radius: inherit;
+        box-shadow: 0 0 0 8px rgba(33, 150, 243, 0.18);
+        content: "";
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .howto-stage .device--callout .device__knob-hit::after {
+        animation: howto-pulse 1300ms ease-in-out infinite;
+        opacity: 1;
+      }
+
+      .howto-stage .device--off .screen__art,
+      .howto-stage .device--off .screen-panel {
+        opacity: 0 !important;
+        visibility: hidden !important;
+      }
+
+      .howto-stage .device--off .screen::after {
+        opacity: 0.82;
+      }
+
+      .howto-stage .device--booting .rosary-view,
+      .howto-stage .device--booting .beads {
+        opacity: 0;
+      }
+
+      .howto-stage .cross {
+        transform: translate(-50%, -50%) scale(var(--howto-cross-scale));
+        transform-origin: center;
+      }
+
+      .usbc-cable {
+        position: relative;
+        left: var(--charge-unplug-offset);
+        grid-column: 1 / 3;
+        grid-row: 1;
+        justify-self: end;
+        display: flex;
+        align-items: center;
+        transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        pointer-events: none;
+      }
+
+      .usbc-head::after {
+        content: "";
+        position: absolute;
+        left: var(--charge-callout-left);
+        top: 50%;
+        width: var(--charge-callout-size);
+        height: var(--charge-callout-size);
+        margin-left: calc(var(--charge-callout-size) / -2);
+        margin-top: calc(var(--charge-callout-size) / -2);
+        border: 2px solid #2196f3;
+        border-radius: 50%;
+        box-shadow: 0 0 0 8px rgba(33, 150, 243, 0.18);
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .howto-stage.cable--callout .usbc-head::after {
+        animation: howto-pulse 1300ms ease-in-out infinite;
+      }
+
+      .howto-stage[data-plugged="true"] .usbc-cable {
+        left: 0;
+      }
+
+      .howto-device-wrap > .device {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .usbc-wire {
+        position: relative;
+        z-index: 3;
+        width: var(--charge-wire-width);
+        height: var(--charge-wire-height);
+        margin-right: 0;
+        border-radius: 0;
+        background:
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 28%),
+          linear-gradient(to bottom, #f8faf9 0%, #dfe4e2 35%, #bbc2c0 56%, #eef2f0 100%);
+        box-shadow:
+          inset 0 1px 1px rgba(255, 255, 255, 0.92),
+          inset 0 -1px 2px rgba(88, 96, 94, 0.28);
+      }
+
+      .usbc-wire::before {
+        position: absolute;
+        top: 0;
+        right: calc(100% - 1px);
+        width: 100vw;
+        height: 100%;
+        background: inherit;
+        box-shadow: inherit;
+        content: "";
+      }
+
+      .usbc-head {
+        position: relative;
+        z-index: 4;
+        width: var(--charge-head-width);
+        height: var(--charge-head-height);
+        border: 1px solid #8c8c8c;
+        border-right: none;
+        border-radius: var(--charge-br-med) 0 0 var(--charge-br-med);
+        background:
+          linear-gradient(90deg, rgba(118, 118, 118, 0.2), transparent 22%, transparent 74%, rgba(120, 120, 120, 0.18)),
+          linear-gradient(to bottom, #d1d3d3 0%, #fbfbfb 44%, #b8bbbb 100%);
+        box-shadow:
+          -2px 0 5px rgba(0, 0, 0, 0.2),
+          inset 0 1px 1px rgba(255, 255, 255, 0.95),
+          inset 0 -2px 3px rgba(90, 96, 98, 0.22);
+      }
+
+      .usbc-metal {
+        position: absolute;
+        top: 50%;
+        left: calc(var(--charge-wire-width) + var(--charge-head-width) - var(--charge-wire-head-overlap) + var(--charge-metal-overlap));
+        width: var(--charge-metal-width);
+        height: var(--charge-metal-height);
+        background:
+          linear-gradient(to right, rgba(82, 82, 82, 0.34), transparent 30%, rgba(82, 82, 82, 0.18)),
+          linear-gradient(to bottom, #a8aaac 0%, #f2f3f4 47%, #8f9396 100%);
+        border: 1.5px solid #74787a;
+        border-left: none;
+        border-radius: 0 var(--charge-br-small) var(--charge-br-small) 0;
+        box-shadow:
+          inset 0 1px 1px rgba(255, 255, 255, 0.8),
+          inset 0 -1px 1px rgba(55, 58, 60, 0.28);
+        transform: translateY(-50%);
+        z-index: 1;
+      }
+
+      .device--charging .battery__fill {
+        animation: battery-charge 2s ease-in-out infinite;
+      }
+
+      @keyframes battery-charge {
+        0% { width: 4px; }
+        100% { width: 45px; }
+      }
+
+      @keyframes howto-pulse {
+        0%,
+        100% {
+          transform: scale(0.96);
+          opacity: 0.62;
+        }
+
+        50% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 920px) {
+        .howto-stage {
+          --device-size: min(48vw, clamp(184px, 32svh, 340px));
+          --case-padding: clamp(7px, calc(var(--device-size) * 0.033), 20px);
+          --bezel-padding: clamp(12px, calc(var(--device-size) * 0.077), 48px);
+          --howto-card-width: min(480px, 100%);
+          --howto-card-height: 176px;
+          padding-top: clamp(60px, 8svh, 90px);
+          grid-template-columns: 1fr;
+          grid-template-rows: auto auto auto;
+          grid-template-areas:
+            "card"
+            "device"
+            "panel";
+          align-content: center;
+          justify-items: center;
+          gap: clamp(18px, 3svh, 28px);
+        }
+
+        .howto-card {
+          grid-area: card;
+          justify-self: center;
+          width: var(--howto-card-width);
+          box-sizing: border-box;
+          height: var(--howto-card-height);
+          min-height: 0;
+          overflow: hidden;
+        }
+
+        .howto-device-wrap {
+          display: grid;
+          grid-template-columns: var(--charge-wire-width) var(--charge-head-width) var(--device-size);
+          justify-self: center;
+          width: calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width));
+          padding-top: calc(var(--device-size) * 0.2);
+          transform: translateX(clamp(-18px, -2.6vw, -8px));
+          overflow: visible;
+        }
+
+        .howto-device-wrap > .device {
+          position: relative;
+          top: auto;
+          right: auto;
+        }
+
+        .howto-panel {
+          grid-area: panel;
+          justify-items: center;
+          justify-self: center;
+          margin-top: 0;
+          text-align: center;
+        }
+
+        .howto-panel p {
+          max-width: 44ch;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .howto-stage {
+          --device-size: min(52vw, clamp(170px, 33svh, 280px));
+          --case-padding: clamp(6px, calc(var(--device-size) * 0.033), 20px);
+          --bezel-padding: clamp(11px, calc(var(--device-size) * 0.077), 48px);
+          --charge-head-width: clamp(54px, calc(var(--device-size) * 0.195), 86px);
+          --charge-head-height: clamp(47px, calc(var(--device-size) * 0.174), 76px);
+          --charge-wire-width: clamp(106px, calc(var(--device-size) * 0.5), 180px);
+          --howto-card-width: min(480px, 100%);
+          --howto-card-height: 184px;
+          padding: clamp(76px, 10svh, 96px) clamp(8px, 2.5vw, 16px) 18px;
+        }
+
+        .howto-device-wrap {
+          transform: translateX(clamp(-30px, -7vw, -16px));
+        }
+
+        .howto-header {
+          min-height: 56px;
+          padding-inline: 14px;
+        }
+
+        .howto-language {
+          width: 100%;
+          justify-content: flex-end;
+        }
+
+        .howto-language select {
+          width: min(180px, 65vw);
+        }
+
+        .howto-card h1 {
+          font-size: 19px;
+        }
+
+        .howto-panel {
+          gap: 14px;
+        }
+
+        .howto-panel h2 {
+          font-size: clamp(25px, 9vw, 34px);
+        }
+
+        .howto-panel p {
+          font-size: 14px;
+        }
+
+        .howto-controls {
+          width: 100%;
+        }
+
+        .howto-controls button {
+          flex: 1 1 130px;
+          min-width: 0;
+        }
+      }
+
+      @media (max-height: 460px) and (orientation: landscape) {
+        .howto-header {
+          min-height: 52px;
+          padding-block: 6px;
+        }
+
+        .howto-stage {
+          --device-size: min(32vw, calc(100svh - 90px));
+          padding-top: 64px;
+          grid-template-columns: minmax(220px, calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width) + 24px)) minmax(280px, 1fr);
+          grid-template-rows: auto 1fr;
+          grid-template-areas:
+            "device side";
+          align-content: center;
+          gap: 18px;
+        }
+
+        .howto-card,
+        .howto-panel {
+          grid-area: side;
+          justify-self: start;
+          text-align: left;
+        }
+
+        .howto-panel {
+          justify-items: start;
+          margin-top: 172px;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="howto-header">
+      <select id="howto-selector" class="howto-selector-control" style="height: 40px; padding: 0 12px; border: 1px solid rgba(23, 34, 32, 0.2); border-radius: 8px; background: #fff; color: #172220; font: inherit; font-size: 14px; cursor: pointer; margin-right: auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);">
+        <option value="010_onoff.html"></option>
+        <option value="011_charging.html"></option>
+        <option value="020_nav.html"></option>
+      </select>
+      <label class="howto-language" for="howto-language-control">
+        <span id="howto-language-label" style="display: none;"></span>
+        <select id="howto-language-control" style="width: 85px;">
+          <option value="pl">PL</option>
+          <option value="de">DE</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="fr">FR</option>
+          <option value="la" disabled>LA</option>
+          <option value="pt">PT</option>
+        </select>
+      </label>
+    </header>
+    <main class="howto-stage" data-step="0">
+      <svg class="howto-connector" aria-hidden="true">
+        <path />
+      </svg>
+      <div class="howto-device-wrap">
+      <button id="controls-toggle" class="controls-toggle" type="button" aria-controls="controls-panel" aria-expanded="true">Hide controls</button>
+      <form id="controls-panel" class="controls" aria-label="Display controls">
+        <label>
+          <span>View</span>
+          <select id="view-control">
+            <option value="rosary" selected>Rosary</option>
+            <option value="mysteries">Mysteries</option>
+            <option value="mystery">Mystery</option>
+            <option value="intentions">Intentions</option>
+            <option value="intentions-list">Intentions list</option>
+            <option value="settings1">Settings1</option>
+            <option value="settings2">Settings2</option>
+            <option value="settings3">Settings3</option>
+            <option value="settings4">Settings4</option>
+            <option value="settings5">Settings5</option>
+            <option value="settings6">Settings6</option>
+            <option value="settings7">Settings7</option>
+            <option value="fwupdate">FWUpdate</option>
+          </select>
+        </label>
+        <div class="nav-control" aria-label="Screen navigation">
+          <span>Navigation</span>
+          <div class="nav-control__pad">
+            <button class="nav-button nav-button--top" type="button" data-nav-direction="up" aria-label="Navigate up">↑</button>
+            <button class="nav-button nav-button--right" type="button" data-nav-direction="right" aria-label="Navigate right">→</button>
+            <button class="nav-center-button" type="button" aria-label="Advance rosary bead">●</button>
+            <button class="nav-button nav-button--bottom" type="button" data-nav-direction="down" aria-label="Navigate down">↓</button>
+            <button class="nav-button nav-button--left" type="button" data-nav-direction="left" aria-label="Navigate left">←</button>
+          </div>
+        </div>
+        <label>
+          <span>Language</span>
+          <select id="language-control">
+            <option value="pl" selected>Polski</option>
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+            <option value="es">Español</option>
+            <option value="fr">Français</option>
+            <option value="la">Latin</option>
+            <option value="pt">Português</option>
+          </select>
+        </label>
+        <label>
+          <span>Firmware version</span>
+          <select id="firmware-version-control">
+            <option value="v1.28" selected>v1.28</option>
+            <option value="v1.29">v1.29</option>
+            <option value="v1.30">v1.30</option>
+            <option value="v1.31">v1.31</option>
+            <option value="v1.32">v1.32</option>
+            <option value="v1.33">v1.33</option>
+            <option value="v1.34">v1.34</option>
+          </select>
+        </label>
+        <label>
+          <span>Language version</span>
+          <select id="language-version-control">
+            <option value="v1.0" selected>v1.0</option>
+            <option value="v1.1">v1.1</option>
+            <option value="v1.2">v1.2</option>
+            <option value="v1.3">v1.3</option>
+            <option value="v1.4">v1.4</option>
+            <option value="v1.5">v1.5</option>
+            <option value="v1.6">v1.6</option>
+            <option value="v1.7">v1.7</option>
+            <option value="v1.8">v1.8</option>
+            <option value="v1.9">v1.9</option>
+          </select>
+        </label>
+        <label>
+          <span>Mysteries entry</span>
+          <select id="mysteries-selection-control"></select>
+        </label>
+        <label>
+          <span>Mystery entry</span>
+          <select id="mystery-selection-control">
+            <option value="0" selected>-</option>
+            <option value="1">I</option>
+            <option value="2">II</option>
+            <option value="3">III</option>
+            <option value="4">IV</option>
+            <option value="5">V</option>
+          </select>
+        </label>
+        <label>
+          <span>Time</span>
+          <input id="time-control" type="time" step="1" value="18:25:09" />
+        </label>
+        <label>
+          <span>Browser time</span>
+          <select id="browser-time-control">
+            <option value="off">Off</option>
+            <option value="on" selected>On</option>
+          </select>
+        </label>
+        <label>
+          <span>Battery</span>
+          <select id="battery-control">
+            <option value="0">0%</option>
+            <option value="25">25%</option>
+            <option value="50" selected>50%</option>
+            <option value="75">75%</option>
+            <option value="100">100%</option>
+          </select>
+        </label>
+        <label class="brightness-control">
+          <span>Display brightness <output id="brightness-output">100%</output></span>
+          <input id="brightness-control" type="range" min="1" max="100" step="1" value="100" />
+        </label>
+        <label class="bead-control">
+          <span>Active bead <output id="bead-output">None</output></span>
+          <input id="bead-control" type="range" min="0" max="59" step="1" value="0" />
+        </label>
+        <label>
+          <span>BLE</span>
+          <select id="ble-control">
+            <option value="on">On</option>
+            <option value="off" selected>Off</option>
+          </select>
+        </label>
+        <label>
+          <span>Background</span>
+          <select id="background-control">
+            <option value="">None</option>
+            <option value="czestochowa">Czestochowa</option>
+            <option value="fatima">Fatima</option>
+            <option value="guadalupe">Guadalupe</option>
+            <option value="jezus">Jezus</option>
+            <option value="pmkdus" selected>PMKDUS</option>
+          </select>
+        </label>
+        <label class="opacity-control">
+          <span>Opacity <output id="background-opacity-output">50%</output></span>
+          <input id="background-opacity-control" type="range" min="0" max="100" step="1" value="50" />
+        </label>
+        <button id="download-svg" class="download-btn" type="button">Download SVG</button>
+      </form>
+      <div class="usbc-cable" aria-hidden="true">
+        <div class="usbc-wire"></div>
+        <div class="usbc-head"></div>
+        <div class="usbc-metal"></div>
+      </div>
+      <section class="device device--off" aria-label="Smart rosary main screen mockup">
+        <div class="device__knob" aria-hidden="true"></div>
+        <button class="device__knob-hit" type="button" aria-label="Power button"></button>
+        <div class="device__bezel">
+          <div class="screen">
+            <div class="screen__art" aria-hidden="true">
+              <div class="screen__bg"></div>
+              <div class="screen__shade"></div>
+            </div>
+            <div class="screen-panel screen-panel--active rosary-panel" data-screen="rosary" aria-hidden="false">
+              <div class="beads" id="beads" aria-hidden="true"></div>
+
+              <div class="status rosary-view">
+                <svg class="battery" viewBox="0 0 64 34" aria-hidden="true">
+                  <rect class="battery__fill" x="6" y="7" width="13" height="20" rx="2"></rect>
+                  <rect x="2" y="3" width="54" height="28" rx="5"></rect>
+                  <rect class="battery__tip" x="56" y="10" width="5" height="14" rx="2"></rect>
+                </svg>
+<svg class="bluetooth" viewBox="0 0 24 24" aria-hidden="true">
+  <defs>
+    <mask id="bluetooth-cutout">
+      <rect x="2" y="0" width="20" height="24" rx="10" fill="white" />
+
+      <path
+        d="M12 2l6.2 6.2L13.8 12l4.4 3.8L12 22v-7.2l-4.4 4.4L6 17.6l5.6-5.6L6 6.4 7.6 4.8 12 9.2V2Zm2 4.8v4l2.3-2L14 6.8Zm0 6.4v4l2.3-2L14 13.2Z"
+        fill="black"
+      />
+    </mask>
+  </defs>
+
+  <rect
+    class="bluetooth__bg"
+    x="0"
+    y="0"
+    width="24"
+    height="24"
+    rx="7"
+    fill="white"
+    mask="url(#bluetooth-cutout)"
+  />
+</svg>
+              </div>
+
+              <div class="time rosary-view" id="time-display">18:25:09</div>
+              <div class="rosary-mystery-title rosary-view" id="rosary-mystery-title"></div>
+              <div class="rosary-mystery-scroll rosary-view" aria-hidden="true">
+                <span id="rosary-mystery-scroll-text"></span>
+              </div>
+
+              <div class="cross rosary-view" aria-hidden="true">
+                <span class="cross__h"></span>
+                <span class="cross__v"></span>
+                <span class="cross__center"></span>
+              </div>
+            </div>
+
+            <div class="screen-panel mysteries-view mysteries" data-screen="mysteries" aria-hidden="true">
+              <h1 class="mysteries__title" id="mysteries-title">Tajemnice</h1>
+              <div class="mysteries__menu" role="list">
+                <div class="mysteries__row mysteries__row--empty" id="mystery-row-empty" role="listitem">-</div>
+                <div class="mysteries__row mysteries__row--selected" id="mystery-row-primary" role="listitem">radosne (pon./so.)</div>
+                <div class="mysteries__row" id="mystery-row-secondary" role="listitem">światła (czw.)</div>
+              </div>
+            </div>
+
+            <div class="screen-panel stats-view stats" data-screen="stats-durations" aria-hidden="true">
+              <h1 class="stats__title">Statistics</h1>
+              <div class="stats__subtitle" id="stats-durations-subtitle">Duration &amp; averages</div>
+              <div class="stats__pairs" aria-label="Average prayer durations">
+                <div class="stats__pair"><span id="stats-avg-bead">Avg bead :</span><strong>6s</strong></div>
+                <div class="stats__pair"><span id="stats-avg-decade">Avg decade :</span><strong>5m 42s</strong></div>
+                <div class="stats__pair"><span id="stats-avg-rosary">Avg rosary :</span><strong>31m 10s</strong></div>
+                <div class="stats__pair"><span id="stats-avg-chaplet">Avg chaplet :</span><strong>18m 25s</strong></div>
+              </div>
+            </div>
+
+            <div class="screen-panel stats-view stats" data-screen="stats-totals" aria-hidden="true">
+              <h1 class="stats__title">Statistics</h1>
+              <div class="stats__subtitle" id="stats-totals-subtitle">Totals (time)</div>
+              <div class="stats__pairs stats__pairs--totals" aria-label="Total prayer durations">
+                <div class="stats__pair"><span id="stats-total-rosary">Rosary :</span><strong>37h 24m</strong></div>
+                <div class="stats__pair"><span id="stats-total-decades">Decades :</span><strong>82h 10m</strong></div>
+                <div class="stats__pair"><span id="stats-total-beads">Beads :</span><strong>7h 42m</strong></div>
+                <div class="stats__pair"><span id="stats-total-chaplet">Chaplet :</span><strong>4h 05m</strong></div>
+              </div>
+            </div>
+
+            <div class="screen-panel stats-view stats" data-screen="stats-sets" aria-hidden="true">
+              <h1 class="stats__title">Statistics</h1>
+              <div class="stats__subtitle" id="stats-sets-subtitle">Mystery sets</div>
+              <div class="stats__donut" aria-hidden="true"></div>
+              <div class="stats__legend stats__legend--sets" id="stats-set-legend" aria-label="Mystery set counts"></div>
+            </div>
+
+            <div class="screen-panel stats-view stats" data-screen="stats-parts" aria-hidden="true">
+              <h1 class="stats__title">Statistics</h1>
+              <div class="stats__subtitle" id="stats-parts-subtitle">Parts I-V per set</div>
+              <div class="stats__bars" id="stats-parts-bars" aria-label="Mystery part counts"></div>
+              <div class="stats__part-key" id="stats-part-key" aria-hidden="true"></div>
+            </div>
+
+            <div class="screen-panel mystery-view mystery" data-screen="mystery" aria-hidden="true">
+              <div class="mystery__content">
+                <h1 class="mystery__title" id="mystery-title">Tajemnica</h1>
+                <div class="mystery__roller" role="list">
+                  <div class="mystery__row" role="listitem"><span>V</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>-</span></div>
+                  <div class="mystery__row" role="listitem"><span>I</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="screen-panel intentions-view intentions" data-screen="intentions" aria-hidden="true">
+              <h1 class="intentions__title" id="intentions-title">Intencja</h1>
+              <div class="intentions__month" id="intentions-month">Luty 2025</div>
+              <div class="intentions__body" id="intentions-body">
+                Módlmy się, aby wspólnota \n kościelna wspomagała pragnienia młodych ludzi, czujących powołanie do służenia misji Chrystusa w życiu kapłańskim i zakonnym.
+              </div>
+            </div>
+
+            <div class="screen-panel intentions-list-view intentions-list" data-screen="intentions-list" aria-hidden="true">
+              <h1 class="intentions-list__title" id="intentions-list-title">Intencje</h1>
+              <div class="mystery__roller intentions-list__roller" id="intentions-list-roller" role="list">
+                <div class="mystery__row" role="listitem"><span>Maj 2026</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>Czerwiec 2026</span></div>
+                <div class="mystery__row" role="listitem"><span>Lipiec 2026</span></div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings-view settings" data-screen="settings1" aria-hidden="true">
+              <div class="settings__num" id="settings-num">1/7</div>
+              <h1 class="settings__title" id="settings-title">Ustawienia</h1>
+              <div class="settings__option settings__option--first">
+                <div class="settings__label" id="settings-option-selected">Rozpocznij różaniec z wybraną Tajemnicą</div>
+                <div class="settings__switch"><span></span></div>
+              </div>
+              <div class="settings__option settings__option--second">
+                <div class="settings__label" id="settings-option-last">Rozpocznij różaniec z ostatnim stanem</div>
+                <div class="settings__switch"><span></span></div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings2-view settings" data-screen="settings2" aria-hidden="true">
+              <div class="settings__num" id="settings2-num">2/7</div>
+              <h1 class="settings__title" id="settings2-title">Ustawienia</h1>
+              <div class="settings__option settings__option--single">
+                <div class="settings__label" id="settings2-option-haptic">Haptyczna informacja zwrotna (wibracja)</div>
+                <div class="settings__switch settings__switch-single"><span></span></div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings3-view settings" data-screen="settings3" aria-hidden="true">
+              <div class="settings__num" id="settings3-num">3/7</div>
+              <h1 class="settings__title" id="settings3-title">Ustawienia</h1>
+              <div class="settings__option settings__option--single">
+                <div class="settings__label" id="settings3-option-brightness">Jasność ekranu</div>
+                <div class="settings__slider" id="settings3-slider">
+                  <div class="settings__slider-track"></div>
+                  <div class="settings__slider-fill"></div>
+                  <div class="settings__slider-knob"></div>
+                </div>
+                <div class="settings__value" id="settings3-value">100%</div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings4-view settings" data-screen="settings4" aria-hidden="true">
+              <div class="settings__num" id="settings4-num">4/7</div>
+              <h1 class="settings__title" id="settings4-title">Ustawienia</h1>
+              <div class="settings__option settings__option--single">
+                <div class="settings__label" id="settings4-option-tap-brightness">Jasność tapety</div>
+                <div class="settings__slider settings__slider--zero" id="settings4-slider">
+                  <div class="settings__slider-track"></div>
+                  <div class="settings__slider-fill"></div>
+                  <div class="settings__slider-knob"></div>
+                </div>
+                <div class="settings__value" id="settings4-value">0%</div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings5-view settings" data-screen="settings5" aria-hidden="true">
+              <div class="settings__num" id="settings5-num">5/7</div>
+              <h1 class="settings__title" id="settings5-title">Ustawienia</h1>
+              <div class="settings__option settings__option--single">
+                <div class="settings__label" id="settings5-option-orientation">Orientacja ekranu</div>
+              </div>
+              <div class="mystery__roller settings__orientation-roller" role="list">
+                <div class="mystery__row" role="listitem"><span>0°</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>90°</span></div>
+                <div class="mystery__row" role="listitem"><span>180°</span></div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings6-view settings" data-screen="settings6" aria-hidden="true">
+              <div class="settings__num" id="settings6-num">6/7</div>
+              <h1 class="settings__title" id="settings6-title">Ustawienia</h1>
+              <div class="settings__option settings__option--single">
+                <div class="settings__label" id="settings6-option-shutdown">Auto wyłączenie</div>
+              </div>
+              <div class="mystery__roller settings__shutdown-roller" role="list">
+                <div class="mystery__row" role="listitem"><span>300 s</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>600 s</span></div>
+                <div class="mystery__row" role="listitem"><span id="settings6-shutdown-never">Nigdy</span></div>
+              </div>
+            </div>
+
+            <div class="screen-panel settings7-view settings" data-screen="settings7" aria-hidden="true">
+              <div class="settings__qr-url" id="settings7-url">rosary-A1B2D3E4</div>
+              <svg class="settings__qr" id="settings7-qr" viewBox="3 3 31 31" role="img" aria-label="https://drlechk.github.io/smartrosary/">
+                <rect width="40" height="40" fill="#fff"></rect>
+              </svg>
+              <div class="settings__qr-more" id="settings7-more">v1.28 · pl v1.0</div>
+            </div>
+
+            <div class="screen-panel fwupdate-view fwupdate" data-screen="fwupdate" aria-hidden="true">
+              <h1 class="fwupdate__title" id="fwupdate-title">Aktualizacja systemu</h1>
+              <div class="fwupdate__file" id="fwupdate-file">firmware.bin</div>
+              <div class="fwupdate__bar" aria-hidden="true">
+                <div class="fwupdate__fill"></div>
+                <div class="fwupdate__knob"></div>
+              </div>
+              <div class="fwupdate__percent" id="fwupdate-percent">5%</div>
+              <div class="fwupdate__bytes" id="fwupdate-bytes">(75 kB / 1471 kB)</div>
+            </div>
+          </div>
+          <div class="glass-overlay" aria-hidden="true"></div>
+        </div>
+      </section>
+      </div>
+      <article class="howto-card" aria-live="polite">
+        <p class="howto-step-kicker" id="howto-step-kicker"></p>
+        <h1 id="howto-step-title"></h1>
+        <p id="howto-step-body"></p>
+      </article>
+      <aside class="howto-panel" id="howto-panel" aria-label="">
+        <h2 id="howto-panel-title"></h2>
+        <p id="howto-panel-body"></p>
+        <div class="howto-progress" id="howto-progress" aria-label="">
+          <span aria-current="step"></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="howto-controls">
+          <button id="howto-prev" type="button"></button>
+          <button id="howto-next" type="button"></button>
+        </div>
+      </aside>
+    </main>
+
+    <script src="../smartrosary-language-fixtures.js"></script>
+    <script src="../lang/pl.js"></script>
+    <script src="../lang/en.js"></script>
+    <script src="../lang/de.js"></script>
+    <script src="../lang/es.js"></script>
+    <script src="../lang/fr.js"></script>
+    <script src="../lang/la.js"></script>
+    <script src="../lang/pt.js"></script>
+    <script src="../intentions/pl.js"></script>
+    <script src="../intentions/en.js"></script>
+    <script src="../intentions/de.js"></script>
+    <script src="../intentions/es.js"></script>
+    <script src="../intentions/fr.js"></script>
+    <script src="../intentions/la.js"></script>
+    <script src="../intentions/pt.js"></script>
+    <script src="../asset-data.js"></script>
+    <script src="../dom-to-svg.js"></script>
+    <script src="../smartrosary-mockup.js"></script>
+    <script src="howto-i18n.js"></script>
+    <script src="lang/de.js"></script>
+    <script src="lang/en.js"></script>
+    <script src="lang/pl.js"></script>
+    <script src="lang/es.js"></script>
+    <script src="lang/fr.js"></script>
+    <script src="lang/la.js"></script>
+    <script src="lang/pt.js"></script>
+    <script>
+      (() => {
+        let { common, tutorial, language } = window.SmartRosaryHowtoI18n.getTutorial("charging");
+        const stage = document.querySelector(".howto-stage");
+        const controlsPanel = document.getElementById("controls-panel");
+        const device = document.querySelector(".device");
+        const knob = document.querySelector(".device__knob");
+        const knobHit = document.querySelector(".device__knob-hit");
+        const screenBg = document.querySelector(".screen__bg");
+        const title = document.getElementById("howto-step-title");
+        const body = document.getElementById("howto-step-body");
+        const kicker = document.getElementById("howto-step-kicker");
+        const panel = document.getElementById("howto-panel");
+        const panelTitle = document.getElementById("howto-panel-title");
+        const panelBody = document.getElementById("howto-panel-body");
+        const languageLabel = document.getElementById("howto-language-label");
+        const languageSelect = document.getElementById("howto-language-control");
+        const progressWrap = document.getElementById("howto-progress");
+        const prev = document.getElementById("howto-prev");
+        const next = document.getElementById("howto-next");
+        let progress = Array.from(document.querySelectorAll(".howto-progress span"));
+        const viewControl = document.getElementById("view-control");
+        const mockupLanguageControl = document.getElementById("language-control");
+        const browserTimeControl = document.getElementById("browser-time-control");
+        const bleControl = document.getElementById("ble-control");
+        const backgroundControl = document.getElementById("background-control");
+        const backgroundOpacityControl = document.getElementById("background-opacity-control");
+        function normalizeChargingSteps(sourceSteps) {
+          const [plugStep, startupStep, chargingStep, unplugStep] = sourceSteps;
+          const rosaryChargingStep = chargingStep ?? startupStep;
+          const finalStep = unplugStep ?? chargingStep ?? sourceSteps[sourceSteps.length - 1];
+
+          return [
+            plugStep,
+            rosaryChargingStep
+              ? {
+                  ...rosaryChargingStep,
+                  title: startupStep?.title ?? rosaryChargingStep.title,
+                  body: startupStep?.body ?? rosaryChargingStep.body,
+                  booting: false,
+                  on: true,
+                  plugged: true,
+                  charging: true,
+                }
+              : null,
+            finalStep,
+          ].filter(Boolean);
+        }
+
+        let steps = normalizeChargingSteps(tutorial.steps);
+        let currentStep = 0;
+        let bootSequenceTimer = null;
+
+        controlsPanel.addEventListener("submit", (event) => {
+          event.preventDefault();
+        });
+
+        function applyCopy() {
+          document.documentElement.lang = language;
+          document.title = tutorial.documentTitle;
+          panel.setAttribute("aria-label", common.navigationLabel);
+          progressWrap.setAttribute("aria-label", common.progressLabel);
+          panelTitle.textContent = tutorial.panelTitle;
+          panelBody.textContent = tutorial.panelBody;
+          const dict = window.SmartRosaryHowtoI18n.dictionaries[language] || window.SmartRosaryHowtoI18n.dictionaries["en"];
+          if (dict && dict.tutorials && typeof howtoSelector !== 'undefined' && howtoSelector) {
+            howtoSelector.options[0].textContent = (dict.tutorials.onoff && dict.tutorials.onoff.panelTitle) || "Power on and off";
+            howtoSelector.options[1].textContent = (dict.tutorials.charging && dict.tutorials.charging.panelTitle) || "Charging";
+            howtoSelector.options[2].textContent = (dict.tutorials.nav && dict.tutorials.nav.panelTitle) || "Navigation";
+          }
+          if (languageLabel) languageLabel.textContent = common.language;
+          languageSelect.value = language;
+          prev.textContent = common.previous;
+          next.textContent = common.next;
+          renderProgressDots();
+        }
+
+        function renderProgressDots() {
+          progressWrap.innerHTML = "";
+          steps.forEach(() => {
+            progressWrap.appendChild(document.createElement("span"));
+          });
+          progress = Array.from(progressWrap.querySelectorAll("span"));
+        }
+
+        function selectLanguage(requestedLanguage) {
+          const copy = window.SmartRosaryHowtoI18n.getTutorial("charging", requestedLanguage);
+
+          common = copy.common;
+          tutorial = copy.tutorial;
+          language = copy.language;
+          steps = normalizeChargingSteps(tutorial.steps);
+          currentStep = Math.min(currentStep, steps.length - 1);
+
+          const url = new URL(window.location.href);
+          url.searchParams.set("lang", language);
+          try {
+            window.history.replaceState(null, "", url);
+          } catch {
+            // Some browsers restrict History API updates for local file URLs.
+          }
+
+          applyCopy();
+          renderStep(currentStep);
+        }
+
+        function dispatch(control, eventName) {
+          control.dispatchEvent(new Event(eventName, { bubbles: true }));
+        }
+
+        function setChargingWallpaper(opacity = 50) {
+          backgroundControl.value = "pmkdus";
+          backgroundOpacityControl.value = String(opacity);
+          screenBg.style.backgroundImage = 'url("../bg/pmkdus.png")';
+          screenBg.style.opacity = String(opacity / 100);
+        }
+
+        function prepareMockup(backgroundOpacity = 50) {
+          browserTimeControl.value = "on";
+          dispatch(browserTimeControl, "change");
+          bleControl.value = "off";
+          dispatch(bleControl, "change");
+          document.querySelector(".bluetooth")?.classList.add("bluetooth--off");
+          mockupLanguageControl.value = language;
+          dispatch(mockupLanguageControl, "change");
+          viewControl.value = "rosary";
+          dispatch(viewControl, "change");
+          setChargingWallpaper(backgroundOpacity);
+          dispatch(backgroundControl, "change");
+          dispatch(backgroundOpacityControl, "input");
+          setChargingWallpaper(backgroundOpacity);
+        }
+
+        function renderStep(index) {
+          const step = steps[index];
+
+          if (bootSequenceTimer) {
+            clearTimeout(bootSequenceTimer);
+            bootSequenceTimer = null;
+          }
+
+          currentStep = index;
+          stage.dataset.step = String(index);
+          title.textContent = step.title;
+          body.textContent = step.body;
+          kicker.textContent = window.SmartRosaryHowtoI18n.format(common.stepCounter, {
+            current: index + 1,
+            total: steps.length,
+          });
+          prev.disabled = index === 0;
+          next.disabled = index === steps.length - 1;
+          progress.forEach((item, progressIndex) => {
+            if (progressIndex === index) {
+              item.setAttribute("aria-current", "step");
+            } else {
+              item.removeAttribute("aria-current");
+            }
+          });
+
+          prepareMockup(step.booting ? 100 : 50);
+          device.classList.toggle("device--off", Boolean(step.off));
+          device.classList.toggle("device--booting", Boolean(step.booting));
+          device.classList.toggle("device--charging", Boolean(step.charging));
+          stage.classList.toggle("cable--callout", !step.plugged);
+          if (step.plugged) {
+            stage.setAttribute("data-plugged", "true");
+          } else {
+            stage.removeAttribute("data-plugged");
+          }
+
+          if (step.booting) {
+            bootSequenceTimer = setTimeout(() => {
+              if (currentStep !== index) return;
+
+              device.classList.remove("device--booting");
+              setChargingWallpaper(50);
+              dispatch(backgroundOpacityControl, "input");
+              setChargingWallpaper(50);
+              bootSequenceTimer = null;
+            }, 2000);
+          }
+
+          let start = performance.now();
+          function animateLine(time) {
+            updateConnector();
+            if (time - start < 900) {
+              requestAnimationFrame(animateLine);
+            }
+          }
+          requestAnimationFrame(animateLine);
+          setTimeout(updateConnector, 920);
+        }
+
+        prev.addEventListener("click", () => {
+          renderStep(Math.max(0, currentStep - 1));
+        });
+
+        next.addEventListener("click", () => {
+          renderStep(Math.min(steps.length - 1, currentStep + 1));
+        });
+
+        knobHit.addEventListener("click", () => {
+          renderStep(Math.min(steps.length - 1, currentStep + 1));
+        });
+
+        
+        const howtoSelector = document.getElementById("howto-selector");
+        if (howtoSelector) {
+          howtoSelector.value = "011_charging.html";
+          howtoSelector.addEventListener("change", () => {
+            const url = new URL(howtoSelector.value, window.location.href);
+            url.searchParams.set("lang", language);
+            window.location.href = url.href;
+          });
+        }
+        languageSelect.addEventListener("change", () => {
+          selectLanguage(languageSelect.value);
+        });
+
+        window.addEventListener("resize", updateConnector);
+
+        
+        function buildBeads() {
+          const beads = document.getElementById("beads");
+          if (!beads) return;
+          const totalBeads = 59;
+          const loopStart = 4;
+          const beadsPerDecade = 10;
+          const screenBase = 240;
+          const radius = 110;
+          const cx = 120;
+          const cy = 120;
+          const angleStep = 360 / (totalBeads - loopStart);
+          const tailPositions = [[cx, 182], [cx, 194], [cx, 206], [cx, 218]];
+          const toPercent = (value) => `${(value / screenBase) * 100}%`;
+
+          beads.replaceChildren();
+
+          for (let index = 0; index < totalBeads; index += 1) {
+            const bead = document.createElement("span");
+            const isTail = index < loopStart;
+            const isRed = index === 0 || (!isTail && (index - loopStart) % (beadsPerDecade + 1) === 0);
+            const size = isRed ? 10 : 8;
+            let x;
+            let y;
+
+            bead.className = `bead bead--${isRed ? "red" : "blue"}`;
+            if (isTail) {
+              [x, y] = tailPositions[index];
+            } else {
+              const angle = (90 + (index - loopStart) * angleStep) * (Math.PI / 180);
+              x = cx + Math.trunc(radius * Math.cos(angle));
+              y = cy + Math.trunc(radius * Math.sin(angle));
+            }
+            bead.style.left = toPercent(x - size / 2);
+            bead.style.top = toPercent(y - size / 2);
+            bead.style.width = toPercent(size);
+            bead.style.height = toPercent(size);
+
+            beads.appendChild(bead);
+          }
+        }
+
+        function updateClock() {
+          const now = new Date();
+          const time = now.toLocaleTimeString(language || navigator.language, { hour12: false });
+          const timeDisplay = document.getElementById("time-display");
+          if (timeDisplay) timeDisplay.textContent = time;
+        }
+
+        buildBeads();
+        updateClock();
+        window.setInterval(updateClock, 1000);
+
+        function updateConnector() {
+          const card = document.querySelector(".howto-card");
+          const connectorTarget = currentStep === 1 ? document.querySelector(".battery") : document.querySelector(".usbc-head");
+          const connectorPath = document.querySelector(".howto-connector path");
+          if (!card || !connectorPath || !connectorTarget) return;
+
+          const stageRect = stage.getBoundingClientRect();
+          const cardRect = card.getBoundingClientRect();
+          const targetRect = connectorTarget.getBoundingClientRect();
+          const isMobile = window.innerWidth <= 920;
+
+          const endX = currentStep === 1
+            ? targetRect.left + targetRect.width / 2 - stageRect.left
+            : targetRect.left + targetRect.width / 2 - stageRect.left;
+          const endY = currentStep === 1
+            ? targetRect.top + targetRect.height / 2 - stageRect.top
+            : targetRect.top - stageRect.top;
+          const cardAnchorX = cardRect.left - stageRect.left;
+
+          if (isMobile) {
+            const cardAnchorY = cardRect.bottom - stageRect.top;
+            connectorPath.setAttribute("d", `M ${endX} ${cardAnchorY} L ${endX} ${endY}`);
+          } else {
+            const cardAnchorY = cardRect.top + 24 - stageRect.top;
+            connectorPath.setAttribute("d", `M ${endX} ${endY} L ${endX} ${cardAnchorY} L ${cardAnchorX} ${cardAnchorY}`);
+          }
+        }
+
+        window.addEventListener("load", () => {
+          applyCopy();
+          renderStep(0);
+          updateConnector();
+        });
+        window.addEventListener("resize", updateConnector);
+      })();
+    </script>
+  </body>
+</html>

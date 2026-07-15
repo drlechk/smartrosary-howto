@@ -1,0 +1,227 @@
+(() => {
+  window.SmartRosaryHowtoI18n.registerLanguage("en", {
+    common: {
+      navigationLabel: "Tutorial navigation",
+      progressLabel: "Tutorial progress",
+      language: "Language",
+      previous: "Back",
+      next: "Next",
+      stepCounter: "Step {current} of {total}",
+    },
+    tutorials: {
+      onoff: {
+        documentTitle: "Smart Rosary Howto: Power on and off",
+        panelTitle: "Power on and off",
+        panelBody: "Move through each step with Next or Back. The card points to the button the user should press in this flow.",
+        steps: [
+          {
+            title: "Press once briefly",
+            body: "Press the device button once briefly. SmartRosary powers on.",
+            off: true,
+            pressed: true,
+          },
+          {
+            title: "Wallpaper is displayed",
+            body: "The selected wallpaper is displayed for 2 seconds.",
+            booting: true,
+          },
+          {
+            title: "Rosary screen is active",
+            body: "The Rosary screen is active and ready to use.",
+            on: true,
+          },
+          {
+            title: "Press for 5 seconds to power off",
+            body: "Hold the device button for 5 seconds to power off SmartRosary.",
+            on: true,
+            pressed: true,
+          },
+          {
+            title: "SmartRosary is powered off",
+            body: "The screen is off. SmartRosary is completely powered off.",
+            off: true,
+          },
+        ],
+      },
+      charging: {
+        documentTitle: "Smart Rosary Howto: Charging",
+        panelTitle: "Charging",
+        panelBody: "Charge the device using a USB-C cable. It turns on automatically when plugged in.",
+        steps: [
+          {
+            title: "Put in charging cable",
+            body: "Plug the USB-C cable into the left side of the device.",
+            off: true,
+            plugged: false,
+          },
+          {
+            title: "Battery indicator shows charging",
+            body: "The device starts automatically. After startup, the battery indicator animates to show that SmartRosary is charging.",
+            booting: true,
+            plugged: true,
+          },
+          {
+            title: "Charging is indicated on battery icon",
+            body: "The battery icon shows a charging animation while plugged in.",
+            on: true,
+            plugged: true,
+            charging: true,
+          },
+          {
+            title: "Unplug shuts down rosary automatically",
+            body: "When you unplug the cable, the device turns off.",
+            off: true,
+            plugged: false,
+          },
+        ],
+      },
+      nav: {
+        documentTitle: "Smart Rosary Howto: Navigation",
+        panelTitle: "Navigation",
+        panelBody: "Touch the device and swipe toward a position shown in the cross-shaped navigation map.",
+        miniNavLabel: "Cross-shaped navigation map",
+        optionalNote: "(optional if installed and enabled)",
+        touchHint: "Touch the device and swipe in the desired direction.",
+        intentionPlaceholder: "The intention would appear in this place if configured.",
+        intentionSubtitle: "June 2026",
+        intentionItems: ["May 2026", "June 2026", "Personal"],
+        points: {
+          wallpaper: {
+            short: "Wallpaper",
+            title: "Change wallpaper",
+            body: "Swipe up from the Rosary screen. SmartRosary stays on the prayer screen and fades in the next saved background image.",
+          },
+          mystery: {
+            short: "Mystery",
+            title: "Select a single Mystery",
+            body: "The far-left screen selects the mystery number. Use it when you want to start the rosary at a specific decade instead of the beginning.",
+          },
+          mysteries: {
+            short: "Mysteries",
+            title: "Select a Mystery group",
+            body: "Choose the mystery group here, such as Joyful, Luminous, Sorrowful, or Glorious. From this point, swiping down opens the statistics branch.",
+          },
+          rosary: {
+            short: "Rosary",
+            title: "Rosary screen",
+            body: "This is the central prayer screen. From here you can reach Mysteries on the left, Intentions on the right, Settings below, and the wallpaper action above.",
+          },
+          intentions: {
+            short: "Intention",
+            title: "View current Intention",
+            body: "If intentions are configured, they appear here. This lets you see the currently selected prayer intention directly on the device.",
+          },
+          statsHistory: {
+            short: "History",
+            title: "History",
+            body: "This tile displays your prayer history for the selected time period. It shows a chart of completed prayers by mystery group.",
+          },
+          intentionsList: {
+            short: "Intentions",
+            title: "Choose an Intention",
+            body: "Use this list to switch between available prayer intentions. The selected item is then shown on the Intention screen.",
+          },
+          statsDurations: {
+            short: "Times",
+            title: "Statistics: durations",
+            body: "This statistics tile shows typical average times, including bead, decade, rosary, and chaplet durations.",
+          },
+          statsTotals: {
+            short: "Totals",
+            title: "Statistics: total time",
+            body: "This tile shows accumulated prayer time. It helps you see how much time has been spent in prayer overall.",
+          },
+          statsSets: {
+            short: "Groups",
+            title: "Statistics: Mystery groups",
+            body: "The chart shows how often each mystery group has been prayed, making the distribution of your prayer practice easy to scan.",
+          },
+          statsParts: {
+            short: "Parts",
+            title: "Statistics: parts I-V",
+            body: "The bars show how the prayed parts I to V are distributed within the mystery groups.",
+          },
+          settings1: {
+            short: "Settings 1",
+            title: "Settings 1/7: start behavior",
+            body: "Choose whether the rosary starts with the selected mystery or resumes from the last saved state.",
+          },
+          settings2: {
+            short: "Settings 2",
+            title: "Settings 2/7: haptics",
+            body: "Enable or disable haptic feedback. It confirms interactions with a short vibration.",
+          },
+          settings3: {
+            short: "Settings 3",
+            title: "Settings 3/7: screen brightness",
+            body: "Adjust the display brightness. Lower it for longer runtime or raise it for brighter surroundings.",
+          },
+          settings4: {
+            short: "Settings 4",
+            title: "Settings 4/7: wallpaper brightness",
+            body: "Set how strongly the wallpaper is visible behind the Rosary screen.",
+          },
+          settings5: {
+            short: "Settings 5",
+            title: "Settings 5/7: orientation",
+            body: "Rotate the display orientation so the screen matches how the device is worn or held.",
+          },
+          settings6: {
+            short: "Settings 6",
+            title: "Settings 6/7: auto shutdown",
+            body: "Choose how long SmartRosary waits without activity before it powers itself off.",
+          },
+          settings7: {
+            short: "Device Info",
+            title: "Settings 7/7: Device Info",
+            body: "The last settings page shows the device ID, firmware and language versions, and the QR code for the SmartRosary website.",
+          },
+        },
+        wallpaper: {
+          short: "Wallpaper",
+          title: "Change wallpaper",
+          body: "Swipe up on the Rosary screen to show the next wallpaper.",
+        },
+        settings: {
+          short: "Settings",
+          title: "Open Settings",
+          body: "Swipe down on the Rosary screen to open Settings.",
+          screenBody: "Select a setting",
+        },
+        deviceInfo: {
+          short: "Device Info",
+          title: "Device Info",
+          body: "Shows the device ID, firmware and language versions, and a QR code linking to the SmartRosary website.",
+          qrLabel: "QR code linking to the SmartRosary website: https://drlechk.github.io/smartrosary/",
+        },
+        steps: [
+          {
+            short: "Mystery",
+            title: "Select Mystery",
+            body: "Choose the mystery number used for the rosary.",
+          },
+          {
+            short: "Mysteries",
+            title: "Select Mysteries",
+            body: "Choose the group of mysteries.",
+          },
+          {
+            short: "Rosary",
+            title: "Rosary – starting position",
+            body: "The central prayer screen and starting point for navigation.",
+          },
+          {
+            short: "Intention",
+            title: "View Intention",
+            body: "Shows the currently selected prayer intention.",
+          },
+          {
+            short: "Intentions",
+            title: "Select Intentions",
+            body: "Choose an available prayer intention.",
+          },
+        ],
+      },
+    },
+  });
+})();

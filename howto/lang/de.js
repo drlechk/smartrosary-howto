@@ -1,0 +1,227 @@
+(() => {
+  window.SmartRosaryHowtoI18n.registerLanguage("de", {
+    common: {
+      navigationLabel: "Tutorial-Navigation",
+      progressLabel: "Tutorial-Fortschritt",
+      language: "Sprache",
+      previous: "Zurück",
+      next: "Weiter",
+      stepCounter: "Schritt {current} von {total}",
+    },
+    tutorials: {
+      onoff: {
+        documentTitle: "Smart Rosary Howto: Ein- und Ausschalten",
+        panelTitle: "Ein- und Ausschalten",
+        panelBody: "Wähle jeden Schritt mit Weiter oder Zurück an. Die Karte zeigt auf den Knopf, den der Benutzer in diesem Ablauf betätigt.",
+        steps: [
+          {
+            title: "Einmal kurz drücken",
+            body: "Drücke den Geräteknopf einmal kurz. SmartRosary wird eingeschaltet.",
+            off: true,
+            pressed: true,
+          },
+          {
+            title: "Hintergrundbild wird angezeigt",
+            body: "Für 2 Sekunden wird das gewählte Hintergrundbild angezeigt.",
+            booting: true,
+          },
+          {
+            title: "Rosenkranz-Bildschirm ist aktiv",
+            body: "Der Rosenkranz-Bildschirm ist aktiv und kann benutzt werden.",
+            on: true,
+          },
+          {
+            title: "5 Sekunden zum Ausschalten drücken",
+            body: "Halte den Geräteknopf 5 Sekunden gedrückt, um SmartRosary auszuschalten.",
+            on: true,
+            pressed: true,
+          },
+          {
+            title: "SmartRosary ist ausgeschaltet",
+            body: "Der Bildschirm ist aus. SmartRosary ist vollständig ausgeschaltet.",
+            off: true,
+          },
+        ],
+      },
+      charging: {
+        documentTitle: "Smart Rosary Howto: Laden",
+        panelTitle: "Laden",
+        panelBody: "Laden Sie das Gerät mit einem USB-C-Kabel auf. Es schaltet sich automatisch ein, wenn es angeschlossen wird.",
+        steps: [
+          {
+            title: "Ladekabel einstecken",
+            body: "Stecken Sie das USB-C-Kabel in die linke Seite des Geräts.",
+            off: true,
+            plugged: false,
+          },
+          {
+            title: "Akkuanzeige zeigt den Ladevorgang",
+            body: "Das Gerät startet automatisch. Nach dem Start zeigt die Akkuanzeige durch eine Animation, dass SmartRosary geladen wird.",
+            booting: true,
+            plugged: true,
+          },
+          {
+            title: "Ladevorgang wird auf dem Batteriesymbol angezeigt",
+            body: "Das Batteriesymbol zeigt eine Ladeanimation, während es angeschlossen ist.",
+            on: true,
+            plugged: true,
+            charging: true,
+          },
+          {
+            title: "Abstecken schaltet den Rosenkranz automatisch aus",
+            body: "Wenn Sie das Kabel abziehen, schaltet sich das Gerät aus.",
+            off: true,
+            plugged: false,
+          },
+        ],
+      },
+      nav: {
+        documentTitle: "Smart Rosary Howto: Navigation",
+        panelTitle: "Navigation",
+        panelBody: "Berühre das Gerät und wische in Richtung einer Position auf der kreuzförmigen Navigationskarte.",
+        miniNavLabel: "Kreuzförmige Navigationskarte",
+        optionalNote: "(optional, wenn installiert und aktiviert)",
+        touchHint: "Gerät berühren und in die gewünschte Richtung wischen.",
+        intentionPlaceholder: "Das Gebetsanliegen würde an dieser Stelle erscheinen, falls konfiguriert.",
+        intentionSubtitle: "Juni 2026",
+        intentionItems: ["Mai 2026", "Juni 2026", "Persönlich"],
+        points: {
+          wallpaper: {
+            short: "Hintergrund",
+            title: "Hintergrundbild wechseln",
+            body: "Wische auf dem Rosenkranz-Bildschirm nach oben. SmartRosary bleibt im Gebetsbildschirm und blendet das nächste gespeicherte Hintergrundbild ein.",
+          },
+          mystery: {
+            short: "Geheimnis",
+            title: "Einzelnes Geheimnis wählen",
+            body: "Ganz links wählst du die Nummer des Geheimnisses. Das ist praktisch, wenn du den Rosenkranz nicht bei der ersten Dekade beginnen möchtest.",
+          },
+          mysteries: {
+            short: "Geheimnisse",
+            title: "Geheimnisgruppe wählen",
+            body: "Hier wählst du die Gruppe der Geheimnisse, zum Beispiel freudenreich, lichtreich, schmerzhaft oder glorreich. Von diesem Punkt führt der Weg nach unten zu den Statistiken.",
+          },
+          rosary: {
+            short: "Rosenkranz",
+            title: "Rosenkranz-Bildschirm",
+            body: "Dies ist der zentrale Gebetsbildschirm. Von hier erreichst du links die Geheimnisauswahl, rechts die Gebetsanliegen, nach unten die Einstellungen und nach oben das Hintergrundbild.",
+          },
+          intentions: {
+            short: "Anliegen",
+            title: "Aktuelles Gebetsanliegen ansehen",
+            body: "Wenn Gebetsanliegen konfiguriert sind, erscheinen sie hier. So siehst du das aktuell ausgewählte Gebetsanliegen direkt auf dem Gerät.",
+          },
+          statsHistory: {
+            short: "Verlauf",
+            title: "Verlauf",
+            body: "Diese Kachel zeigt Ihren Gebetsverlauf für den ausgewählten Zeitraum. Sie enthält ein Diagramm der abgeschlossenen Gebete nach Geheimnisgruppen.",
+          },
+          intentionsList: {
+            short: "Anliegen",
+            title: "Gebetsanliegen auswählen",
+            body: "In dieser Liste wechselst du zwischen verfügbaren Gebetsanliegen. Das ausgewählte Gebetsanliegen wird anschließend auf dem Anliegen-Bildschirm angezeigt.",
+          },
+          statsDurations: {
+            short: "Zeiten",
+            title: "Statistiken: Zeiten",
+            body: "Diese Statistik zeigt typische Durchschnittszeiten, etwa pro Perle, Dekade, Rosenkranz und Koronka.",
+          },
+          statsTotals: {
+            short: "Summen",
+            title: "Statistiken: Gesamtzeiten",
+            body: "Hier siehst du aufsummierte Gebetszeiten. Die Werte helfen einzuschätzen, wie viel Zeit insgesamt im Gebet verbracht wurde.",
+          },
+          statsSets: {
+            short: "Gruppen",
+            title: "Statistiken: Geheimnisgruppen",
+            body: "Das Diagramm zeigt, welche Geheimnisgruppen wie oft gebetet wurden. So erkennst du schnell die Verteilung deiner Gebetspraxis.",
+          },
+          statsParts: {
+            short: "Teile",
+            title: "Statistiken: Teile I-V",
+            body: "Die Balken zeigen, wie sich die gebeteten Teile I bis V innerhalb der Geheimnisgruppen verteilen.",
+          },
+          settings1: {
+            short: "Einst. 1",
+            title: "Einstellungen 1/7: Startverhalten",
+            body: "Hier legst du fest, ob der Rosenkranz mit dem gewählten Geheimnis oder mit dem zuletzt gespeicherten Zustand startet.",
+          },
+          settings2: {
+            short: "Einst. 2",
+            title: "Einstellungen 2/7: Haptik",
+            body: "Hier aktivierst oder deaktivierst du die haptische Rückmeldung. Sie bestätigt Eingaben mit einer kurzen Vibration.",
+          },
+          settings3: {
+            short: "Einst. 3",
+            title: "Einstellungen 3/7: Bildschirmhelligkeit",
+            body: "Dieser Punkt steuert die Helligkeit des Displays. Reduziere sie für längere Laufzeit oder erhöhe sie für hellere Umgebung.",
+          },
+          settings4: {
+            short: "Einst. 4",
+            title: "Einstellungen 4/7: Hintergrundbild-Helligkeit",
+            body: "Hier stellst du ein, wie stark das Hintergrundbild hinter dem Rosenkranz-Bildschirm sichtbar ist.",
+          },
+          settings5: {
+            short: "Einst. 5",
+            title: "Einstellungen 5/7: Ausrichtung",
+            body: "Mit dieser Einstellung drehst du die Displayausrichtung, damit die Anzeige zur getragenen Position passt.",
+          },
+          settings6: {
+            short: "Einst. 6",
+            title: "Einstellungen 6/7: Automatisches Ausschalten",
+            body: "Hier bestimmst du, nach welcher Zeit ohne Aktivität sich SmartRosary automatisch ausschaltet.",
+          },
+          settings7: {
+            short: "Geräteinfo",
+            title: "Einstellungen 7/7: Geräteinfo",
+            body: "Die letzte Einstellungsseite zeigt Gerätekennung, Firmware- und Sprachversion sowie den QR-Code zur SmartRosary-Webseite.",
+          },
+        },
+        wallpaper: {
+          short: "Hintergrund",
+          title: "Hintergrundbild wechseln",
+          body: "Auf dem Rosenkranz-Bildschirm nach oben wischen, um das nächste Hintergrundbild anzuzeigen.",
+        },
+        settings: {
+          short: "Einstellungen",
+          title: "Einstellungen öffnen",
+          body: "Auf dem Rosenkranz-Bildschirm nach unten wischen, um die Einstellungen zu öffnen.",
+          screenBody: "Einstellungen auswählen",
+        },
+        deviceInfo: {
+          short: "Geräteinfo",
+          title: "Geräteinfo",
+          body: "Zeigt Gerätekennung, Firmware- und Sprachversion sowie einen QR-Code zur SmartRosary-Webseite.",
+          qrLabel: "QR-Code zur SmartRosary-Webseite: https://drlechk.github.io/smartrosary/",
+        },
+        steps: [
+          {
+            short: "Geheimnis",
+            title: "Geheimnis auswählen",
+            body: "Hier wird die Nummer des Geheimnisses für den Rosenkranz ausgewählt.",
+          },
+          {
+            short: "Geheimnisse",
+            title: "Geheimnisse auswählen",
+            body: "Hier wird die Gruppe der Geheimnisse ausgewählt.",
+          },
+          {
+            short: "Rosenkranz",
+            title: "Rosenkranz - Startposition",
+            body: "Der zentrale Gebetsbildschirm und Ausgangspunkt der Navigation.",
+          },
+          {
+            short: "Anliegen",
+            title: "Gebetsanliegen anzeigen",
+            body: "Zeigt die aktuell ausgewählte Gebetsintention an.",
+          },
+          {
+            short: "Anliegen",
+            title: "Gebetsanliegen auswählen",
+            body: "Hier wird eine verfügbare Gebetsintention ausgewählt.",
+          },
+        ],
+      },
+    },
+  });
+})();

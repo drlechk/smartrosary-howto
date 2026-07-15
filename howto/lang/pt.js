@@ -1,0 +1,227 @@
+(() => {
+  window.SmartRosaryHowtoI18n.registerLanguage("pt", {
+    common: {
+      navigationLabel: "Navegação do tutorial",
+      progressLabel: "Progresso do tutorial",
+      language: "Idioma",
+      previous: "Anterior",
+      next: "Seguinte",
+      stepCounter: "Passo {current} de {total}",
+    },
+    tutorials: {
+      onoff: {
+        documentTitle: "Smart Rosary: Ligar e desligar",
+        panelTitle: "Ligar e desligar",
+        panelBody: "Percorra os passos com Seguinte ou Anterior. O cartão indica o botão utilizado em cada passo.",
+        steps: [
+          {
+            title: "Premir brevemente uma vez",
+            body: "Prima brevemente uma vez o botão do dispositivo. O SmartRosary liga-se.",
+            off: true,
+            pressed: true,
+          },
+          {
+            title: "O papel de parede é apresentado",
+            body: "O papel de parede selecionado é apresentado durante 2 segundos.",
+            booting: true,
+          },
+          {
+            title: "O ecrã do rosário está ativo",
+            body: "O ecrã do rosário está ativo e pronto a utilizar.",
+            on: true,
+          },
+          {
+            title: "Manter premido durante 5 segundos para desligar",
+            body: "Mantenha o botão do dispositivo premido durante 5 segundos para desligar o SmartRosary.",
+            on: true,
+            pressed: true,
+          },
+          {
+            title: "O SmartRosary está desligado",
+            body: "O ecrã está desligado. O SmartRosary está completamente desligado.",
+            off: true,
+          },
+        ],
+      },
+      charging: {
+        documentTitle: "Smart Rosary Howto: Carregamento",
+        panelTitle: "Carregamento",
+        panelBody: "Carregue o dispositivo usando um cabo USB-C. Liga automaticamente quando conectado.",
+        steps: [
+          {
+            title: "Ligar o cabo de carregamento",
+            body: "Ligue o cabo USB-C no lado esquerdo do dispositivo.",
+            off: true,
+            plugged: false,
+          },
+          {
+            title: "O indicador da bateria mostra o carregamento",
+            body: "O dispositivo inicia automaticamente. Após o arranque, o indicador da bateria anima-se para mostrar que o SmartRosary está a carregar.",
+            booting: true,
+            plugged: true,
+          },
+          {
+            title: "O carregamento é indicado no ícone da bateria",
+            body: "O ícone da bateria mostra uma animação de carregamento enquanto está ligado.",
+            on: true,
+            plugged: true,
+            charging: true,
+          },
+          {
+            title: "Desligar o cabo desliga o rosário automaticamente",
+            body: "Quando desliga o cabo, o dispositivo desliga-se.",
+            off: true,
+            plugged: false,
+          },
+        ],
+      },
+      nav: {
+        documentTitle: "Smart Rosary: Navegação",
+        panelTitle: "Navegação",
+        panelBody: "Toque no dispositivo e deslize na direção de uma posição apresentada no mapa de navegação em forma de cruz.",
+        miniNavLabel: "Mapa de navegação em forma de cruz",
+        optionalNote: "(opcional se estiver instalado e ativado)",
+        touchHint: "Toque no dispositivo e deslize na direção pretendida.",
+        intentionPlaceholder: "A intenção apareceria neste local se estivesse configurada.",
+        intentionSubtitle: "Junho 2026",
+        intentionItems: ["Maio 2026", "Junho 2026", "Pessoal"],
+        points: {
+          wallpaper: {
+            short: "Fundo",
+            title: "Alterar o papel de parede",
+            body: "Deslize para cima a partir do ecrã do rosário. O SmartRosary permanece no ecrã de oração e mostra a imagem de fundo seguinte.",
+          },
+          mystery: {
+            short: "Mistério",
+            title: "Selecionar um Mistério",
+            body: "O ecrã mais à esquerda escolhe o número do mistério. Use-o quando quiser iniciar o rosário numa dezena específica.",
+          },
+          mysteries: {
+            short: "Mistérios",
+            title: "Selecionar um grupo de Mistérios",
+            body: "Escolha aqui o grupo de mistérios, como gozosos, luminosos, dolorosos ou gloriosos. A partir deste ponto, deslizar para baixo abre as estatísticas.",
+          },
+          rosary: {
+            short: "Rosário",
+            title: "Ecrã do rosário",
+            body: "Este é o ecrã central de oração. A partir daqui chega aos Mistérios à esquerda, às Intenções à direita, às Definições em baixo e ao fundo em cima.",
+          },
+          intentions: {
+            short: "Intenção",
+            title: "Ver a Intenção atual",
+            body: "Se houver intenções configuradas, elas aparecem aqui. Assim vê a intenção de oração selecionada diretamente no dispositivo.",
+          },
+          statsHistory: {
+            short: "Histórico",
+            title: "Histórico",
+            body: "Este quadro exibe o histórico de orações para o período selecionado. Mostra um gráfico das orações concluídas por grupo de mistérios.",
+          },
+          intentionsList: {
+            short: "Intenções",
+            title: "Escolher uma Intenção",
+            body: "Esta lista permite alternar entre intenções de oração disponíveis. A seleção aparece depois no ecrã Intenção.",
+          },
+          statsDurations: {
+            short: "Tempos",
+            title: "Estatísticas: tempos",
+            body: "Este painel mostra tempos médios típicos, incluindo conta, dezena, rosário e terço da misericórdia.",
+          },
+          statsTotals: {
+            short: "Totais",
+            title: "Estatísticas: tempo total",
+            body: "Aqui vê o tempo de oração acumulado. Isto ajuda a perceber quanto tempo foi dedicado à oração no total.",
+          },
+          statsSets: {
+            short: "Grupos",
+            title: "Estatísticas: grupos de Mistérios",
+            body: "O gráfico mostra quantas vezes cada grupo de mistérios foi rezado, facilitando a leitura da distribuição.",
+          },
+          statsParts: {
+            short: "Partes",
+            title: "Estatísticas: partes I-V",
+            body: "As barras mostram como as partes I a V se distribuem dentro dos grupos de mistérios.",
+          },
+          settings1: {
+            short: "Def. 1",
+            title: "Definições 1/7: início",
+            body: "Escolha se o rosário começa com o mistério selecionado ou retoma o último estado guardado.",
+          },
+          settings2: {
+            short: "Def. 2",
+            title: "Definições 2/7: háptica",
+            body: "Ative ou desative o retorno háptico. Uma vibração breve confirma as interações.",
+          },
+          settings3: {
+            short: "Def. 3",
+            title: "Definições 3/7: brilho do ecrã",
+            body: "Ajuste o brilho do ecrã. Reduza-o para maior autonomia ou aumente-o em ambientes luminosos.",
+          },
+          settings4: {
+            short: "Def. 4",
+            title: "Definições 4/7: brilho do fundo",
+            body: "Defina a intensidade com que o fundo aparece atrás do ecrã do rosário.",
+          },
+          settings5: {
+            short: "Def. 5",
+            title: "Definições 5/7: orientação",
+            body: "Rode a orientação do ecrã para corresponder à forma como o dispositivo é usado ou segurado.",
+          },
+          settings6: {
+            short: "Def. 6",
+            title: "Definições 6/7: desligar automático",
+            body: "Escolha quanto tempo o SmartRosary espera sem atividade antes de se desligar automaticamente.",
+          },
+          settings7: {
+            short: "Info do dispositivo",
+            title: "Definições 7/7: informações do dispositivo",
+            body: "A última página mostra o ID do dispositivo, as versões do firmware e idioma e o código QR do SmartRosary.",
+          },
+        },
+        wallpaper: {
+          short: "Fundo",
+          title: "Alterar o papel de parede",
+          body: "Deslize para cima no ecrã do rosário para mostrar o papel de parede seguinte.",
+        },
+        settings: {
+          short: "Definições",
+          title: "Abrir Definições",
+          body: "Deslize para baixo no ecrã do rosário para abrir as Definições.",
+          screenBody: "Selecione uma definição",
+        },
+        deviceInfo: {
+          short: "Info do dispositivo",
+          title: "Informações do dispositivo",
+          body: "Mostra o identificador do dispositivo, as versões do firmware e do idioma e um código QR para o site SmartRosary.",
+          qrLabel: "Código QR para o site SmartRosary: https://drlechk.github.io/smartrosary/",
+        },
+        steps: [
+          {
+            short: "Mistério",
+            title: "Selecionar Mistério",
+            body: "Escolha o número do mistério utilizado no rosário.",
+          },
+          {
+            short: "Mistérios",
+            title: "Selecionar Mistérios",
+            body: "Escolha o grupo de mistérios.",
+          },
+          {
+            short: "Rosário",
+            title: "Rosário – posição inicial",
+            body: "O ecrã principal de oração e o ponto inicial da navegação.",
+          },
+          {
+            short: "Intenção",
+            title: "Ver Intenção",
+            body: "Mostra a intenção de oração atualmente selecionada.",
+          },
+          {
+            short: "Intenções",
+            title: "Selecionar Intenções",
+            body: "Escolha uma intenção de oração disponível.",
+          },
+        ],
+      },
+    },
+  });
+})();
