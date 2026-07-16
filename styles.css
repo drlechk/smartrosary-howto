@@ -1731,6 +1731,28 @@ box-shadow:
   filter: blur(10px);
 }
 
+.deploy-footer {
+  position: fixed;
+  left: 50%;
+  bottom: max(5px, env(safe-area-inset-bottom));
+  z-index: 45;
+  max-width: calc(100vw - 28px);
+  transform: translateX(-50%);
+  padding: 3px 9px;
+  overflow: hidden;
+  border: 1px solid rgba(23, 34, 32, 0.12);
+  border-radius: 999px;
+  background: rgba(245, 246, 244, 0.78);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  color: rgba(23, 34, 32, 0.58);
+  font-size: 10px;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 
 @media (max-width: 700px) {
   :root {
@@ -1739,5 +1761,12 @@ box-shadow:
 
   .stage {
     padding: 10px;
+  }
+
+  .deploy-footer {
+    bottom: max(4px, env(safe-area-inset-bottom));
+    max-width: calc(100vw - 20px);
+    padding-inline: 7px;
+    font-size: 9px;
   }
 }
