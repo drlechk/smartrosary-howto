@@ -317,12 +317,14 @@
 
       @media (max-width: 620px) {
         .howto-stage {
-          --device-size: min(74vw, clamp(190px, 36svh, 310px));
-          padding: clamp(76px, 10svh, 96px) clamp(14px, 4vw, 22px) 18px;
+          --device-size: min(66vw, clamp(148px, 28svh, 260px));
+          padding: clamp(58px, 8svh, 76px) clamp(14px, 4vw, 22px) 10px;
+          gap: clamp(8px, 1.8svh, 16px);
         }
 
         .howto-header {
-          min-height: 56px;
+          min-height: 48px;
+          padding-block: 6px;
           padding-inline: 14px;
         }
 
@@ -337,32 +339,85 @@
 
         .howto-card {
           width: 100%;
-          height: 152px;
+          height: clamp(108px, 20svh, 132px);
+          padding: 10px 12px;
+          overflow: hidden;
+        }
+
+        .howto-step-kicker {
+          margin-bottom: 5px;
+          font-size: 11px;
         }
 
         .howto-card h1 {
-          font-size: 19px;
+          margin-bottom: 6px;
+          font-size: clamp(16px, 4.8vw, 19px);
+        }
+
+        .howto-card p {
+          font-size: 12px;
+          line-height: 1.32;
         }
 
         .howto-panel {
-          gap: 14px;
+          gap: 8px;
         }
 
         .howto-panel h2 {
-          font-size: clamp(25px, 9vw, 34px);
+          font-size: clamp(21px, 7.2vw, 29px);
         }
 
         .howto-panel p {
-          font-size: 14px;
+          font-size: 12px;
+          line-height: 1.32;
         }
 
         .howto-controls {
           width: 100%;
+          gap: 8px;
         }
 
         .howto-controls button {
+          height: 34px;
           flex: 1 1 130px;
           min-width: 0;
+          font-size: 13px;
+        }
+
+        .howto-progress {
+          gap: 6px;
+        }
+
+        .howto-progress span {
+          height: 4px;
+        }
+      }
+
+      @media (max-width: 380px), (max-height: 700px) and (orientation: portrait) {
+        .howto-stage {
+          --device-size: min(58vw, clamp(132px, 24svh, 220px));
+        }
+
+        .howto-card {
+          height: 106px;
+        }
+
+        .howto-card h1 {
+          font-size: 15px;
+        }
+
+        .howto-card p,
+        .howto-panel p {
+          font-size: 11px;
+          line-height: 1.26;
+        }
+
+        .howto-panel h2 {
+          font-size: clamp(19px, 6.5vw, 25px);
+        }
+
+        .howto-controls button {
+          height: 32px;
         }
       }
 

@@ -496,23 +496,30 @@
 
       @media (max-width: 620px) {
         .howto-stage {
-          --device-size: min(52vw, clamp(170px, 33svh, 280px));
+          --device-size: min(50vw, clamp(136px, 25svh, 230px));
           --case-padding: clamp(6px, calc(var(--device-size) * 0.033), 20px);
           --bezel-padding: clamp(11px, calc(var(--device-size) * 0.077), 48px);
-          --charge-head-width: clamp(54px, calc(var(--device-size) * 0.195), 86px);
-          --charge-head-height: clamp(47px, calc(var(--device-size) * 0.174), 76px);
-          --charge-wire-width: clamp(106px, calc(var(--device-size) * 0.5), 180px);
+          --charge-head-width: clamp(36px, calc(var(--device-size) * 0.195), 60px);
+          --charge-head-height: clamp(32px, calc(var(--device-size) * 0.174), 54px);
+          --charge-wire-width: clamp(76px, calc(var(--device-size) * 0.45), 130px);
           --howto-card-width: min(480px, 100%);
-          --howto-card-height: 184px;
-          padding: clamp(76px, 10svh, 96px) clamp(8px, 2.5vw, 16px) 18px;
+          --howto-card-height: clamp(116px, 22svh, 148px);
+          padding: clamp(58px, 8svh, 76px) clamp(8px, 2.5vw, 16px) 10px;
+          gap: clamp(8px, 1.8svh, 16px);
         }
 
         .howto-device-wrap {
-          transform: translateX(clamp(-30px, -7vw, -16px));
+          padding-top: calc(var(--device-size) * 0.14);
+          transform: none;
+        }
+
+        .usbc-wire::before {
+          width: clamp(18px, 10vw, 44px);
         }
 
         .howto-header {
-          min-height: 56px;
+          min-height: 48px;
+          padding-block: 6px;
           padding-inline: 14px;
         }
 
@@ -526,28 +533,83 @@
         }
 
         .howto-card h1 {
-          font-size: 19px;
+          margin-bottom: 6px;
+          font-size: clamp(16px, 4.8vw, 19px);
+        }
+
+        .howto-card {
+          padding: 10px 12px;
+        }
+
+        .howto-step-kicker {
+          margin-bottom: 5px;
+          font-size: 11px;
+        }
+
+        .howto-card p {
+          font-size: 12px;
+          line-height: 1.32;
         }
 
         .howto-panel {
-          gap: 14px;
+          gap: 8px;
         }
 
         .howto-panel h2 {
-          font-size: clamp(25px, 9vw, 34px);
+          font-size: clamp(21px, 7.2vw, 29px);
         }
 
         .howto-panel p {
-          font-size: 14px;
+          font-size: 12px;
+          line-height: 1.32;
         }
 
         .howto-controls {
           width: 100%;
+          gap: 8px;
         }
 
         .howto-controls button {
+          height: 34px;
           flex: 1 1 130px;
           min-width: 0;
+          font-size: 13px;
+        }
+
+        .howto-progress {
+          gap: 6px;
+        }
+
+        .howto-progress span {
+          height: 4px;
+        }
+      }
+
+      @media (max-width: 380px), (max-height: 700px) and (orientation: portrait) {
+        .howto-stage {
+          --device-size: min(45vw, clamp(124px, 22svh, 200px));
+          --charge-head-width: clamp(32px, calc(var(--device-size) * 0.18), 48px);
+          --charge-head-height: clamp(28px, calc(var(--device-size) * 0.16), 44px);
+          --charge-wire-width: clamp(62px, calc(var(--device-size) * 0.39), 100px);
+          --howto-card-height: 112px;
+        }
+
+        .howto-card h1 {
+          font-size: 15px;
+        }
+
+        .howto-card p,
+        .howto-panel p {
+          font-size: 11px;
+          line-height: 1.26;
+        }
+
+        .howto-panel h2 {
+          font-size: clamp(19px, 6.5vw, 25px);
+        }
+
+        .howto-controls button {
+          height: 32px;
         }
       }
 

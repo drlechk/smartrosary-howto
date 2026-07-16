@@ -507,7 +507,8 @@
 
       @media (max-width: 620px) {
         .howto-header {
-          min-height: 56px;
+          min-height: 48px;
+          padding-block: 6px;
           padding-inline: 14px;
         }
 
@@ -521,23 +522,109 @@
         }
 
         .nav-stage {
-          --device-size: min(74vw, clamp(220px, 40svh, 360px));
-          --nav-card-height: 432px;
-          padding-inline: 14px;
+          --device-size: min(58vw, clamp(150px, 28svh, 250px));
+          --nav-card-height: clamp(198px, 35svh, 260px);
+          padding: clamp(58px, 8svh, 76px) 14px 10px;
+          gap: clamp(8px, 1.8svh, 16px);
+        }
+
+        .nav-panel {
+          gap: 8px;
+        }
+
+        .nav-panel p {
+          font-size: 12px;
+          line-height: 1.32;
         }
 
         .nav-card h1 {
-          font-size: 19px;
+          margin-bottom: 5px;
+          font-size: clamp(16px, 4.8vw, 19px);
+        }
+
+        .nav-card {
+          padding: 10px 12px;
+        }
+
+        .nav-description {
+          padding-top: 4px;
+          padding-bottom: 8px;
+        }
+
+        .nav-description > p:first-child {
+          font-size: 12px;
+          line-height: 1.3;
+        }
+
+        .nav-optional {
+          margin-top: 4px;
+          font-size: 10px;
+          line-height: 1.2;
+        }
+
+        .nav-map {
+          grid-template-columns: repeat(5, 24px);
+          grid-template-rows: repeat(9, 18px);
+          margin-top: 4px;
+          transform: scale(0.92);
         }
 
         .nav-map__item {
           font-size: 10px;
         }
 
-        .nav-panel h2 {
-          font-size: clamp(26px, 9vw, 34px);
+        .nav-map__dot {
+          width: 14px;
+          height: 14px;
         }
 
+        .nav-map__item[data-action="true"] .nav-map__dot {
+          width: 22px;
+          height: 13px;
+        }
+
+        .nav-panel h2 {
+          font-size: clamp(21px, 7.2vw, 29px);
+        }
+
+      }
+
+      @media (max-width: 380px), (max-height: 700px) and (orientation: portrait) {
+        .nav-stage {
+          --device-size: min(50vw, clamp(132px, 24svh, 210px));
+          --nav-card-height: 204px;
+        }
+
+        .nav-card h1 {
+          font-size: 15px;
+        }
+
+        .nav-description > p:first-child,
+        .nav-panel p {
+          font-size: 11px;
+          line-height: 1.22;
+        }
+
+        .nav-panel h2 {
+          font-size: clamp(19px, 6.5vw, 25px);
+        }
+
+        .nav-map {
+          grid-template-columns: repeat(5, 21px);
+          grid-template-rows: repeat(9, 15px);
+          transform: scale(0.7);
+        }
+
+        .nav-map__dot {
+          width: 12px;
+          height: 12px;
+          border-width: 1.5px;
+        }
+
+        .nav-map__item[data-action="true"] .nav-map__dot {
+          width: 18px;
+          height: 11px;
+        }
       }
     </style>
   </head>
