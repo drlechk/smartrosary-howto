@@ -29,11 +29,35 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
+        gap: 12px;
         padding: 10px clamp(18px, 4vw, 64px);
         border-bottom: 1px solid rgba(23, 34, 32, 0.12);
         background: rgba(245, 246, 244, 0.9);
         -webkit-backdrop-filter: blur(14px);
         backdrop-filter: blur(14px);
+      }
+
+      .howto-home-link {
+        width: 40px;
+        height: 40px;
+        flex: 0 0 auto;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        box-shadow: 0 8px 20px rgba(9, 116, 204, 0.18);
+      }
+
+      .howto-home-link img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .howto-selector-control {
+        width: min(220px, calc(100vw - 190px));
+        min-width: 0;
+        flex: 0 1 auto;
       }
 
       .howto-stage {
@@ -58,6 +82,8 @@
         --howto-cross-scale: clamp(0.52, calc(var(--device-size) / 920), 0.68);
         --screen-size: calc(var(--device-size) - (var(--case-padding) * 2) - (var(--bezel-padding) * 2));
         min-height: 100svh;
+        width: 100%;
+        max-width: 100vw;
         padding: clamp(72px, 9svh, 118px) clamp(28px, 6vw, 128px) 32px;
         position: relative;
         display: grid;
@@ -98,6 +124,7 @@
         justify-self: start;
         width: var(--howto-card-width);
         max-width: 100%;
+        min-width: 0;
         min-height: 132px;
         padding: 15px 16px 16px;
         border: 1px solid rgba(23, 34, 32, 0.16);
@@ -149,7 +176,9 @@
         display: grid;
         justify-self: start;
         margin-top: 232px;
+        width: min(360px, 100%);
         max-width: 360px;
+        min-width: 0;
         gap: 18px;
         color: #172220;
         grid-area: side;
@@ -227,7 +256,7 @@
 
       .howto-progress {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(var(--howto-progress-count, 5), 1fr);
         gap: 8px;
         width: min(320px, 100%);
       }
@@ -444,7 +473,7 @@
           --howto-card-width: min(480px, 100%);
           --howto-card-height: 176px;
           padding-top: clamp(60px, 8svh, 90px);
-          grid-template-columns: 1fr;
+          grid-template-columns: minmax(0, 1fr);
           grid-template-rows: auto auto auto;
           grid-template-areas:
             "card"
@@ -519,12 +548,23 @@
 
         .howto-header {
           min-height: 48px;
+          gap: 10px;
           padding-block: 6px;
           padding-inline: 14px;
         }
 
+        .howto-home-link {
+          width: 34px;
+          height: 34px;
+        }
+
+        .howto-selector-control {
+          width: min(170px, calc(100vw - 167px));
+        }
+
         .howto-language {
-          width: 100%;
+          width: auto;
+          flex: 0 0 auto;
           justify-content: flex-end;
         }
 
@@ -578,6 +618,8 @@
 
         .howto-progress {
           gap: 6px;
+          justify-self: center;
+          width: min(calc(var(--howto-progress-count, 5) * 58px), 100%);
         }
 
         .howto-progress span {
@@ -585,7 +627,7 @@
         }
       }
 
-      @media (max-width: 380px), (max-height: 700px) and (orientation: portrait) {
+      @media (max-width: 340px), (max-height: 700px) and (orientation: portrait) {
         .howto-stage {
           --device-size: min(45vw, clamp(124px, 22svh, 200px));
           --charge-head-width: clamp(32px, calc(var(--device-size) * 0.18), 48px);
@@ -647,6 +689,9 @@
   </head>
   <body>
     <header class="howto-header">
+      <a class="howto-home-link" href="https://drlechk.github.io/smartrosary/" aria-label="SmartRosary website">
+        <img src="../smartrosary-logo.svg" alt="SmartRosary" />
+      </a>
       <select id="howto-selector" class="howto-selector-control" style="height: 40px; padding: 0 12px; border: 1px solid rgba(23, 34, 32, 0.2); border-radius: 8px; background: #fff; color: #172220; font: inherit; font-size: 14px; cursor: pointer; margin-right: auto; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);">
         <option value="010_onoff.html"></option>
         <option value="011_charging.html"></option>
@@ -654,13 +699,12 @@
       </select>
       <label class="howto-language" for="howto-language-control">
         <span id="howto-language-label" style="display: none;"></span>
-        <select id="howto-language-control" style="width: 85px;">
+        <select id="howto-language-control" style="width: 72px;">
           <option value="pl">PL</option>
           <option value="de">DE</option>
           <option value="en">EN</option>
           <option value="es">ES</option>
           <option value="fr">FR</option>
-          <option value="la" disabled>LA</option>
           <option value="pt">PT</option>
         </select>
       </label>
@@ -708,7 +752,6 @@
             <option value="de">Deutsch</option>
             <option value="es">Español</option>
             <option value="fr">Français</option>
-            <option value="la">Latin</option>
             <option value="pt">Português</option>
           </select>
         </label>
@@ -1167,6 +1210,7 @@
 
         function renderProgressDots() {
           progressWrap.innerHTML = "";
+          progressWrap.style.setProperty("--howto-progress-count", String(steps.length));
           steps.forEach(() => {
             progressWrap.appendChild(document.createElement("span"));
           });
