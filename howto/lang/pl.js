@@ -81,6 +81,8 @@
         panelBody: "Dotknij urządzenia i przesuń palcem w stronę pozycji pokazanej na krzyżowej mapie nawigacji.",
         miniNavLabel: "Krzyżowa mapa nawigacji",
         optionalNote: "(opcjonalne, jeśli zainstalowano i włączono)",
+        historyHint: "Przesuń w lewo, aby cofnąć się dalej w historię, a w prawo, aby wrócić do teraz. Okres można zmienić między dniem, tygodniem, miesiącem i rokiem.",
+        historySwipeHint: "W lewo starsza historia, w prawo powrót do teraz.",
         touchHint: "Dotknij urządzenia i przesuń palcem w wybranym kierunku.",
         intentionPlaceholder: "W tym miejscu pojawiłaby się intencja, jeśli została skonfigurowana.",
         intentionSubtitle: "Czerwiec 2026",

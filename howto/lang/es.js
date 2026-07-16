@@ -81,6 +81,8 @@
         panelBody: "Toca el dispositivo y desliza hacia una posición mostrada en el mapa de navegación con forma de cruz.",
         miniNavLabel: "Mapa de navegación con forma de cruz",
         optionalNote: "(opcional si está instalado y activado)",
+        historyHint: "Desliza a la izquierda para ir más al pasado y a la derecha para volver hacia ahora. Cambia el período entre día, semana, mes y año.",
+        historySwipeHint: "Izquierda para historial anterior, derecha hacia ahora.",
         touchHint: "Toca el dispositivo y desliza en la dirección deseada.",
         intentionPlaceholder: "La intención aparecería en este lugar si estuviera configurada.",
         intentionSubtitle: "Junio 2026",

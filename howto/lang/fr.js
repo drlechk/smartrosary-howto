@@ -81,6 +81,8 @@
         panelBody: "Touchez l’appareil et balayez vers une position indiquée sur la carte de navigation en forme de croix.",
         miniNavLabel: "Carte de navigation en forme de croix",
         optionalNote: "(facultatif si installé et activé)",
+        historyHint: "Balayez vers la gauche pour remonter plus loin dans le passé, vers la droite pour revenir vers maintenant. Changez la période entre jour, semaine, mois et année.",
+        historySwipeHint: "À gauche pour l'historique ancien, à droite vers maintenant.",
         touchHint: "Touchez l’appareil et balayez dans la direction souhaitée.",
         intentionPlaceholder: "L'intention apparaîtrait à cet endroit si elle était configurée.",
         intentionSubtitle: "Juin 2026",

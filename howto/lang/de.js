@@ -81,6 +81,8 @@
         panelBody: "Berühre das Gerät und wische in Richtung einer Position auf der kreuzförmigen Navigationskarte.",
         miniNavLabel: "Kreuzförmige Navigationskarte",
         optionalNote: "(optional, wenn installiert und aktiviert)",
+        historyHint: "Nach links geht es weiter in die Vergangenheit, nach rechts zurück bis heute. Den Zeitraum kannst du zwischen Tag, Woche, Monat und Jahr wechseln.",
+        historySwipeHint: "Links weiter zurück, rechts zurück bis heute.",
         touchHint: "Gerät berühren und in die gewünschte Richtung wischen.",
         intentionPlaceholder: "Das Gebetsanliegen würde an dieser Stelle erscheinen, falls konfiguriert.",
         intentionSubtitle: "Juni 2026",

@@ -91,7 +91,7 @@
         --nav-device-arrow-gap: 4px;
         --nav-device-knob-overhang: calc(var(--device-size) * 0.035);
         --nav-card-width: 420px;
-        --nav-card-height: 462px;
+        --nav-card-height: 492px;
         --screen-size: calc(var(--device-size) - (var(--case-padding) * 2) - (var(--bezel-padding) * 2));
         min-height: 100svh;
         width: 100%;
@@ -299,6 +299,10 @@
         animation: gesture-vertical 2600ms ease-in-out infinite;
       }
 
+      .gesture-intro[data-mode="horizontal"] .gesture-intro__axis--vertical {
+        display: none;
+      }
+
       .gesture-intro__text {
         position: absolute;
         bottom: 20%;
@@ -385,14 +389,22 @@
         line-height: 1.35;
       }
 
-      .nav-optional[hidden] {
+      .nav-history-hint {
+        margin: 8px 0 0;
+        color: #586361;
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .nav-optional[hidden],
+      .nav-history-hint[hidden] {
         display: none;
       }
 
       .nav-map {
         position: relative;
         display: grid;
-        grid-template-columns: repeat(5, 29px);
+        grid-template-columns: repeat(6, 29px);
         grid-template-rows: repeat(9, 23px);
         width: max-content;
         gap: 0;
@@ -490,6 +502,37 @@
         background: #03a9f4;
       }
 
+      .nav-map__item[data-history="true"] {
+        width: 72px;
+        justify-self: center;
+      }
+
+      .nav-map__history-more {
+        position: absolute;
+        top: 50%;
+        z-index: 1;
+        display: inline-flex;
+        gap: 3px;
+        transform: translateY(-50%);
+        pointer-events: none;
+      }
+
+      .nav-map__history-more--left {
+        right: calc(50% + 12px);
+      }
+
+      .nav-map__history-more--right {
+        left: calc(50% + 12px);
+      }
+
+      .nav-map__history-more span {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: #8b9693;
+        box-shadow: 0 0 3px rgba(139, 150, 147, 0.32);
+      }
+
       .nav-panel {
         grid-area: card;
         display: grid;
@@ -529,7 +572,7 @@
       @media (max-width: 920px) {
         .nav-stage {
           --device-size: min(78vw, clamp(240px, 40svh, 420px));
-          --nav-card-height: 446px;
+          --nav-card-height: 472px;
           padding: clamp(62px, 7svh, 90px) clamp(18px, 5vw, 42px) 28px;
           grid-template-columns: minmax(0, 1fr);
           grid-template-areas:
@@ -587,7 +630,7 @@
 
         .nav-stage {
           --device-size: min(76vw, clamp(168px, 34svh, 330px));
-          --nav-card-height: clamp(198px, 35svh, 260px);
+          --nav-card-height: clamp(236px, 42svh, 306px);
           padding: clamp(50px, 6svh, 68px) 14px 10px;
           gap: clamp(8px, 1.5svh, 14px);
         }
@@ -613,7 +656,7 @@
 
         .nav-description {
           padding-top: 4px;
-          padding-bottom: 8px;
+          padding-bottom: 4px;
         }
 
         .nav-description > p:first-child {
@@ -628,7 +671,7 @@
         }
 
         .nav-map {
-          grid-template-columns: repeat(5, 24px);
+          grid-template-columns: repeat(6, 24px);
           grid-template-rows: repeat(9, 18px);
           margin-top: 4px;
           transform: scale(0.92);
@@ -648,6 +691,18 @@
           height: 13px;
         }
 
+        .nav-map__item[data-history="true"] {
+          width: 60px;
+        }
+
+        .nav-map__history-more--left {
+          right: calc(50% + 10px);
+        }
+
+        .nav-map__history-more--right {
+          left: calc(50% + 10px);
+        }
+
         .nav-panel h2 {
           font-size: clamp(21px, 7.2vw, 29px);
         }
@@ -657,7 +712,7 @@
       @media (max-width: 340px), (max-height: 700px) and (orientation: portrait) {
         .nav-stage {
           --device-size: min(64vw, clamp(140px, 27svh, 240px));
-          --nav-card-height: 204px;
+          --nav-card-height: 226px;
           padding-top: 54px;
         }
 
@@ -676,7 +731,7 @@
         }
 
         .nav-map {
-          grid-template-columns: repeat(5, 21px);
+          grid-template-columns: repeat(6, 21px);
           grid-template-rows: repeat(9, 15px);
           transform: scale(0.7);
         }
@@ -690,6 +745,22 @@
         .nav-map__item[data-action="true"] .nav-map__dot {
           width: 18px;
           height: 11px;
+        }
+
+        .nav-map__item[data-history="true"] {
+          width: 50px;
+        }
+
+        .nav-map__history-more {
+          gap: 2px;
+        }
+
+        .nav-map__history-more--left {
+          right: calc(50% + 8px);
+        }
+
+        .nav-map__history-more--right {
+          left: calc(50% + 8px);
         }
       }
     </style>
@@ -951,12 +1022,13 @@
         <div class="nav-description">
           <p id="nav-step-body"></p>
           <p class="nav-optional" id="nav-optional" hidden></p>
+          <p class="nav-history-hint" id="nav-history-hint" hidden></p>
         </div>
         <nav class="nav-map" id="nav-map" aria-label="">
-          <svg class="nav-map__lines" viewBox="0 0 500 306" preserveAspectRatio="none" aria-hidden="true">
-            <line x1="50" y1="51" x2="450" y2="51"></line>
+          <svg class="nav-map__lines" viewBox="0 0 600 306" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="50" y1="51" x2="550" y2="51"></line>
             <line x1="150" y1="51" x2="150" y2="187"></line>
-            <line x1="250" y1="17" x2="250" y2="289"></line>
+            <line x1="350" y1="17" x2="350" y2="289"></line>
           </svg>
         </nav>
       </article>
@@ -1035,6 +1107,8 @@
         let wallpaperTimer = null;
         let pointerStart = null;
         let gestureIntroVisible = true;
+        let gestureIntroTimer = null;
+        let currentHistoryOffset = 0;
 
         const stage = document.querySelector(".nav-stage");
         const device = document.getElementById("nav-device");
@@ -1046,6 +1120,7 @@
         const stepTitle = document.getElementById("nav-step-title");
         const stepBody = document.getElementById("nav-step-body");
         const optionalNote = document.getElementById("nav-optional");
+        const historyHint = document.getElementById("nav-history-hint");
         const navMap = document.getElementById("nav-map");
         const panel = document.getElementById("nav-panel");
         const panelTitle = document.getElementById("nav-panel-title");
@@ -1308,13 +1383,14 @@
             const recordSize = 5;
             const recordCount = Math.floor(bytes.buffer.byteLength / recordSize);
             
-            // Force anchor date to July 1, 2026 to show the week 29.6.26 - 5.7.26
-            let maxTs = 1782907200;
+            // Keep the tutorial deterministic while allowing left/right week navigation.
+            const maxTs = 1782907200;
             
             const anchorDate = new Date(maxTs * 1000);
             const currentDay = anchorDate.getDay();
             const daysToMonday = currentDay === 0 ? 6 : currentDay - 1;
             anchorDate.setDate(anchorDate.getDate() - daysToMonday);
+            anchorDate.setDate(anchorDate.getDate() + currentHistoryOffset * 7);
             anchorDate.setHours(0, 0, 0, 0);
             
             startTs = anchorDate.getTime() / 1000;
@@ -1539,24 +1615,24 @@
 
         function getMapItems() {
           return [
-            { key: "wallpaper", column: 3, row: 1, action: true },
+            { key: "wallpaper", column: 4, row: 1, action: true },
             { key: "mystery", column: 1, row: 2 },
             { key: "mysteries", column: 2, row: 2 },
-            { key: "rosary", column: 3, row: 2 },
-            { key: "intentions", column: 4, row: 2, optional: true },
-            { key: "intentions-list", column: 5, row: 2, optional: true },
+            { key: "rosary", column: 4, row: 2 },
+            { key: "intentions", column: 5, row: 2, optional: true },
+            { key: "intentions-list", column: 6, row: 2, optional: true },
             { key: "stats-history", column: 2, row: 3 },
             { key: "stats-durations", column: 2, row: 4 },
             { key: "stats-totals", column: 2, row: 5 },
             { key: "stats-sets", column: 2, row: 6 },
             { key: "stats-parts", column: 2, row: 7 },
-            { key: "settings1", column: 3, row: 3 },
-            { key: "settings2", column: 3, row: 4 },
-            { key: "settings3", column: 3, row: 5 },
-            { key: "settings4", column: 3, row: 6 },
-            { key: "settings5", column: 3, row: 7 },
-            { key: "settings6", column: 3, row: 8 },
-            { key: "settings7", column: 3, row: 9 },
+            { key: "settings1", column: 4, row: 3 },
+            { key: "settings2", column: 4, row: 4 },
+            { key: "settings3", column: 4, row: 5 },
+            { key: "settings4", column: 4, row: 6 },
+            { key: "settings5", column: 4, row: 7 },
+            { key: "settings6", column: 4, row: 8 },
+            { key: "settings7", column: 4, row: 9 },
           ];
         }
 
@@ -1574,11 +1650,23 @@
             button.dataset.optional = String(Boolean(item.optional));
             button.dataset.action = String(Boolean(item.action));
             button.dataset.settings = String(item.key.startsWith("settings"));
+            button.dataset.history = String(item.key === "stats-history");
             button.setAttribute("aria-label", copy.title);
             if (item.key === activeMapKey) button.setAttribute("aria-current", "page");
             button.addEventListener("click", () => activateMapItem(item.key));
             dot.className = "nav-map__dot";
             button.append(dot);
+            if (item.key === "stats-history") {
+              ["left", "right"].forEach((side) => {
+                const more = document.createElement("span");
+                more.className = `nav-map__history-more nav-map__history-more--${side}`;
+                more.setAttribute("aria-hidden", "true");
+                for (let index = 0; index < 3; index += 1) {
+                  more.appendChild(document.createElement("span"));
+                }
+                button.appendChild(more);
+              });
+            }
             navMap.appendChild(button);
           });
         }
@@ -1590,6 +1678,8 @@
           stepBody.textContent = copy.body;
           optionalNote.textContent = tutorial.optionalNote;
           optionalNote.hidden = key !== "intentions" && key !== "intentions-list";
+          historyHint.textContent = tutorial.historyHint || "Swipe left to go farther into the past, right to return toward now. Change the period between day, week, month, and year.";
+          historyHint.hidden = key !== "stats-history";
           renderMap();
         }
 
@@ -1609,7 +1699,9 @@
           }
           navMap.setAttribute("aria-label", tutorial.miniNavLabel);
           device.setAttribute("aria-label", tutorial.panelTitle);
-          gestureIntroText.textContent = tutorial.touchHint;
+          gestureIntroText.textContent = gestureIntro.dataset.mode === "horizontal"
+            ? (tutorial.historySwipeHint || "Swipe left for older history, right toward now.")
+            : tutorial.touchHint;
           document.getElementById("nav-mystery-title").textContent = steps[0].short;
           document.getElementById("nav-mysteries-title").textContent = steps[1].short;
           document.getElementById("nav-intention-title").textContent = steps[3].short;
@@ -1659,11 +1751,13 @@
           const downTarget = navigationMap[currentView]?.down;
           const leftTarget = navigationMap[currentView]?.left;
           const rightTarget = navigationMap[currentView]?.right;
+          const hasHistoryLeft = currentView === "stats-history";
+          const hasHistoryRight = currentView === "stats-history" && currentHistoryOffset < 0;
 
           deviceUp.disabled = !upTarget;
           deviceDown.disabled = !downTarget;
-          deviceLeft.disabled = !leftTarget;
-          deviceRight.disabled = !rightTarget;
+          deviceLeft.disabled = !leftTarget && !hasHistoryLeft;
+          deviceRight.disabled = !rightTarget && !hasHistoryRight;
           deviceUp.setAttribute("aria-label", upTarget ? getCopyForKey(upTarget).title : tutorial.wallpaper.title);
           deviceDown.setAttribute("aria-label", downTarget ? getCopyForKey(downTarget).title : tutorial.settings.title);
           deviceLeft.setAttribute("aria-label", leftTarget ? getCopyForKey(leftTarget).title : common.previous);
@@ -1671,9 +1765,39 @@
         }
 
         function dismissGestureIntro() {
+          if (gestureIntroTimer) {
+            window.clearTimeout(gestureIntroTimer);
+            gestureIntroTimer = null;
+          }
           if (!gestureIntroVisible) return;
           gestureIntroVisible = false;
           gestureIntro.classList.add("gesture-intro--hidden");
+        }
+
+        function showGestureIntro({ mode = "all", text = tutorial.touchHint, timeout = 0 } = {}) {
+          if (gestureIntroTimer) {
+            window.clearTimeout(gestureIntroTimer);
+            gestureIntroTimer = null;
+          }
+
+          gestureIntro.dataset.mode = mode;
+          gestureIntroText.textContent = text;
+          gestureIntroVisible = true;
+          gestureIntro.classList.remove("gesture-intro--hidden");
+
+          if (timeout > 0) {
+            gestureIntroTimer = window.setTimeout(() => {
+              dismissGestureIntro();
+            }, timeout);
+          }
+        }
+
+        function showHistoryGestureHint() {
+          showGestureIntro({
+            mode: "horizontal",
+            text: tutorial.historySwipeHint || "Swipe left for older history, right toward now.",
+            timeout: 2400,
+          });
         }
 
         function renderView(view, { animate = true, revealWallpaper = true } = {}) {
@@ -1717,6 +1841,7 @@
 
           renderDescription(view);
           updateDirectionalArrows();
+          if (view === "stats-history") showHistoryGestureHint();
         }
 
         function cycleWallpaper() {
@@ -1745,6 +1870,26 @@
         }
 
         function navigateBySwipe(direction) {
+          if (currentView === "stats-history") {
+            if (direction === "left") {
+              dismissGestureIntro();
+              currentHistoryOffset -= 1;
+              renderStatsPanels();
+              updateDirectionalArrows();
+              return;
+            }
+
+            if (direction === "right") {
+              dismissGestureIntro();
+              if (currentHistoryOffset < 0) {
+                currentHistoryOffset += 1;
+                renderStatsPanels();
+                updateDirectionalArrows();
+              }
+              return;
+            }
+          }
+
           const target = navigationMap[currentView]?.[direction];
 
           if (!target) return;

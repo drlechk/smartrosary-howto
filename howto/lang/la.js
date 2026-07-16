@@ -81,6 +81,8 @@
         panelBody: "Instrumentum tange et ad locum in tabula navigationis cruciformi monstratum trahe.",
         miniNavLabel: "Tabula navigationis cruciformis",
         optionalNote: "(optionale, si institutum et activum est)",
+        historyHint: "Sinistrorsum trahe ut longius in praeteritum eas, dextrorsum ut ad nunc redeas. Tempus inter diem, hebdomadam, mensem et annum mutare potes.",
+        historySwipeHint: "Sinistra ad vetera, dextra ad nunc.",
         touchHint: "Instrumentum tange et in partem desideratam trahe.",
         intentionPlaceholder: "Intentio hoc loco appareret si configurata esset.",
         intentionSubtitle: "Iunius 2026",

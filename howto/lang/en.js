@@ -81,6 +81,8 @@
         panelBody: "Touch the device and swipe toward a position shown in the cross-shaped navigation map.",
         miniNavLabel: "Cross-shaped navigation map",
         optionalNote: "(optional if installed and enabled)",
+        historyHint: "Swipe left to go farther into the past, right to return toward now. Change the period between day, week, month, and year.",
+        historySwipeHint: "Swipe left for older history, right toward now.",
         touchHint: "Touch the device and swipe in the desired direction.",
         intentionPlaceholder: "The intention would appear in this place if configured.",
         intentionSubtitle: "June 2026",
