@@ -1307,10 +1307,12 @@ position: absolute;
 
 .settings__option--first {
   top: calc(var(--screen-size) * 62 / 240);
+  width: calc(var(--screen-size) * 218 / 240);
 }
 
 .settings__option--second {
   top: calc(var(--screen-size) * 141 / 240);
+  width: calc(var(--screen-size) * 218 / 240);
 }
 
 .settings__label {
@@ -1321,6 +1323,11 @@ position: absolute;
   text-shadow:
     0 0 4px rgba(255, 255, 255, 0.46),
     0 0 10px rgba(255, 255, 255, 0.26);
+}
+
+.settings__option--first .settings__label,
+.settings__option--second .settings__label {
+  font-size: calc(var(--screen-size) * 15.5 / 240);
 }
 
 .settings__switch {
