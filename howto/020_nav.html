@@ -71,7 +71,7 @@
       .howto-language select {
         width: 180px;
         height: 40px;
-        padding: 0 36px 0 12px;
+        padding: 0 24px 0 10px;
         border: 1px solid rgba(23, 34, 32, 0.2);
         border-radius: 8px;
         background: #fff;
@@ -91,7 +91,9 @@
         --nav-device-arrow-gap: 4px;
         --nav-device-knob-overhang: calc(var(--device-size) * 0.035);
         --nav-card-width: 420px;
-        --nav-card-height: 492px;
+        --nav-card-height: 510px;
+        --nav-content-lift: -18px;
+        --nav-divider-bottom: 288px;
         --screen-size: calc(var(--device-size) - (var(--case-padding) * 2) - (var(--bezel-padding) * 2));
         min-height: 100svh;
         width: 100%;
@@ -115,6 +117,7 @@
         display: grid;
         place-items: center;
         min-width: 0;
+        transform: translateY(var(--nav-content-lift));
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         user-select: none;
@@ -281,6 +284,10 @@
         visibility: hidden;
       }
 
+      .gesture-intro--instant {
+        transition: none;
+      }
+
       .gesture-intro__axis {
         position: absolute;
         display: grid;
@@ -347,6 +354,7 @@
 
       .nav-card {
         grid-area: panel;
+        position: relative;
         width: min(100%, var(--nav-card-width));
         min-width: 0;
         height: var(--nav-card-height);
@@ -354,12 +362,25 @@
         display: grid;
         grid-template-rows: auto auto minmax(0, 1fr);
         align-content: start;
+        transform: translateY(var(--nav-content-lift));
         padding: 16px;
         border: 1px solid rgba(23, 34, 32, 0.16);
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.94);
         color: #172220;
         box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+      }
+
+      .nav-card::after {
+        content: "";
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: var(--nav-divider-bottom);
+        height: 1px;
+        background: rgba(23, 34, 32, 0.14);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
+        pointer-events: none;
       }
 
       .nav-card h1 {
@@ -539,6 +560,7 @@
         align-content: start;
         gap: 18px;
         min-width: 0;
+        transform: translateY(var(--nav-content-lift));
         color: #172220;
       }
 
@@ -572,7 +594,9 @@
       @media (max-width: 920px) {
         .nav-stage {
           --device-size: min(78vw, clamp(240px, 40svh, 420px));
-          --nav-card-height: 472px;
+          --nav-card-height: 490px;
+          --nav-content-lift: -18px;
+          --nav-divider-bottom: 288px;
           padding: clamp(62px, 7svh, 90px) clamp(18px, 5vw, 42px) 28px;
           grid-template-columns: minmax(0, 1fr);
           grid-template-areas:
@@ -626,11 +650,15 @@
 
         .howto-language select {
           width: min(180px, 65vw);
+          padding-inline: 8px 18px;
+          font-size: 13px;
         }
 
         .nav-stage {
           --device-size: min(76vw, clamp(168px, 34svh, 330px));
-          --nav-card-height: clamp(236px, 42svh, 306px);
+          --nav-card-height: clamp(252px, 42svh, 322px);
+          --nav-content-lift: -16px;
+          --nav-divider-bottom: 170px;
           padding: clamp(50px, 6svh, 68px) 14px 10px;
           gap: clamp(8px, 1.5svh, 14px);
         }
@@ -654,9 +682,14 @@
           padding: 10px 12px;
         }
 
+        .nav-card::after {
+          left: 12px;
+          right: 12px;
+        }
+
         .nav-description {
           padding-top: 4px;
-          padding-bottom: 4px;
+          padding-bottom: 8px;
         }
 
         .nav-description > p:first-child {
@@ -673,7 +706,7 @@
         .nav-map {
           grid-template-columns: repeat(6, 24px);
           grid-template-rows: repeat(9, 18px);
-          margin-top: 4px;
+          margin-top: 8px;
           transform: scale(0.92);
         }
 
@@ -712,7 +745,9 @@
       @media (max-width: 340px), (max-height: 700px) and (orientation: portrait) {
         .nav-stage {
           --device-size: min(64vw, clamp(140px, 27svh, 240px));
-          --nav-card-height: 226px;
+          --nav-card-height: 240px;
+          --nav-content-lift: -14px;
+          --nav-divider-bottom: 112px;
           padding-top: 54px;
         }
 
@@ -1774,16 +1809,22 @@
           gestureIntro.classList.add("gesture-intro--hidden");
         }
 
-        function showGestureIntro({ mode = "all", text = tutorial.touchHint, timeout = 0 } = {}) {
+        function showGestureIntro({ mode = "all", text = tutorial.touchHint, timeout = 0, instant = false } = {}) {
           if (gestureIntroTimer) {
             window.clearTimeout(gestureIntroTimer);
             gestureIntroTimer = null;
           }
 
+          if (instant) gestureIntro.classList.add("gesture-intro--instant");
           gestureIntro.dataset.mode = mode;
           gestureIntroText.textContent = text;
           gestureIntroVisible = true;
           gestureIntro.classList.remove("gesture-intro--hidden");
+          if (instant) {
+            window.requestAnimationFrame(() => {
+              gestureIntro.classList.remove("gesture-intro--instant");
+            });
+          }
 
           if (timeout > 0) {
             gestureIntroTimer = window.setTimeout(() => {
@@ -1797,6 +1838,7 @@
             mode: "horizontal",
             text: tutorial.historySwipeHint || "Swipe left for older history, right toward now.",
             timeout: 2400,
+            instant: true,
           });
         }
 
@@ -1820,6 +1862,7 @@
           currentView = view;
           activeMapKey = view;
           stage.dataset.view = view;
+          if (view === "stats-history") showHistoryGestureHint();
           positionPanels(view);
 
           [...horizontalViews, ...statsViews, "settings1", "settings2", "settings3", "settings4", "settings5", "settings6", "settings7"].forEach((name) => {
@@ -1841,7 +1884,6 @@
 
           renderDescription(view);
           updateDirectionalArrows();
-          if (view === "stats-history") showHistoryGestureHint();
         }
 
         function cycleWallpaper() {

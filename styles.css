@@ -1132,7 +1132,7 @@ position: absolute;
   transform: translate(-50%, -50%);
   overflow: hidden;
   border: calc(var(--screen-size) * 1 / 240) solid rgba(68, 76, 76, 0.98);
-  border-radius: calc(var(--screen-size) * 4 / 240);
+  border-radius: calc(var(--screen-size) * 15 / 240);
   background: rgba(78, 87, 87, 0.84);
   box-shadow:
     0 0 10px rgba(48, 58, 58, 0.36),
