@@ -1634,7 +1634,7 @@ position: absolute;
 
 .bead--blue {
   background: var(--lv-light-blue);
-  opacity: 0.6;
+  opacity: 1;
   box-shadow:
     0 0 10px rgba(3, 169, 244, 0.72),
     0 0 18px rgba(3, 169, 244, 0.28);
@@ -1642,7 +1642,7 @@ position: absolute;
 
 .bead--red {
   background: var(--lv-red);
-  opacity: 0.6;
+  opacity: 1;
   box-shadow:
     0 0 12px rgba(244, 67, 54, 0.72),
     0 0 20px rgba(244, 67, 54, 0.26);
