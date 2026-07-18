@@ -505,6 +505,7 @@
         <option value="010_onoff.html"></option>
         <option value="011_charging.html"></option>
         <option value="020_nav.html"></option>
+        <option value="030_praying.html"></option>
       </select>
       <label class="howto-language" for="howto-language-control">
         <span id="howto-language-label" style="display: none;"></span>
@@ -654,8 +655,8 @@
           </select>
         </label>
         <label class="opacity-control">
-          <span>Opacity <output id="background-opacity-output">50%</output></span>
-          <input id="background-opacity-control" type="range" min="0" max="100" step="1" value="60" />
+          <span>Opacity <output id="background-opacity-output">30%</output></span>
+          <input id="background-opacity-control" type="range" min="0" max="100" step="1" value="30" />
         </label>
         <button id="download-svg" class="download-btn" type="button">Download SVG</button>
       </form>
@@ -716,7 +717,7 @@
             </div>
 
             <div class="screen-panel mysteries-view mysteries" data-screen="mysteries" aria-hidden="true">
-              <h1 class="mysteries__title" id="mysteries-title">Tajemnice</h1>
+              <h1 class="mysteries__title" id="mysteries-title"></h1>
               <div class="mysteries__menu" role="list">
                 <div class="mysteries__row mysteries__row--empty" id="mystery-row-empty" role="listitem">-</div>
                 <div class="mysteries__row mysteries__row--selected" id="mystery-row-primary" role="listitem">radosne (pon./so.)</div>
@@ -962,6 +963,9 @@
         const bleControl = document.getElementById("ble-control");
         const backgroundControl = document.getElementById("background-control");
         const backgroundOpacityControl = document.getElementById("background-opacity-control");
+        const mysteriesSelectionControl = document.getElementById("mysteries-selection-control");
+        const mysteriesTitle = document.getElementById("mysteries-title");
+        const rosaryMysteryTitle = document.getElementById("rosary-mystery-title");
         let steps = tutorial.steps;
         let currentStep = 0;
 
@@ -977,9 +981,11 @@
             howtoSelector.options[0].textContent = (dict.tutorials.onoff && dict.tutorials.onoff.panelTitle) || "Power on and off";
             howtoSelector.options[1].textContent = (dict.tutorials.charging && dict.tutorials.charging.panelTitle) || "Charging";
             howtoSelector.options[2].textContent = (dict.tutorials.nav && dict.tutorials.nav.panelTitle) || "Navigation";
+            howtoSelector.options[3].textContent = (dict.tutorials.praying && dict.tutorials.praying.panelTitle) || "Praying";
           }
           if (languageLabel) languageLabel.textContent = common.language;
           languageSelect.value = language;
+          syncDeviceLanguage();
           prev.textContent = common.previous;
           next.textContent = common.next;
         }
@@ -1009,14 +1015,43 @@
           control.dispatchEvent(new Event(eventName, { bubbles: true }));
         }
 
-        function prepareMockup(backgroundOpacity = 60) {
+        function syncDeviceLanguage() {
+          mockupLanguageControl.value = language;
+          dispatch(mockupLanguageControl, "change");
+          syncMysteriesTileTitle();
+          syncRosaryMysteryTitle();
+        }
+
+        function getDeviceLangEntry(namespace, key) {
+          const fixture = (window.SMARTROSARY_LANG_FIXTURES || []).find((item) => item.code === language)
+            || (window.SMARTROSARY_LANG_FIXTURES || []).find((item) => item.code === "en")
+            || (window.SMARTROSARY_LANG_FIXTURES || [])[0];
+          const titleEntry = fixture?.state?.entries?.find((entry) => entry.namespace === namespace && entry.key === key);
+
+          return titleEntry?.value || "";
+        }
+
+        function getDeviceMysteryTitle(index) {
+          return getDeviceLangEntry("mysteries", `mT${index}`);
+        }
+
+        function syncMysteriesTileTitle() {
+          if (mysteriesTitle) mysteriesTitle.textContent = getDeviceLangEntry("lang", "l001") || "Mysteries";
+        }
+
+        function syncRosaryMysteryTitle() {
+          const selectedIndex = Math.min(Number(mysteriesSelectionControl?.value) || 0, 5);
+
+          if (rosaryMysteryTitle) rosaryMysteryTitle.textContent = getDeviceMysteryTitle(selectedIndex);
+        }
+
+        function prepareMockup(backgroundOpacity = 30) {
           browserTimeControl.value = "on";
           dispatch(browserTimeControl, "change");
           bleControl.value = "off";
           dispatch(bleControl, "change");
           document.querySelector(".bluetooth")?.classList.add("bluetooth--off");
-          mockupLanguageControl.value = language;
-          dispatch(mockupLanguageControl, "change");
+          syncDeviceLanguage();
           viewControl.value = "rosary";
           dispatch(viewControl, "change");
           backgroundControl.value = "pmkdus";
@@ -1025,6 +1060,8 @@
           dispatch(backgroundOpacityControl, "input");
           screenBg.style.backgroundImage = 'url("../bg/pmkdus.png")';
           screenBg.style.opacity = String(backgroundOpacity / 100);
+          syncMysteriesTileTitle();
+          syncRosaryMysteryTitle();
         }
 
         function renderStep(index) {
@@ -1048,7 +1085,7 @@
             }
           });
 
-          prepareMockup(step.booting ? 100 : 60);
+          prepareMockup(step.booting ? 100 : 30);
           device.classList.toggle("device--off", Boolean(step.off));
           device.classList.toggle("device--booting", Boolean(step.booting));
           const showButtonCallout = Boolean(step.pressed);

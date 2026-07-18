@@ -1634,14 +1634,15 @@ position: absolute;
 }
 
 .bead--current {
-  transform: scale(1.3);
+  outline: max(1px, calc(var(--screen-size) * 1.4 / 240)) solid rgba(255, 255, 255, 0.96);
+  outline-offset: calc(var(--screen-size) * 1.1 / 240);
+  transform: scale(1.24);
   transform-origin: center;
   z-index: 1;
 }
 
 .bead--blue {
   background: var(--lv-light-blue);
-  opacity: 1;
   box-shadow:
     0 0 10px rgba(3, 169, 244, 0.72),
     0 0 18px rgba(3, 169, 244, 0.28);
@@ -1649,93 +1650,52 @@ position: absolute;
 
 .bead--red {
   background: var(--lv-red);
-  opacity: 1;
   box-shadow:
     0 0 12px rgba(244, 67, 54, 0.72),
     0 0 20px rgba(244, 67, 54, 0.26);
 }
 
-.bead--active.bead--blue {
-
-  background: #6ae8ff;
-  opacity: 1.0;
-
-box-shadow:
-  inset 0 1px 1px rgba(255,255,255,.45),
-  inset 0 -1px 2px rgba(0,70,130,.2),
-
-  /* thicker bright rim */
-  0 0 3px rgba(255,255,255,1),
-  0 0 4px rgba(255,255,255,.95),
-  0 0 10px rgba(220,250,255,.9),
-  0 0 12px rgba(160,240,255,.85),
-
-  /* blue glow */
-  0 0 20px rgba(80,220,255,1),
-  0 0 36px rgba(40,180,255,.9),
-  0 0 60px rgba(0,160,255,.75),
-  0 0 90px rgba(0,160,255,.55);
-
+.bead:not(.bead--active) {
+  filter: saturate(0.68) brightness(0.58);
 }
 
-.bead--active.bead--blue::after {
-  content: "";
-  position: absolute;
-  inset: -16px;
-  border-radius: 50%;
-  pointer-events: none;
+.bead--blue:not(.bead--active) {
+  box-shadow:
+    0 0 5px rgba(3, 169, 244, 0.34),
+    0 0 10px rgba(3, 169, 244, 0.16);
+}
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(80,220,255,.85) 0%,
-      rgba(40,190,255,.65) 20%,
-      rgba(0,170,255,.35) 45%,
-      rgba(0,170,255,.15) 65%,
-      rgba(0,170,255,0) 100%
-    );
+.bead--red:not(.bead--active) {
+  box-shadow:
+    0 0 6px rgba(244, 67, 54, 0.34),
+    0 0 11px rgba(244, 67, 54, 0.16);
+}
 
-  filter: blur(10px);
+.bead--active {
+  filter: saturate(1.25) brightness(1.12);
+}
+
+.bead--active.bead--blue {
+  background: #6ae8ff;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.52),
+    0 0 4px rgba(255, 255, 255, 0.68),
+    0 0 11px rgba(3, 169, 244, 0.82),
+    0 0 18px rgba(3, 169, 244, 0.42);
 }
 
 .bead--active.bead--red {
-  background: #ff2a2a;
-  opacity: 1.0;
-box-shadow:
-  inset 0 1px 1px rgba(255,220,220,.25),
-  inset 0 -1px 2px rgba(70,0,0,.2),
-
-  /* saturated red rim */
-  0 0 3px rgba(255,120,120,.95),
-  0 0 6px rgba(255,80,80,.95),
-  0 0 12px rgba(255,40,40,.9),
-  0 0 18px rgba(255,20,20,.85),
-
-  /* red bloom */
-  0 0 24px rgba(255,0,0,1),
-  0 0 40px rgba(255,0,0,.95),
-  0 0 70px rgba(255,0,0,.8),
-  0 0 110px rgba(255,0,0,.6);
+  background: #ff3b36;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4),
+    0 0 4px rgba(255, 255, 255, 0.5),
+    0 0 12px rgba(244, 67, 54, 0.82),
+    0 0 20px rgba(244, 67, 54, 0.42);
 }
 
+.bead--active.bead--blue::after,
 .bead--active.bead--red::after {
-  content: "";
-  position: absolute;
-  inset: -16px;
-  border-radius: 50%;
-  pointer-events: none;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255,80,80,.85) 0%,
-      rgba(255,40,40,.65) 20%,
-      rgba(255,0,0,.35) 45%,
-      rgba(255,0,0,.15) 65%,
-      rgba(255,0,0,0) 100%
-    );
-
-  filter: blur(10px);
+  content: none;
 }
 
 .deploy-footer {

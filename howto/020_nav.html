@@ -809,6 +809,7 @@
         <option value="010_onoff.html"></option>
         <option value="011_charging.html"></option>
         <option value="020_nav.html"></option>
+        <option value="030_praying.html"></option>
       </select>
       <label class="howto-language" for="howto-language-control">
         <span id="howto-language-label" style="display: none;"></span>
@@ -823,7 +824,7 @@
       </label>
     </header>
 
-    <main class="nav-stage" data-step="0" style="--wallpaper-opacity: 0.4">
+    <main class="nav-stage" data-step="0" style="--wallpaper-opacity: 0.3">
       <div class="nav-device-wrap">
         <div class="nav-device-frame">
           <button class="nav-device-arrow nav-device-arrow--up" id="nav-device-up" type="button">↑</button>
@@ -997,10 +998,10 @@
                   <div class="settings__label" id="nav-settings4-option-wallpaper"></div>
                   <div class="settings__slider" id="nav-settings4-slider">
                     <div class="settings__slider-track"></div>
-                    <div class="settings__slider-fill" style="width: 40%"></div>
-                    <div class="settings__slider-knob" style="left: 40%"></div>
+                    <div class="settings__slider-fill" style="width: 30%"></div>
+                    <div class="settings__slider-knob" style="left: 30%"></div>
                   </div>
-                  <div class="settings__value" id="nav-settings4-value">40%</div>
+                  <div class="settings__value" id="nav-settings4-value">30%</div>
                 </div>
               </div>
 
@@ -1723,6 +1724,7 @@
           document.title = tutorial.documentTitle;
           if (languageLabel) languageLabel.textContent = common.language;
           languageSelect.value = language;
+          syncDeviceLanguage();
           panel.setAttribute("aria-label", common.navigationLabel);
           panelTitle.textContent = tutorial.panelTitle;
           panelBody.textContent = tutorial.panelBody;
@@ -1731,6 +1733,7 @@
             howtoSelector.options[0].textContent = (dict.tutorials.onoff && dict.tutorials.onoff.panelTitle) || "Power on and off";
             howtoSelector.options[1].textContent = (dict.tutorials.charging && dict.tutorials.charging.panelTitle) || "Charging";
             howtoSelector.options[2].textContent = (dict.tutorials.nav && dict.tutorials.nav.panelTitle) || "Navigation";
+            howtoSelector.options[3].textContent = (dict.tutorials.praying && dict.tutorials.praying.panelTitle) || "Praying";
           }
           navMap.setAttribute("aria-label", tutorial.miniNavLabel);
           device.setAttribute("aria-label", tutorial.panelTitle);
@@ -1764,6 +1767,11 @@
           document.getElementById("nav-settings7-qr").setAttribute("aria-label", tutorial.deviceInfo.qrLabel);
           renderMysteriesRoller();
           renderStatsPanels();
+        }
+
+        function syncDeviceLanguage() {
+          stage.dataset.language = language;
+          device.dataset.language = language;
         }
 
         function positionPanels(view) {
@@ -1852,7 +1860,7 @@
 
           if (view === currentView) {
             activeMapKey = view;
-            if (view === "rosary" && revealWallpaper) screenBg.style.opacity = "0.6";
+            if (view === "rosary" && revealWallpaper) screenBg.style.opacity = "0.3";
             renderDescription(view);
             updateDirectionalArrows();
             return;
@@ -1874,11 +1882,11 @@
           if (view === "rosary" && revealWallpaper) {
             if (animate) {
               wallpaperTimer = window.setTimeout(() => {
-                screenBg.style.opacity = "0.6";
+                screenBg.style.opacity = "0.3";
                 wallpaperTimer = null;
               }, 280);
             } else {
-              screenBg.style.opacity = "0.6";
+              screenBg.style.opacity = "0.3";
             }
           }
 
@@ -1900,7 +1908,7 @@
           wallpaperTimer = window.setTimeout(() => {
             wallpaperIndex = (wallpaperIndex + 1) % wallpapers.length;
             screenBg.style.backgroundImage = `url("../bg/${wallpapers[wallpaperIndex]}.png")`;
-            screenBg.style.opacity = "0.6";
+            screenBg.style.opacity = "0.3";
             wallpaperTimer = null;
           }, changeDelay);
         }

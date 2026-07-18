@@ -9,10 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../styles.css" />
     <style>
-      :root {
-        --device-size: min(55vw, 600px);
-      }
-
       body {
         align-items: stretch;
         overflow-x: hidden;
@@ -61,22 +57,7 @@
       }
 
       .howto-stage {
-        --device-size: min(32vw, 450px, calc(100svh - 160px));
-        --charge-head-width: clamp(56px, calc(var(--device-size) * 0.195), 88px);
-        --charge-head-height: clamp(49px, calc(var(--device-size) * 0.174), 78px);
-        --charge-metal-width: clamp(17px, calc(var(--device-size) * 0.06), 27px);
-        --charge-metal-height: clamp(32px, calc(var(--device-size) * 0.111), 50px);
-        --charge-wire-head-overlap: 0px;
-        --charge-metal-overlap: -1px;
-        --charge-wire-width: clamp(104px, calc(var(--device-size) * 0.525), 292px);
-        --charge-wire-height: clamp(13px, calc(var(--device-size) * 0.048), 23px);
-        --charge-unplug-offset: clamp(-46px, calc(var(--device-size) * -0.105), -28px);
-        --charge-callout-size: clamp(116px, calc(var(--device-size) * 0.414), 188px);
-        --charge-br-large: clamp(8.6px, calc(var(--device-size) * 0.035), 14px);
-        --charge-br-med: clamp(7.2px, calc(var(--device-size) * 0.029), 11.7px);
-        --charge-br-small: clamp(2.9px, calc(var(--device-size) * 0.011), 4.7px);
-        --charge-callout-left: clamp(29px, calc(var(--device-size) * 0.11), 44px);
-        --howto-card-width: min(310px, calc(100vw - 40px));
+        --device-size: min(46vw, 620px, calc(100svh - 124px));
         --case-padding: clamp(12px, calc(var(--device-size) * 0.033), 20px);
         --bezel-padding: clamp(18px, calc(var(--device-size) * 0.077), 48px);
         --howto-cross-scale: clamp(0.52, calc(var(--device-size) / 920), 0.68);
@@ -84,10 +65,10 @@
         min-height: 100svh;
         width: 100%;
         max-width: 100vw;
-        padding: clamp(72px, 9svh, 118px) clamp(28px, 6vw, 128px) 32px;
+        padding: clamp(86px, 10svh, 132px) clamp(28px, 6vw, 128px) 12px;
         position: relative;
         display: grid;
-        grid-template-columns: minmax(340px, calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width) + 32px)) minmax(280px, 360px);
+        grid-template-columns: minmax(320px, var(--device-size)) minmax(280px, 360px);
         grid-template-rows: auto;
         grid-template-areas:
           "device side";
@@ -104,34 +85,30 @@
 
       .howto-device-wrap {
         position: relative;
-        isolation: isolate;
         display: grid;
-        grid-template-columns: var(--charge-wire-width) var(--charge-head-width) var(--device-size);
-        grid-template-rows: auto;
-        justify-content: end;
-        justify-items: end;
-        align-items: center;
-        width: min(100%, calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width) + 32px));
+        place-items: center;
         min-width: 0;
-        padding-top: calc(var(--device-size) * 0.2);
-        padding-inline: 0;
+        padding-top: calc(var(--device-size) * 0.09);
+        padding-inline: calc(var(--device-size) * 0.04);
         grid-area: device;
       }
 
       .howto-card {
         grid-area: side;
         position: relative;
+        z-index: 20;
         justify-self: start;
-        width: var(--howto-card-width);
+        width: min(310px, calc(100vw - 40px));
         max-width: 100%;
         min-width: 0;
-        min-height: 132px;
-        padding: 15px 16px 16px;
+        min-height: 156px;
+        padding: 17px 16px 16px;
         border: 1px solid rgba(23, 34, 32, 0.16);
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.94);
         color: #172220;
         box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
+        transform: translateY(-20px);
       }
 
       .howto-connector {
@@ -144,7 +121,7 @@
         overflow: visible;
       }
 
-      .howto-connector path {
+      .howto-connector line {
         fill: none;
         stroke: #2196f3;
         stroke-width: 2;
@@ -256,7 +233,7 @@
 
       .howto-progress {
         display: grid;
-        grid-template-columns: repeat(var(--howto-progress-count, 5), 1fr);
+        grid-template-columns: repeat(10, 1fr);
         gap: 8px;
         width: min(320px, 100%);
       }
@@ -272,36 +249,24 @@
       }
 
       .howto-stage .device__knob {
-        top: calc(var(--device-size) * -0.028);
-        z-index: 0;
-      }
-
-      .howto-stage .device::before {
-        position: absolute;
-        inset: 0;
-        border-radius: inherit;
-        background: inherit;
-        content: "";
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      .howto-stage .device__bezel {
-        position: relative;
-        z-index: 2;
+        z-index: -1;
       }
 
       .howto-stage .device {
-        position: relative;
-        grid-column: 3;
-        grid-row: 1;
-        justify-self: start;
-        z-index: 2;
         max-width: 100%;
       }
 
       .howto-stage .device__knob-hit {
         z-index: 22;
+      }
+
+      .howto-stage .screen-panel {
+        visibility: visible;
+        transition: none;
+      }
+
+      .howto-stage .device--ready .screen-panel {
+        transition: transform 260ms ease;
       }
 
       .howto-stage .device__knob-hit::after {
@@ -340,118 +305,6 @@
         transform-origin: center;
       }
 
-      .usbc-cable {
-        position: relative;
-        left: var(--charge-unplug-offset);
-        grid-column: 1 / 3;
-        grid-row: 1;
-        justify-self: end;
-        display: flex;
-        align-items: center;
-        transition: left 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-        pointer-events: none;
-      }
-
-      .usbc-head::after {
-        content: "";
-        position: absolute;
-        left: var(--charge-callout-left);
-        top: 50%;
-        width: var(--charge-callout-size);
-        height: var(--charge-callout-size);
-        margin-left: calc(var(--charge-callout-size) / -2);
-        margin-top: calc(var(--charge-callout-size) / -2);
-        border: 2px solid #2196f3;
-        border-radius: 50%;
-        box-shadow: 0 0 0 8px rgba(33, 150, 243, 0.18);
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .howto-stage.cable--callout .usbc-head::after {
-        animation: howto-pulse 1300ms ease-in-out infinite;
-      }
-
-      .howto-stage[data-plugged="true"] .usbc-cable {
-        left: 0;
-      }
-
-      .howto-device-wrap > .device {
-        grid-column: 3;
-        grid-row: 1;
-      }
-
-      .usbc-wire {
-        position: relative;
-        z-index: 3;
-        width: var(--charge-wire-width);
-        height: var(--charge-wire-height);
-        margin-right: 0;
-        border-radius: 0;
-        background:
-          linear-gradient(to bottom, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 28%),
-          linear-gradient(to bottom, #f8faf9 0%, #dfe4e2 35%, #bbc2c0 56%, #eef2f0 100%);
-        box-shadow:
-          inset 0 1px 1px rgba(255, 255, 255, 0.92),
-          inset 0 -1px 2px rgba(88, 96, 94, 0.28);
-      }
-
-      .usbc-wire::before {
-        position: absolute;
-        top: 0;
-        right: calc(100% - 1px);
-        width: 100vw;
-        height: 100%;
-        background: inherit;
-        box-shadow: inherit;
-        content: "";
-      }
-
-      .usbc-head {
-        position: relative;
-        z-index: 4;
-        width: var(--charge-head-width);
-        height: var(--charge-head-height);
-        border: 1px solid #8c8c8c;
-        border-right: none;
-        border-radius: var(--charge-br-med) 0 0 var(--charge-br-med);
-        background:
-          linear-gradient(90deg, rgba(118, 118, 118, 0.2), transparent 22%, transparent 74%, rgba(120, 120, 120, 0.18)),
-          linear-gradient(to bottom, #d1d3d3 0%, #fbfbfb 44%, #b8bbbb 100%);
-        box-shadow:
-          -2px 0 5px rgba(0, 0, 0, 0.2),
-          inset 0 1px 1px rgba(255, 255, 255, 0.95),
-          inset 0 -2px 3px rgba(90, 96, 98, 0.22);
-      }
-
-      .usbc-metal {
-        position: absolute;
-        top: 50%;
-        left: calc(var(--charge-wire-width) + var(--charge-head-width) - var(--charge-wire-head-overlap) + var(--charge-metal-overlap));
-        width: var(--charge-metal-width);
-        height: var(--charge-metal-height);
-        background:
-          linear-gradient(to right, rgba(82, 82, 82, 0.34), transparent 30%, rgba(82, 82, 82, 0.18)),
-          linear-gradient(to bottom, #a8aaac 0%, #f2f3f4 47%, #8f9396 100%);
-        border: 1.5px solid #74787a;
-        border-left: none;
-        border-radius: 0 var(--charge-br-small) var(--charge-br-small) 0;
-        box-shadow:
-          inset 0 1px 1px rgba(255, 255, 255, 0.8),
-          inset 0 -1px 1px rgba(55, 58, 60, 0.28);
-        transform: translateY(-50%);
-        z-index: 1;
-      }
-
-      .device--charging .battery__fill {
-        animation: battery-charge 2s ease-in-out infinite;
-      }
-
-      @keyframes battery-charge {
-        0% { width: 4px; }
-        100% { width: 45px; }
-      }
-
       @keyframes howto-pulse {
         0%,
         100% {
@@ -467,12 +320,8 @@
 
       @media (max-width: 920px) {
         .howto-stage {
-          --device-size: min(52vw, clamp(196px, 35svh, 360px));
-          --case-padding: clamp(7px, calc(var(--device-size) * 0.033), 20px);
-          --bezel-padding: clamp(12px, calc(var(--device-size) * 0.077), 48px);
-          --howto-card-width: min(480px, 100%);
-          --howto-card-height: 176px;
-          padding-top: clamp(60px, 8svh, 90px);
+          --device-size: min(78vw, clamp(250px, 56svh, 500px));
+          padding-top: clamp(62px, 7svh, 90px);
           grid-template-columns: minmax(0, 1fr);
           grid-template-rows: auto auto auto;
           grid-template-areas:
@@ -487,27 +336,10 @@
         .howto-card {
           grid-area: card;
           justify-self: center;
-          width: var(--howto-card-width);
+          width: min(480px, 100%);
+          height: 152px;
           box-sizing: border-box;
-          height: var(--howto-card-height);
-          min-height: 0;
-          overflow: hidden;
-        }
-
-        .howto-device-wrap {
-          display: grid;
-          grid-template-columns: var(--charge-wire-width) var(--charge-head-width) var(--device-size);
-          justify-self: center;
-          width: calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width));
-          padding-top: calc(var(--device-size) * 0.2);
-          transform: translateX(clamp(-18px, -2.6vw, -8px));
-          overflow: visible;
-        }
-
-        .howto-device-wrap > .device {
-          position: relative;
-          top: auto;
-          right: auto;
+          transform: translateY(-10px);
         }
 
         .howto-panel {
@@ -525,25 +357,9 @@
 
       @media (max-width: 620px) {
         .howto-stage {
-          --device-size: min(56vw, clamp(144px, 28svh, 255px));
-          --case-padding: clamp(6px, calc(var(--device-size) * 0.033), 20px);
-          --bezel-padding: clamp(11px, calc(var(--device-size) * 0.077), 48px);
-          --charge-head-width: clamp(36px, calc(var(--device-size) * 0.195), 60px);
-          --charge-head-height: clamp(32px, calc(var(--device-size) * 0.174), 54px);
-          --charge-wire-width: clamp(76px, calc(var(--device-size) * 0.45), 130px);
-          --howto-card-width: min(480px, 100%);
-          --howto-card-height: clamp(116px, 22svh, 148px);
-          padding: clamp(58px, 8svh, 76px) clamp(8px, 2.5vw, 16px) 10px;
-          gap: clamp(8px, 1.8svh, 16px);
-        }
-
-        .howto-device-wrap {
-          padding-top: calc(var(--device-size) * 0.14);
-          transform: none;
-        }
-
-        .usbc-wire::before {
-          width: clamp(18px, 10vw, 44px);
+          --device-size: min(78vw, clamp(168px, 34svh, 330px));
+          padding: clamp(50px, 6svh, 68px) clamp(14px, 4vw, 22px) 10px;
+          gap: clamp(8px, 1.5svh, 14px);
         }
 
         .howto-header {
@@ -574,18 +390,22 @@
           font-size: 13px;
         }
 
-        .howto-card h1 {
-          margin-bottom: 6px;
-          font-size: clamp(16px, 4.8vw, 19px);
-        }
-
         .howto-card {
+          width: 100%;
+          height: clamp(118px, 22svh, 144px);
           padding: 10px 12px;
+          overflow: hidden;
+          transform: none;
         }
 
         .howto-step-kicker {
           margin-bottom: 5px;
           font-size: 11px;
+        }
+
+        .howto-card h1 {
+          margin-bottom: 6px;
+          font-size: clamp(16px, 4.8vw, 19px);
         }
 
         .howto-card p {
@@ -620,8 +440,6 @@
 
         .howto-progress {
           gap: 6px;
-          justify-self: center;
-          width: min(calc(var(--howto-progress-count, 5) * 58px), 100%);
         }
 
         .howto-progress span {
@@ -631,11 +449,12 @@
 
       @media (max-width: 340px), (max-height: 700px) and (orientation: portrait) {
         .howto-stage {
-          --device-size: min(50vw, clamp(130px, 24svh, 220px));
-          --charge-head-width: clamp(32px, calc(var(--device-size) * 0.18), 48px);
-          --charge-head-height: clamp(28px, calc(var(--device-size) * 0.16), 44px);
-          --charge-wire-width: clamp(62px, calc(var(--device-size) * 0.39), 100px);
-          --howto-card-height: 112px;
+          --device-size: min(66vw, clamp(140px, 27svh, 240px));
+          padding-top: 54px;
+        }
+
+        .howto-card {
+          height: 116px;
         }
 
         .howto-card h1 {
@@ -664,9 +483,9 @@
         }
 
         .howto-stage {
-          --device-size: min(35vw, calc(100svh - 84px));
+          --device-size: min(36vw, calc(100svh - 86px));
           padding-top: 64px;
-          grid-template-columns: minmax(220px, calc(var(--device-size) + var(--charge-wire-width) + var(--charge-head-width) + 24px)) minmax(280px, 1fr);
+          grid-template-columns: minmax(220px, var(--device-size)) minmax(280px, 1fr);
           grid-template-rows: auto 1fr;
           grid-template-areas:
             "device side";
@@ -714,7 +533,7 @@
     </header>
     <main class="howto-stage" data-step="0">
       <svg class="howto-connector" aria-hidden="true">
-        <path />
+        <line />
       </svg>
       <div class="howto-device-wrap">
       <button id="controls-toggle" class="controls-toggle" type="button" aria-controls="controls-panel" aria-expanded="true">Hide controls</button>
@@ -853,12 +672,7 @@
         </label>
         <button id="download-svg" class="download-btn" type="button">Download SVG</button>
       </form>
-      <div class="usbc-cable" aria-hidden="true">
-        <div class="usbc-wire"></div>
-        <div class="usbc-head"></div>
-        <div class="usbc-metal"></div>
-      </div>
-      <section class="device device--off" aria-label="Smart rosary main screen mockup">
+      <section class="device device--rosary" aria-label="Smart rosary main screen mockup">
         <div class="device__knob" aria-hidden="true"></div>
         <button class="device__knob-hit" type="button" aria-label="Power button"></button>
         <div class="device__bezel">
@@ -1100,6 +914,11 @@
           <span></span>
           <span></span>
           <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
         <div class="howto-controls">
           <button id="howto-prev" type="button"></button>
@@ -1136,12 +955,12 @@
     <script src="lang/pt.js"></script>
     <script>
       (() => {
-        let { common, tutorial, language } = window.SmartRosaryHowtoI18n.getTutorial("charging");
+        let { common, tutorial, language } = window.SmartRosaryHowtoI18n.getTutorial("praying");
         const stage = document.querySelector(".howto-stage");
-        const controlsPanel = document.getElementById("controls-panel");
         const device = document.querySelector(".device");
         const knob = document.querySelector(".device__knob");
         const knobHit = document.querySelector(".device__knob-hit");
+        const connectorLine = document.querySelector(".howto-connector line");
         const screenBg = document.querySelector(".screen__bg");
         const title = document.getElementById("howto-step-title");
         const body = document.getElementById("howto-step-body");
@@ -1154,7 +973,7 @@
         const progressWrap = document.getElementById("howto-progress");
         const prev = document.getElementById("howto-prev");
         const next = document.getElementById("howto-next");
-        let progress = Array.from(document.querySelectorAll(".howto-progress span"));
+        const progress = Array.from(document.querySelectorAll(".howto-progress span"));
         const viewControl = document.getElementById("view-control");
         const mockupLanguageControl = document.getElementById("language-control");
         const browserTimeControl = document.getElementById("browser-time-control");
@@ -1162,37 +981,32 @@
         const backgroundControl = document.getElementById("background-control");
         const backgroundOpacityControl = document.getElementById("background-opacity-control");
         const mysteriesSelectionControl = document.getElementById("mysteries-selection-control");
+        const mysterySelectionControl = document.getElementById("mystery-selection-control");
+        const mysteryRowEmpty = document.getElementById("mystery-row-empty");
+        const mysteryRowPrimary = document.getElementById("mystery-row-primary");
+        const mysteryRowSecondary = document.getElementById("mystery-row-secondary");
         const mysteriesTitle = document.getElementById("mysteries-title");
         const rosaryMysteryTitle = document.getElementById("rosary-mystery-title");
-        function normalizeChargingSteps(sourceSteps) {
-          const [plugStep, startupStep, chargingStep, unplugStep] = sourceSteps;
-          const rosaryChargingStep = chargingStep ?? startupStep;
-          const finalStep = unplugStep ?? chargingStep ?? sourceSteps[sourceSteps.length - 1];
-
-          return [
-            plugStep,
-            rosaryChargingStep
-              ? {
-                  ...rosaryChargingStep,
-                  title: startupStep?.title ?? rosaryChargingStep.title,
-                  body: startupStep?.body ?? rosaryChargingStep.body,
-                  booting: false,
-                  on: true,
-                  plugged: true,
-                  charging: true,
-                }
-              : null,
-            finalStep,
-          ].filter(Boolean);
-        }
-
-        let steps = normalizeChargingSteps(tutorial.steps);
+        const rosaryMysteryScrollText = document.getElementById("rosary-mystery-scroll-text");
+        const beadControl = document.getElementById("bead-control");
+        const beads = document.getElementById("beads");
+        const screenPanels = Array.from(document.querySelectorAll(".screen-panel"));
+        const howtoSelector = document.getElementById("howto-selector");
+        const screenPanelByName = Object.fromEntries(screenPanels.map((panel) => [panel.dataset.screen, panel]));
+        const screenPositions = {
+          mysteries: { x: -1, y: 0 },
+          rosary: { x: 0, y: 0 },
+        };
+        const autoSequences = {
+          1: ["mysteries"],
+          3: ["rosary"],
+        };
+        let steps = tutorial.steps;
         let currentStep = 0;
-        let bootSequenceTimer = null;
-
-        controlsPanel.addEventListener("submit", (event) => {
-          event.preventDefault();
-        });
+        let currentView = "rosary";
+        let sequenceTimers = [];
+        let wallpaperTimer = null;
+        let currentRosaryMysteryScrollKey = "";
 
         function applyCopy() {
           document.documentElement.lang = language;
@@ -1213,25 +1027,15 @@
           syncDeviceLanguage();
           prev.textContent = common.previous;
           next.textContent = common.next;
-          renderProgressDots();
-        }
-
-        function renderProgressDots() {
-          progressWrap.innerHTML = "";
-          progressWrap.style.setProperty("--howto-progress-count", String(steps.length));
-          steps.forEach(() => {
-            progressWrap.appendChild(document.createElement("span"));
-          });
-          progress = Array.from(progressWrap.querySelectorAll("span"));
         }
 
         function selectLanguage(requestedLanguage) {
-          const copy = window.SmartRosaryHowtoI18n.getTutorial("charging", requestedLanguage);
+          const copy = window.SmartRosaryHowtoI18n.getTutorial("praying", requestedLanguage);
 
           common = copy.common;
           tutorial = copy.tutorial;
           language = copy.language;
-          steps = normalizeChargingSteps(tutorial.steps);
+          steps = tutorial.steps;
           currentStep = Math.min(currentStep, steps.length - 1);
 
           const url = new URL(window.location.href);
@@ -1250,28 +1054,84 @@
           control.dispatchEvent(new Event(eventName, { bubbles: true }));
         }
 
+        function normalizeIndex(index, length) {
+          return ((index % length) + length) % length;
+        }
+
+        function getLanguageFixture() {
+          const fixture = (window.SMARTROSARY_LANG_FIXTURES || []).find((item) => item.code === language)
+            || (window.SMARTROSARY_LANG_FIXTURES || []).find((item) => item.code === "en")
+            || (window.SMARTROSARY_LANG_FIXTURES || [])[0];
+
+          return fixture;
+        }
+
+        function getLanguageEntryValue(namespace, key) {
+          const fixture = getLanguageFixture();
+          const entry = fixture?.state?.entries?.find((item) => item.namespace === namespace && item.key === key);
+
+          return entry?.value || "";
+        }
+
+        function getMysteryEntryValue(key) {
+          return getLanguageEntryValue("mysteries", key);
+        }
+
+        function syncMysteriesTileTitle() {
+          if (mysteriesTitle) mysteriesTitle.textContent = getLanguageEntryValue("lang", "l001") || "Mysteries";
+        }
+
+        function getMysteriesEntriesForLanguage() {
+          const fixture = getLanguageFixture();
+          const mysteriesEntry = fixture?.state?.entries?.find((entry) => entry.namespace === "mysteries" && entry.key === "mS");
+          const entries = mysteriesEntry?.value?.split("\n").filter(Boolean) || ["-", "Joyful (Mon. | Sat.)", "Luminous (Thu.)"];
+
+          return entries.length > 0 ? entries : ["-"];
+        }
+
+        function forceMysteriesSelection(selectedIndex) {
+          const entries = getMysteriesEntriesForLanguage();
+          const visibleRows = [mysteryRowEmpty, mysteryRowPrimary, mysteryRowSecondary];
+          if (entries.length === 0 || visibleRows.some((row) => !row)) return;
+
+          const safeIndex = Math.min(Math.max(Number(selectedIndex) || 0, 0), entries.length - 1);
+          const visibleIndexes = [
+            normalizeIndex(safeIndex - 1, entries.length),
+            safeIndex,
+            normalizeIndex(safeIndex + 1, entries.length),
+          ];
+
+          mysteriesSelectionControl.value = String(safeIndex);
+          mysteriesSelectionControl.innerHTML = "";
+          entries.forEach((entry, entryIndex) => {
+            const option = document.createElement("option");
+            option.value = String(entryIndex);
+            option.textContent = entry;
+            mysteriesSelectionControl.appendChild(option);
+          });
+          mysteriesSelectionControl.value = String(safeIndex);
+          visibleRows.forEach((row, rowIndex) => {
+            const text = entries[visibleIndexes[rowIndex]];
+
+            row.dataset.index = String(visibleIndexes[rowIndex]);
+            row.textContent = text;
+            row.classList.toggle("mysteries__row--selected", rowIndex === 1);
+            row.classList.toggle("mysteries__row--empty", text === "-");
+          });
+          syncMysteriesTileTitle();
+          syncRosaryMysteryTitle();
+        }
+
         function syncDeviceLanguage() {
           mockupLanguageControl.value = language;
           dispatch(mockupLanguageControl, "change");
           syncMysteriesTileTitle();
           syncRosaryMysteryTitle();
-        }
-
-        function getDeviceLangEntry(namespace, key) {
-          const fixture = (window.SMARTROSARY_LANG_FIXTURES || []).find((item) => item.code === language)
-            || (window.SMARTROSARY_LANG_FIXTURES || []).find((item) => item.code === "en")
-            || (window.SMARTROSARY_LANG_FIXTURES || [])[0];
-          const titleEntry = fixture?.state?.entries?.find((entry) => entry.namespace === namespace && entry.key === key);
-
-          return titleEntry?.value || "";
+          syncRosaryMysteryScrollText();
         }
 
         function getDeviceMysteryTitle(index) {
-          return getDeviceLangEntry("mysteries", `mT${index}`);
-        }
-
-        function syncMysteriesTileTitle() {
-          if (mysteriesTitle) mysteriesTitle.textContent = getDeviceLangEntry("lang", "l001") || "Mysteries";
+          return getMysteryEntryValue(`mT${index}`);
         }
 
         function syncRosaryMysteryTitle() {
@@ -1280,38 +1140,169 @@
           if (rosaryMysteryTitle) rosaryMysteryTitle.textContent = getDeviceMysteryTitle(selectedIndex);
         }
 
-        function setChargingWallpaper(opacity = 30) {
-          backgroundControl.value = "pmkdus";
-          backgroundOpacityControl.value = String(opacity);
-          screenBg.style.backgroundImage = 'url("../bg/pmkdus.png")';
-          screenBg.style.opacity = String(opacity / 100);
+        function getMysteryIndexForActiveBead(activeBead) {
+          const loopStart = 4;
+          const beadsPerDecade = 10;
+
+          if (activeBead < loopStart + 1) return 0;
+
+          return Math.min(5, Math.floor((activeBead - (loopStart + 1)) / (beadsPerDecade + 1)) + 1);
         }
 
-        function prepareMockup(backgroundOpacity = 30) {
+        function syncRosaryMysteryScrollText() {
+          if (!rosaryMysteryScrollText) return;
+
+          const mysteryIndex = getMysteryIndexForActiveBead(Number(beadControl.value) || 0);
+          const mysteriesIndex = Math.min(Number(mysteriesSelectionControl.value) || 0, 5);
+          const scrollKey = `m${mysteryIndex}${mysteriesIndex}`;
+          const scrollText = getMysteryEntryValue(scrollKey);
+
+          if (scrollKey === currentRosaryMysteryScrollKey && rosaryMysteryScrollText.textContent === scrollText) {
+            return;
+          }
+
+          currentRosaryMysteryScrollKey = scrollKey;
+          rosaryMysteryScrollText.classList.remove("rosary-mystery-scroll__text--static");
+          rosaryMysteryScrollText.textContent = scrollText;
+          rosaryMysteryScrollText.dataset.scrollText = "";
+          rosaryMysteryScrollText.style.animation = "none";
+          rosaryMysteryScrollText.style.transform = "translateX(0)";
+
+          rosaryMysteryScrollText.getBoundingClientRect();
+
+          const textWidth = rosaryMysteryScrollText.scrollWidth;
+          const containerWidth = rosaryMysteryScrollText.parentElement.clientWidth;
+
+          if (textWidth <= containerWidth) {
+            rosaryMysteryScrollText.classList.add("rosary-mystery-scroll__text--static");
+            return;
+          }
+
+          const distance = textWidth;
+          const speed = 120;
+          const duration = distance / speed;
+
+          rosaryMysteryScrollText.dataset.scrollText = ` ${scrollText}`;
+          rosaryMysteryScrollText.style.setProperty("--scroll-distance", `${distance}px`);
+          rosaryMysteryScrollText.getBoundingClientRect();
+          rosaryMysteryScrollText.style.animation = `rosary-mystery-scroll ${duration}s linear infinite`;
+        }
+
+        function clearViewSequence() {
+          sequenceTimers.forEach((timer) => window.clearTimeout(timer));
+          sequenceTimers = [];
+          if (wallpaperTimer) {
+            window.clearTimeout(wallpaperTimer);
+            wallpaperTimer = null;
+          }
+          prev.disabled = currentStep === 0;
+          next.disabled = currentStep === steps.length - 1;
+        }
+
+        function applyTutorialDeviceView(viewName) {
+          device.classList.toggle("device--mysteries", viewName === "mysteries");
+          device.classList.remove("device--mystery");
+          device.classList.toggle("device--rosary", viewName === "rosary");
+        }
+
+        function positionPanels(viewName) {
+          const currentPosition = screenPositions[viewName];
+
+          if (!currentPosition) return;
+
+          screenPanels.forEach((panel) => {
+            const panelPosition = screenPositions[panel.dataset.screen];
+            if (!panelPosition) {
+              panel.style.visibility = "hidden";
+              panel.setAttribute("aria-hidden", "true");
+              return;
+            }
+
+            const offsetX = panelPosition.x - currentPosition.x;
+            const offsetY = panelPosition.y - currentPosition.y;
+            const isActive = panel.dataset.screen === viewName;
+
+            panel.style.transform = `translate3d(${offsetX * 100}%, ${offsetY * 100}%, 0)`;
+            panel.style.visibility = "visible";
+            panel.classList.toggle("screen-panel--active", isActive);
+            panel.setAttribute("aria-hidden", String(!isActive));
+          });
+        }
+
+        function showTutorialView(nextView, { animateWallpaper = false } = {}) {
+          if (!screenPanelByName[nextView]) return;
+
+          if (wallpaperTimer) {
+            window.clearTimeout(wallpaperTimer);
+            wallpaperTimer = null;
+          }
+          if (nextView !== "rosary" || animateWallpaper) {
+            screenBg.style.opacity = "0";
+          }
+          currentView = nextView;
+          viewControl.value = nextView;
+          applyTutorialDeviceView(nextView);
+          positionPanels(nextView);
+          if (nextView === "rosary") {
+            if (!animateWallpaper) {
+              screenBg.style.opacity = "0.3";
+            } else {
+              wallpaperTimer = window.setTimeout(() => {
+                screenBg.style.opacity = "0.3";
+                wallpaperTimer = null;
+              }, 280);
+            }
+          }
+        }
+
+        function playViewSequence(sequence, initialDelay = 0) {
+          if (!sequence || sequence.length === 0) return;
+
+          prev.disabled = true;
+          next.disabled = true;
+          sequence.forEach((viewName, index) => {
+            sequenceTimers.push(window.setTimeout(() => {
+              showTutorialView(viewName, { animateWallpaper: true });
+            }, initialDelay + index * 340));
+          });
+          sequenceTimers.push(window.setTimeout(() => {
+            sequenceTimers = [];
+            prev.disabled = currentStep === 0;
+            next.disabled = currentStep === steps.length - 1;
+          }, initialDelay + sequence.length * 340 + 40));
+        }
+
+        function prepareMockup(step) {
           browserTimeControl.value = "on";
           dispatch(browserTimeControl, "change");
           bleControl.value = "off";
           dispatch(bleControl, "change");
           document.querySelector(".bluetooth")?.classList.add("bluetooth--off");
           syncDeviceLanguage();
-          viewControl.value = "rosary";
-          dispatch(viewControl, "change");
-          setChargingWallpaper(backgroundOpacity);
+          backgroundControl.value = "pmkdus";
+          backgroundOpacityControl.value = "30";
           dispatch(backgroundControl, "change");
           dispatch(backgroundOpacityControl, "input");
-          setChargingWallpaper(backgroundOpacity);
-          syncMysteriesTileTitle();
-          syncRosaryMysteryTitle();
+          screenBg.style.backgroundImage = 'url("../bg/pmkdus.png")';
+          screenBg.style.opacity = "0.3";
+          ensureBeads();
+          mysteriesSelectionControl.value = String(step.mysterySet ?? 1);
+          dispatch(mysteriesSelectionControl, "change");
+          forceMysteriesSelection(step.mysterySet ?? 1);
+          mysterySelectionControl.value = String(step.mystery ?? ((step.bead ?? 0) >= 5 ? 1 : 0));
+          dispatch(mysterySelectionControl, "change");
+          forceMysteriesSelection(step.mysterySet ?? 1);
+          beadControl.value = String(step.bead ?? 0);
+          dispatch(beadControl, "input");
+          forceMysteriesSelection(step.mysterySet ?? 1);
+          syncRosaryMysteryScrollText();
+          renderFallbackActiveBeads();
         }
 
-        function renderStep(index) {
+        function renderStep(index, options = {}) {
           const step = steps[index];
 
-          if (bootSequenceTimer) {
-            clearTimeout(bootSequenceTimer);
-            bootSequenceTimer = null;
-          }
-
+          clearViewSequence();
           currentStep = index;
           stage.dataset.step = String(index);
           title.textContent = step.title;
@@ -1330,38 +1321,20 @@
             }
           });
 
-          prepareMockup(step.booting ? 100 : 30);
-          device.classList.toggle("device--off", Boolean(step.off));
-          device.classList.toggle("device--booting", Boolean(step.booting));
-          device.classList.toggle("device--charging", Boolean(step.charging));
-          stage.classList.toggle("cable--callout", !step.plugged);
-          if (step.plugged) {
-            stage.setAttribute("data-plugged", "true");
+          prepareMockup(step);
+          const autoSequence = options.forward ? autoSequences[index] : null;
+          if (autoSequence) {
+            playViewSequence(autoSequence);
           } else {
-            stage.removeAttribute("data-plugged");
+            showTutorialView(step.view ?? "rosary");
           }
-
-          if (step.booting) {
-            bootSequenceTimer = setTimeout(() => {
-              if (currentStep !== index) return;
-
-              device.classList.remove("device--booting");
-              setChargingWallpaper(30);
-              dispatch(backgroundOpacityControl, "input");
-              setChargingWallpaper(30);
-              bootSequenceTimer = null;
-            }, 2000);
-          }
-
-          let start = performance.now();
-          function animateLine(time) {
-            updateConnector();
-            if (time - start < 900) {
-              requestAnimationFrame(animateLine);
-            }
-          }
-          requestAnimationFrame(animateLine);
-          setTimeout(updateConnector, 920);
+          device.classList.remove("device--off");
+          device.classList.remove("device--booting");
+          const showButtonCallout = Boolean(step.pressed);
+          device.classList.toggle("device--callout", showButtonCallout);
+          connectorLine.style.opacity = showButtonCallout ? "1" : "0";
+          knob.classList.toggle("device__knob--pressed", Boolean(step.pressed));
+          if (showButtonCallout) requestAnimationFrame(updateConnector);
         }
 
         prev.addEventListener("click", () => {
@@ -1369,17 +1342,15 @@
         });
 
         next.addEventListener("click", () => {
-          renderStep(Math.min(steps.length - 1, currentStep + 1));
+          renderStep(Math.min(steps.length - 1, currentStep + 1), { forward: true });
         });
 
         knobHit.addEventListener("click", () => {
-          renderStep(Math.min(steps.length - 1, currentStep + 1));
+          renderStep(Math.min(steps.length - 1, currentStep + 1), { forward: true });
         });
 
-        
-        const howtoSelector = document.getElementById("howto-selector");
         if (howtoSelector) {
-          howtoSelector.value = "011_charging.html";
+          howtoSelector.value = "030_praying.html";
           howtoSelector.addEventListener("change", () => {
             const url = new URL(howtoSelector.value, window.location.href);
             url.searchParams.set("lang", language);
@@ -1390,12 +1361,8 @@
           selectLanguage(languageSelect.value);
         });
 
-        window.addEventListener("resize", updateConnector);
-
-        
-        function buildBeads() {
-          const beads = document.getElementById("beads");
-          if (!beads) return;
+        function ensureBeads() {
+          if (!beads || beads.children.length > 0) return;
           const totalBeads = 59;
           const loopStart = 4;
           const beadsPerDecade = 10;
@@ -1407,8 +1374,6 @@
           const tailPositions = [[cx, 182], [cx, 194], [cx, 206], [cx, 218]];
           const toPercent = (value) => `${(value / screenBase) * 100}%`;
 
-          beads.replaceChildren();
-
           for (let index = 0; index < totalBeads; index += 1) {
             const bead = document.createElement("span");
             const isTail = index < loopStart;
@@ -1418,6 +1383,8 @@
             let y;
 
             bead.className = `bead bead--${isRed ? "red" : "blue"}`;
+            bead.dataset.bead = String(index + 1);
+
             if (isTail) {
               [x, y] = tailPositions[index];
             } else {
@@ -1425,13 +1392,25 @@
               x = cx + Math.trunc(radius * Math.cos(angle));
               y = cy + Math.trunc(radius * Math.sin(angle));
             }
+
             bead.style.left = toPercent(x - size / 2);
             bead.style.top = toPercent(y - size / 2);
             bead.style.width = toPercent(size);
             bead.style.height = toPercent(size);
-
             beads.appendChild(bead);
           }
+        }
+
+        function renderFallbackActiveBeads() {
+          if (!beads) return;
+          const activeBead = Number(beadControl.value) || 0;
+
+          beads.querySelectorAll(".bead").forEach((bead) => {
+            const beadNumber = Number(bead.dataset.bead);
+
+            bead.classList.toggle("bead--active", activeBead > 0 && beadNumber <= activeBead);
+            bead.classList.toggle("bead--current", activeBead > 0 && beadNumber === activeBead);
+          });
         }
 
         function updateClock() {
@@ -1441,35 +1420,35 @@
           if (timeDisplay) timeDisplay.textContent = time;
         }
 
-        buildBeads();
         updateClock();
         window.setInterval(updateClock, 1000);
 
         function updateConnector() {
           const card = document.querySelector(".howto-card");
-          const connectorTarget = currentStep === 1 ? document.querySelector(".battery") : document.querySelector(".usbc-head");
-          const connectorPath = document.querySelector(".howto-connector path");
-          if (!card || !connectorPath || !connectorTarget) return;
+          if (!card || !connectorLine) return;
 
           const stageRect = stage.getBoundingClientRect();
           const cardRect = card.getBoundingClientRect();
-          const targetRect = connectorTarget.getBoundingClientRect();
+          const knobRect = knobHit.getBoundingClientRect();
           const isMobile = window.innerWidth <= 920;
 
-          const endX = currentStep === 1
-            ? targetRect.left + targetRect.width / 2 - stageRect.left
-            : targetRect.left + targetRect.width / 2 - stageRect.left;
-          const endY = currentStep === 1
-            ? targetRect.top + targetRect.height / 2 - stageRect.top
-            : targetRect.top - stageRect.top;
-          const cardAnchorX = cardRect.left - stageRect.left;
+          const endX = knobRect.left + knobRect.width / 2 - stageRect.left;
+          const endY = knobRect.top + knobRect.height / 2 - stageRect.top;
 
           if (isMobile) {
-            const cardAnchorY = cardRect.bottom - stageRect.top;
-            connectorPath.setAttribute("d", `M ${endX} ${cardAnchorY} L ${endX} ${endY}`);
+            const startX = endX;
+            const startY = cardRect.bottom - stageRect.top;
+            connectorLine.setAttribute("x1", String(startX));
+            connectorLine.setAttribute("y1", String(startY));
+            connectorLine.setAttribute("x2", String(endX));
+            connectorLine.setAttribute("y2", String(endY));
           } else {
-            const cardAnchorY = cardRect.top + 24 - stageRect.top;
-            connectorPath.setAttribute("d", `M ${endX} ${endY} L ${endX} ${cardAnchorY} L ${cardAnchorX} ${cardAnchorY}`);
+            const startX = cardRect.left - stageRect.left;
+            const startY = endY;
+            connectorLine.setAttribute("x1", String(startX));
+            connectorLine.setAttribute("y1", String(startY));
+            connectorLine.setAttribute("x2", String(endX));
+            connectorLine.setAttribute("y2", String(endY));
           }
         }
 
@@ -1477,6 +1456,7 @@
           applyCopy();
           renderStep(0);
           updateConnector();
+          window.requestAnimationFrame(() => device.classList.add("device--ready"));
         });
         window.addEventListener("resize", updateConnector);
       })();
