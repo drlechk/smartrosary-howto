@@ -199,7 +199,7 @@
           statsHistory: {
             short: "History",
             title: "History",
-            body: "This tile displays your prayer history for the selected time period. It shows a chart of completed prayers by mystery group.",
+            body: "This tile displays your prayer history for the selected time period. Week history starts on Sunday and the date range shows the inclusive last day of the week.",
           },
           intentionsList: {
             short: "Intentions",

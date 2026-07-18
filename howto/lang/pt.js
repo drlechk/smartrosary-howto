@@ -199,7 +199,7 @@
           statsHistory: {
             short: "Histórico",
             title: "Histórico",
-            body: "Este quadro exibe o histórico de orações para o período selecionado. Mostra um gráfico das orações concluídas por grupo de mistérios.",
+            body: "Este quadro exibe o histórico de orações para o período selecionado. A vista semanal começa no domingo e o intervalo de datas mostra o último dia incluído da semana.",
           },
           intentionsList: {
             short: "Intenções",

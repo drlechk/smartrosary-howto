@@ -861,7 +861,7 @@
               <div class="screen-panel stats-view stats" data-screen="stats-history" aria-hidden="true">
                 <h1 class="stats__title" id="nav-stats-history-title">History</h1>
                 <div class="stats__history-selector" id="nav-stats-history-selector">week</div>
-                <div class="stats__history-label" id="nav-stats-history-label">29.6.26 - 5.7.26</div>
+                <div class="stats__history-label" id="nav-stats-history-label">28.6.26-4.7.26</div>
                 <div class="stats__history" id="nav-stats-history-chart" aria-label="History chart"></div>
                 <div class="stats__legend stats__legend--history" id="nav-stats-history-legend"></div>
               </div>
@@ -1423,9 +1423,8 @@
             const maxTs = 1782907200;
             
             const anchorDate = new Date(maxTs * 1000);
-            const currentDay = anchorDate.getDay();
-            const daysToMonday = currentDay === 0 ? 6 : currentDay - 1;
-            anchorDate.setDate(anchorDate.getDate() - daysToMonday);
+            const daysSinceSunday = anchorDate.getDay();
+            anchorDate.setDate(anchorDate.getDate() - daysSinceSunday);
             anchorDate.setDate(anchorDate.getDate() + currentHistoryOffset * 7);
             anchorDate.setHours(0, 0, 0, 0);
             
@@ -1437,7 +1436,7 @@
             const formatDate = (d) => `${d.getDate()}.${d.getMonth() + 1}.${String(d.getFullYear()).slice(-2)}`;
             const endDateFormatted = new Date(endDate);
             endDateFormatted.setDate(endDateFormatted.getDate() - 1);
-            document.getElementById("nav-stats-history-label").textContent = `${formatDate(anchorDate)} - ${formatDate(endDateFormatted)}`;
+            document.getElementById("nav-stats-history-label").textContent = `${formatDate(anchorDate)}-${formatDate(endDateFormatted)}`;
             
             for (let i = 0; i < recordCount; i++) {
               const ts = view.getUint32(i * recordSize, true);

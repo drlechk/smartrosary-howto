@@ -199,7 +199,7 @@
           statsHistory: {
             short: "Historial",
             title: "Historial",
-            body: "Este mosaico muestra su historial de oraciones para el período seleccionado. Contiene un gráfico de oraciones completadas por grupo de misterios.",
+            body: "Este mosaico muestra tu historial de oraciones para el período seleccionado. La vista semanal empieza el domingo y el rango de fechas muestra el último día incluido de la semana.",
           },
           intentionsList: {
             short: "Intenciones",

@@ -199,7 +199,7 @@
           statsHistory: {
             short: "Historia",
             title: "Historia",
-            body: "Ten kafelek wyświetla historię modlitw w wybranym okresie. Przedstawia wykres ukończonych modlitw z podziałem na grupy tajemnic.",
+            body: "Ten kafelek wyświetla historię modlitw w wybranym okresie. Widok tygodnia zaczyna się w niedzielę, a zakres dat pokazuje włącznie ostatni dzień tygodnia.",
           },
           intentionsList: {
             short: "Intencje",

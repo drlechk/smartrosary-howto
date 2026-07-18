@@ -199,7 +199,7 @@
           statsHistory: {
             short: "Historique",
             title: "Historique",
-            body: "Cette tuile affiche votre historique de prières pour la période sélectionnée. Elle présente un graphique des prières terminées par groupe de mystères.",
+            body: "Cette tuile affiche ton historique de prières pour la période sélectionnée. La vue semaine commence le dimanche et la plage de dates affiche le dernier jour inclus de la semaine.",
           },
           intentionsList: {
             short: "Intentions",

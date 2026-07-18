@@ -199,7 +199,7 @@
           statsHistory: {
             short: "Verlauf",
             title: "Verlauf",
-            body: "Diese Kachel zeigt Ihren Gebetsverlauf für den ausgewählten Zeitraum. Sie enthält ein Diagramm der abgeschlossenen Gebete nach Geheimnisgruppen.",
+            body: "Diese Kachel zeigt deinen Gebetsverlauf für den ausgewählten Zeitraum. Die Wochenansicht beginnt am Sonntag und der Datumsbereich zeigt den eingeschlossenen letzten Tag der Woche.",
           },
           intentionsList: {
             short: "Anliegen",

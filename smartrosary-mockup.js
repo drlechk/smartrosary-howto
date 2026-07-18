@@ -429,8 +429,8 @@
           startTs = new Date(anchorDate.getFullYear(), anchorDate.getMonth(), anchorDate.getDate()).getTime() / 1000;
           endTs = startTs + 86400;
         } else if (bucketIndex === 1) {
-          const daysSinceMonday = (anchorDate.getDay() + 6) % 7;
-          anchorDate.setDate(anchorDate.getDate() - daysSinceMonday + (offset * 7));
+          const daysSinceSunday = anchorDate.getDay();
+          anchorDate.setDate(anchorDate.getDate() - daysSinceSunday + (offset * 7));
           startTs = new Date(anchorDate.getFullYear(), anchorDate.getMonth(), anchorDate.getDate()).getTime() / 1000;
           endTs = startTs + 7 * 86400;
         } else if (bucketIndex === 2) {
