@@ -261,8 +261,11 @@
       }
 
       .howto-stage .screen-panel {
-        visibility: visible;
         transition: none;
+      }
+
+      .howto-stage:not(.howto-stage--panels-positioned) .screen-panel:not(.screen-panel--active) {
+        visibility: hidden !important;
       }
 
       .howto-stage .device--ready .screen-panel {
@@ -1001,6 +1004,10 @@
           1: ["mysteries"],
           3: ["rosary"],
         };
+        const reverseAutoSequences = {
+          0: ["rosary"],
+          2: ["mysteries"],
+        };
         let steps = tutorial.steps;
         let currentStep = 0;
         let currentView = "rosary";
@@ -1227,6 +1234,7 @@
             panel.classList.toggle("screen-panel--active", isActive);
             panel.setAttribute("aria-hidden", String(!isActive));
           });
+          stage.classList.add("howto-stage--panels-positioned");
         }
 
         function showTutorialView(nextView, { animateWallpaper = false } = {}) {
@@ -1253,6 +1261,10 @@
               }, 280);
             }
           }
+        }
+
+        function setWallpaperForView(viewName) {
+          screenBg.style.opacity = viewName === "rosary" ? "0.3" : "0";
         }
 
         function playViewSequence(sequence, initialDelay = 0) {
@@ -1322,8 +1334,14 @@
           });
 
           prepareMockup(step);
-          const autoSequence = options.forward ? autoSequences[index] : null;
+          const previousView = currentView;
+          const autoSequence = options.forward
+            ? autoSequences[index]
+            : options.backward
+              ? reverseAutoSequences[index]
+              : null;
           if (autoSequence) {
+            setWallpaperForView(previousView);
             playViewSequence(autoSequence);
           } else {
             showTutorialView(step.view ?? "rosary");
@@ -1338,7 +1356,7 @@
         }
 
         prev.addEventListener("click", () => {
-          renderStep(Math.max(0, currentStep - 1));
+          renderStep(Math.max(0, currentStep - 1), { backward: true });
         });
 
         next.addEventListener("click", () => {
