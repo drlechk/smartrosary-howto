@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "Przytrzymaj 5 sekund, aby wyłączyć",
-            body: "Przytrzymaj przycisk urządzenia przez 5 sekund, aby wyłączyć SmartRosary.",
+            title: "Przytrzymaj 3 sekundy, aby wyłączyć",
+            body: "Przytrzymaj przycisk urządzenia przez 3 sekundy, aby wyłączyć SmartRosary.",
             on: true,
             pressed: true,
           },

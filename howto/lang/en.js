@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "Press for 5 seconds to power off",
-            body: "Hold the device button for 5 seconds to power off SmartRosary.",
+            title: "Press for 3 seconds to power off",
+            body: "Hold the device button for 3 seconds to power off SmartRosary.",
             on: true,
             pressed: true,
           },

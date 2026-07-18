@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "Per 5 secundas preme ut exstinguatur",
-            body: "Globulum instrumenti per 5 secundas tene ut SmartRosary exstinguatur.",
+            title: "Per 3 secundas preme ut exstinguatur",
+            body: "Globulum instrumenti per 3 secundas tene ut SmartRosary exstinguatur.",
             on: true,
             pressed: true,
           },

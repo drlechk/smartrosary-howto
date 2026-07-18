@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "Manter premido durante 5 segundos para desligar",
-            body: "Mantenha o botão do dispositivo premido durante 5 segundos para desligar o SmartRosary.",
+            title: "Manter premido durante 3 segundos para desligar",
+            body: "Mantenha o botão do dispositivo premido durante 3 segundos para desligar o SmartRosary.",
             on: true,
             pressed: true,
           },

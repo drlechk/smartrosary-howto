@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "Mantener pulsado 5 segundos para apagar",
-            body: "Mantén pulsado el botón del dispositivo durante 5 segundos para apagar SmartRosary.",
+            title: "Mantener pulsado 3 segundos para apagar",
+            body: "Mantén pulsado el botón del dispositivo durante 3 segundos para apagar SmartRosary.",
             on: true,
             pressed: true,
           },

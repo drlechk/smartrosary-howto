@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "Maintenir pendant 5 secondes pour éteindre",
-            body: "Maintenez le bouton de l’appareil pendant 5 secondes pour éteindre SmartRosary.",
+            title: "Maintenir pendant 3 secondes pour éteindre",
+            body: "Maintenez le bouton de l’appareil pendant 3 secondes pour éteindre SmartRosary.",
             on: true,
             pressed: true,
           },

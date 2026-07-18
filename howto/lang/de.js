@@ -31,8 +31,8 @@
             on: true,
           },
           {
-            title: "5 Sekunden zum Ausschalten drücken",
-            body: "Halte den Geräteknopf 5 Sekunden gedrückt, um SmartRosary auszuschalten.",
+            title: "3 Sekunden zum Ausschalten drücken",
+            body: "Halte den Geräteknopf 3 Sekunden gedrückt, um SmartRosary auszuschalten.",
             on: true,
             pressed: true,
           },
