@@ -93,7 +93,9 @@
         --nav-card-width: 420px;
         --nav-card-height: 510px;
         --nav-content-lift: -18px;
-        --nav-divider-bottom: 288px;
+        --nav-map-scale: 1.25;
+        --nav-map-wrap-width: 218px;
+        --nav-map-wrap-height: 288px;
         --screen-size: calc(var(--device-size) - (var(--case-padding) * 2) - (var(--bezel-padding) * 2));
         min-height: 100svh;
         width: 100%;
@@ -359,9 +361,8 @@
         min-width: 0;
         height: var(--nav-card-height);
         box-sizing: border-box;
-        display: grid;
-        grid-template-rows: auto auto minmax(0, 1fr);
-        align-content: start;
+        display: flex;
+        flex-direction: column;
         transform: translateY(var(--nav-content-lift));
         padding: 16px;
         border: 1px solid rgba(23, 34, 32, 0.16);
@@ -371,16 +372,22 @@
         box-shadow: 0 18px 42px rgba(0, 0, 0, 0.14);
       }
 
-      .nav-card::after {
-        content: "";
-        position: absolute;
-        left: 16px;
-        right: 16px;
-        bottom: var(--nav-divider-bottom);
+      .nav-card__divider {
+        width: 100%;
         height: 1px;
+        margin: auto 0 12px;
+        flex: 0 0 auto;
         background: rgba(23, 34, 32, 0.14);
         box-shadow: 0 1px 0 rgba(255, 255, 255, 0.72);
         pointer-events: none;
+      }
+
+      .nav-map-wrap {
+        position: relative;
+        width: var(--nav-map-wrap-width);
+        height: var(--nav-map-wrap-height);
+        flex: 0 0 auto;
+        align-self: center;
       }
 
       .nav-card h1 {
@@ -423,16 +430,15 @@
       }
 
       .nav-map {
-        position: relative;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
         display: grid;
         grid-template-columns: repeat(6, 29px);
-        grid-template-rows: repeat(9, 23px);
+        grid-template-rows: repeat(10, 23px);
         width: max-content;
         gap: 0;
-        justify-self: center;
-        align-self: end;
-        margin-top: 12px;
-        transform: scale(1.25);
+        transform: translateX(-50%) scale(var(--nav-map-scale));
         transform-origin: center bottom;
       }
 
@@ -596,7 +602,9 @@
           --device-size: min(78vw, clamp(240px, 40svh, 420px));
           --nav-card-height: 490px;
           --nav-content-lift: -18px;
-          --nav-divider-bottom: 288px;
+          --nav-map-scale: 1.25;
+          --nav-map-wrap-width: 218px;
+          --nav-map-wrap-height: 288px;
           padding: clamp(62px, 7svh, 90px) clamp(18px, 5vw, 42px) 28px;
           grid-template-columns: minmax(0, 1fr);
           grid-template-areas:
@@ -658,7 +666,9 @@
           --device-size: min(76vw, clamp(168px, 34svh, 330px));
           --nav-card-height: clamp(252px, 42svh, 322px);
           --nav-content-lift: -16px;
-          --nav-divider-bottom: 170px;
+          --nav-map-scale: 0.92;
+          --nav-map-wrap-width: 133px;
+          --nav-map-wrap-height: 166px;
           padding: clamp(50px, 6svh, 68px) 14px 10px;
           gap: clamp(8px, 1.5svh, 14px);
         }
@@ -682,9 +692,8 @@
           padding: 10px 12px;
         }
 
-        .nav-card::after {
-          left: 12px;
-          right: 12px;
+        .nav-card__divider {
+          margin-bottom: 8px;
         }
 
         .nav-description {
@@ -705,9 +714,7 @@
 
         .nav-map {
           grid-template-columns: repeat(6, 24px);
-          grid-template-rows: repeat(9, 18px);
-          margin-top: 8px;
-          transform: scale(0.92);
+          grid-template-rows: repeat(10, 18px);
         }
 
         .nav-map__item {
@@ -747,7 +754,9 @@
           --device-size: min(64vw, clamp(140px, 27svh, 240px));
           --nav-card-height: 240px;
           --nav-content-lift: -14px;
-          --nav-divider-bottom: 112px;
+          --nav-map-scale: 0.7;
+          --nav-map-wrap-width: 89px;
+          --nav-map-wrap-height: 105px;
           padding-top: 54px;
         }
 
@@ -767,8 +776,7 @@
 
         .nav-map {
           grid-template-columns: repeat(6, 21px);
-          grid-template-rows: repeat(9, 15px);
-          transform: scale(0.7);
+          grid-template-rows: repeat(10, 15px);
         }
 
         .nav-map__dot {
@@ -956,7 +964,7 @@
               </div>
 
               <div class="screen-panel settings-view settings" data-screen="settings1" aria-hidden="true">
-                <div class="settings__num" id="nav-settings-num">1/7</div>
+                <div class="settings__num" id="nav-settings-num">1/8</div>
                 <h1 class="settings__title" id="nav-settings-title"></h1>
                 <div class="settings__option settings__option--first">
                   <div class="settings__label" id="nav-settings-option-selected"></div>
@@ -969,7 +977,7 @@
               </div>
 
               <div class="screen-panel settings2-view settings" data-screen="settings2" aria-hidden="true">
-                <div class="settings__num" id="nav-settings2-num">2/7</div>
+                <div class="settings__num" id="nav-settings2-num">2/8</div>
                 <h1 class="settings__title" id="nav-settings2-title"></h1>
                 <div class="settings__option settings__option--single">
                   <div class="settings__label" id="nav-settings2-option-haptic"></div>
@@ -978,7 +986,7 @@
               </div>
 
               <div class="screen-panel settings3-view settings" data-screen="settings3" aria-hidden="true">
-                <div class="settings__num" id="nav-settings3-num">3/7</div>
+                <div class="settings__num" id="nav-settings3-num">4/8</div>
                 <h1 class="settings__title" id="nav-settings3-title"></h1>
                 <div class="settings__option settings__option--single">
                   <div class="settings__label" id="nav-settings3-option-brightness"></div>
@@ -991,8 +999,54 @@
                 </div>
               </div>
 
+              <div class="screen-panel datetime-view settings" data-screen="datetime" aria-hidden="true">
+                <div class="settings__num" id="nav-datetime-num">5/8</div>
+                <h1 class="settings__title datetime__title" id="nav-datetime-title"></h1>
+                <div class="settings__subtitle datetime__subtitle" id="nav-datetime-subtitle"></div>
+
+                <div class="mystery__roller datetime__roller datetime__roller--hour" role="list">
+                  <div class="mystery__row" role="listitem"><span>17</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>18</span></div>
+                  <div class="mystery__row" role="listitem"><span>19</span></div>
+                </div>
+                <div class="datetime__sep datetime__sep--time-left">:</div>
+
+                <div class="mystery__roller datetime__roller datetime__roller--minute" role="list">
+                  <div class="mystery__row" role="listitem"><span>24</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>25</span></div>
+                  <div class="mystery__row" role="listitem"><span>26</span></div>
+                </div>
+                <div class="datetime__sep datetime__sep--time-right">:</div>
+
+                <div class="mystery__roller datetime__roller datetime__roller--second" role="list">
+                  <div class="mystery__row" role="listitem"><span>08</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>09</span></div>
+                  <div class="mystery__row" role="listitem"><span>10</span></div>
+                </div>
+
+                <div class="mystery__roller datetime__roller datetime__roller--day" role="list">
+                  <div class="mystery__row" role="listitem"><span>06</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>07</span></div>
+                  <div class="mystery__row" role="listitem"><span>08</span></div>
+                </div>
+                <div class="datetime__sep datetime__sep--date-left">.</div>
+
+                <div class="mystery__roller datetime__roller datetime__roller--month" role="list">
+                  <div class="mystery__row" role="listitem"><span>17</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>18</span></div>
+                  <div class="mystery__row" role="listitem"><span>19</span></div>
+                </div>
+                <div class="datetime__sep datetime__sep--date-right">.</div>
+
+                <div class="mystery__roller datetime__roller datetime__roller--year" role="list">
+                  <div class="mystery__row" role="listitem"><span>2025</span></div>
+                  <div class="mystery__row mystery__row--selected" role="listitem"><span>2026</span></div>
+                  <div class="mystery__row" role="listitem"><span>2027</span></div>
+                </div>
+              </div>
+
               <div class="screen-panel settings4-view settings" data-screen="settings4" aria-hidden="true">
-                <div class="settings__num" id="nav-settings4-num">4/7</div>
+                <div class="settings__num" id="nav-settings4-num">6/8</div>
                 <h1 class="settings__title" id="nav-settings4-title"></h1>
                 <div class="settings__option settings__option--single">
                   <div class="settings__label" id="nav-settings4-option-wallpaper"></div>
@@ -1006,7 +1060,7 @@
               </div>
 
               <div class="screen-panel settings5-view settings" data-screen="settings5" aria-hidden="true">
-                <div class="settings__num" id="nav-settings5-num">5/7</div>
+                <div class="settings__num" id="nav-settings5-num">7/8</div>
                 <h1 class="settings__title" id="nav-settings5-title"></h1>
                 <div class="settings__option settings__option--single">
                   <div class="settings__label" id="nav-settings5-option-orientation"></div>
@@ -1019,7 +1073,7 @@
               </div>
 
               <div class="screen-panel settings6-view settings" data-screen="settings6" aria-hidden="true">
-                <div class="settings__num" id="nav-settings6-num">6/7</div>
+                <div class="settings__num" id="nav-settings6-num">3/8</div>
                 <h1 class="settings__title" id="nav-settings6-title"></h1>
                 <div class="settings__option settings__option--single">
                   <div class="settings__label" id="nav-settings6-option-shutdown"></div>
@@ -1060,13 +1114,16 @@
           <p class="nav-optional" id="nav-optional" hidden></p>
           <p class="nav-history-hint" id="nav-history-hint" hidden></p>
         </div>
-        <nav class="nav-map" id="nav-map" aria-label="">
-          <svg class="nav-map__lines" viewBox="0 0 600 306" preserveAspectRatio="none" aria-hidden="true">
-            <line x1="50" y1="51" x2="550" y2="51"></line>
-            <line x1="150" y1="51" x2="150" y2="187"></line>
-            <line x1="350" y1="17" x2="350" y2="289"></line>
-          </svg>
-        </nav>
+        <div class="nav-card__divider" aria-hidden="true"></div>
+        <div class="nav-map-wrap">
+          <nav class="nav-map" id="nav-map" aria-label="">
+            <svg class="nav-map__lines" viewBox="0 0 174 230" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="14.5" y1="34.5" x2="159.5" y2="34.5"></line>
+              <line x1="43.5" y1="34.5" x2="43.5" y2="149.5"></line>
+              <line x1="101.5" y1="11.5" x2="101.5" y2="218.5"></line>
+            </svg>
+          </nav>
+        </div>
       </article>
 
       <aside class="nav-panel" id="nav-panel" aria-label="">
@@ -1109,11 +1166,12 @@
           "intentions-list": { x: 2, y: 0 },
           settings1: { x: 0, y: 1 },
           settings2: { x: 0, y: 2 },
-          settings3: { x: 0, y: 3 },
-          settings4: { x: 0, y: 4 },
-          settings5: { x: 0, y: 5 },
-          settings6: { x: 0, y: 6 },
-          settings7: { x: 0, y: 7 },
+          settings6: { x: 0, y: 3 },
+          settings3: { x: 0, y: 4 },
+          datetime: { x: 0, y: 5 },
+          settings4: { x: 0, y: 6 },
+          settings5: { x: 0, y: 7 },
+          settings7: { x: 0, y: 8 },
         };
         const navigationMap = {
           mystery: { right: "mysteries" },
@@ -1127,12 +1185,13 @@
           intentions: { left: "rosary", right: "intentions-list" },
           "intentions-list": { left: "intentions" },
           settings1: { up: "rosary", down: "settings2" },
-          settings2: { up: "settings1", down: "settings3" },
-          settings3: { up: "settings2", down: "settings4" },
-          settings4: { up: "settings3", down: "settings5" },
-          settings5: { up: "settings4", down: "settings6" },
-          settings6: { up: "settings5", down: "settings7" },
-          settings7: { up: "settings6" },
+          settings2: { up: "settings1", down: "settings6" },
+          settings6: { up: "settings2", down: "settings3" },
+          settings3: { up: "settings6", down: "datetime" },
+          datetime: { up: "settings3", down: "settings4" },
+          settings4: { up: "datetime", down: "settings5" },
+          settings5: { up: "settings4", down: "settings7" },
+          settings7: { up: "settings5" },
         };
         const wallpapers = ["pmkdus", "czestochowa", "fatima", "guadalupe", "jezus"];
         let { common, tutorial, language } = window.SmartRosaryHowtoI18n.getTutorial("nav");
@@ -1248,8 +1307,67 @@
           }
         }
 
+        function formatTwoDigits(value) {
+          return String(value).padStart(2, "0");
+        }
+
+        function setDatetimeRoller(roller, values) {
+          if (!roller) return;
+
+          Array.from(roller.querySelectorAll(".mystery__row")).forEach((row, index) => {
+            const span = row.querySelector("span");
+
+            if (span) span.textContent = values[index] || "";
+            row.classList.toggle("mystery__row--selected", index === 1);
+          });
+        }
+
+        function updateDatetimeRollers(now = new Date()) {
+          const previousDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+          const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+          const hour = now.getHours();
+          const minute = now.getMinutes();
+          const second = now.getSeconds();
+          const month = now.getMonth() + 1;
+          const year = now.getFullYear();
+
+          setDatetimeRoller(document.querySelector(".datetime__roller--hour"), [
+            formatTwoDigits((hour + 23) % 24),
+            formatTwoDigits(hour),
+            formatTwoDigits((hour + 1) % 24),
+          ]);
+          setDatetimeRoller(document.querySelector(".datetime__roller--minute"), [
+            formatTwoDigits((minute + 59) % 60),
+            formatTwoDigits(minute),
+            formatTwoDigits((minute + 1) % 60),
+          ]);
+          setDatetimeRoller(document.querySelector(".datetime__roller--second"), [
+            formatTwoDigits((second + 59) % 60),
+            formatTwoDigits(second),
+            formatTwoDigits((second + 1) % 60),
+          ]);
+          setDatetimeRoller(document.querySelector(".datetime__roller--day"), [
+            formatTwoDigits(previousDay.getDate()),
+            formatTwoDigits(now.getDate()),
+            formatTwoDigits(nextDay.getDate()),
+          ]);
+          setDatetimeRoller(document.querySelector(".datetime__roller--month"), [
+            formatTwoDigits(month === 1 ? 12 : month - 1),
+            formatTwoDigits(month),
+            formatTwoDigits(month === 12 ? 1 : month + 1),
+          ]);
+          setDatetimeRoller(document.querySelector(".datetime__roller--year"), [
+            String(year - 1),
+            String(year),
+            String(year + 1),
+          ]);
+        }
+
         function updateClock() {
-          document.getElementById("nav-time").textContent = new Date().toLocaleTimeString("en-GB", { hour12: false });
+          const now = new Date();
+
+          document.getElementById("nav-time").textContent = now.toLocaleTimeString("en-GB", { hour12: false });
+          updateDatetimeRollers(now);
         }
 
         function renderSettingsQr() {
@@ -1285,18 +1403,18 @@
         function createLegendItem(label, color, value) {
           const item = document.createElement("span");
           item.className = "stats-legend-item";
-          
+
           const swatch = document.createElement("i");
           swatch.className = "stats-color";
           swatch.style.backgroundColor = color;
           swatch.style.boxShadow = `0 0 6px ${color}`;
-          
+
           const whole = Math.floor(value / 5);
           const remainder = value % 5;
-          
+
           const text = document.createTextNode(`${label} ${whole}`);
           item.append(swatch, text);
-          
+
           if (remainder > 0) {
             const dots = document.createElement("div");
             dots.style.display = "inline-flex";
@@ -1312,7 +1430,7 @@
             }
             item.appendChild(dots);
           }
-          
+
           return item;
         }
 
@@ -1369,7 +1487,7 @@
           document.getElementById("nav-stats-total-chaplet").nextElementSibling.textContent = formatTotal(Number(dur.totalChapletMs));
 
           const setRows = [[0, 1, 2], [3, 4], [5]];
-          
+
           // Render pie chart for Sets
           const donut = document.querySelector(".stats__donut");
           if (donut) {
@@ -1388,7 +1506,7 @@
               donut.style.background = `conic-gradient(from 90deg, #808080 0deg 360deg)`;
             }
           }
-          
+
           const legend = document.getElementById("nav-stats-set-legend");
           legend.replaceChildren();
           setRows.forEach((rowIndices) => {
@@ -1400,11 +1518,11 @@
             });
             legend.appendChild(rowDiv);
           });
-          
+
           // Parse base64 history
           const historyChart = document.getElementById("nav-stats-history-chart");
           historyChart.replaceChildren();
-          
+
           let dayData = Array.from({ length: 7 }, () => ({ total: 0, segments: [] }));
           let startTs = 0;
           let endTs = 0;
@@ -1418,45 +1536,45 @@
             const view = new DataView(bytes.buffer);
             const recordSize = 5;
             const recordCount = Math.floor(bytes.buffer.byteLength / recordSize);
-            
+
             // Keep the tutorial deterministic while allowing left/right week navigation.
             const maxTs = 1782907200;
-            
+
             const anchorDate = new Date(maxTs * 1000);
             const daysSinceSunday = anchorDate.getDay();
             anchorDate.setDate(anchorDate.getDate() - daysSinceSunday);
             anchorDate.setDate(anchorDate.getDate() + currentHistoryOffset * 7);
             anchorDate.setHours(0, 0, 0, 0);
-            
+
             startTs = anchorDate.getTime() / 1000;
             const endDate = new Date(anchorDate);
             endDate.setDate(endDate.getDate() + 7);
             endTs = endDate.getTime() / 1000;
-            
+
             const formatDate = (d) => `${d.getDate()}.${d.getMonth() + 1}.${String(d.getFullYear()).slice(-2)}`;
             const endDateFormatted = new Date(endDate);
             endDateFormatted.setDate(endDateFormatted.getDate() - 1);
             document.getElementById("nav-stats-history-label").textContent = `${formatDate(anchorDate)}-${formatDate(endDateFormatted)}`;
-            
+
             for (let i = 0; i < recordCount; i++) {
               const ts = view.getUint32(i * recordSize, true);
               const b0 = view.getUint8(i * recordSize + 4);
               if (ts < startTs || ts >= endTs) continue;
-              
+
               const intention = (b0 & 1) === 1;
               const noDateTime = ((b0 >> 1) & 1) === 1;
               if (noDateTime) continue;
-              
+
               const dec = (b0 >> 2) & 7;
               const pk = (b0 >> 5) & 7;
-              
+
               const idx = Math.floor((ts - startTs) / 86400);
               if (idx >= 0 && idx < 7) {
                 let segmentSet = 0, segmentPart = 0, weight = 1;
                 if (dec === 0) { segmentSet = 5; segmentPart = 0; weight = 5; }
                 else if (dec > 0 && dec <= 5) { segmentSet = pk; segmentPart = dec - 1; weight = 1; }
                 else continue;
-                
+
                 dayData[idx].total += weight;
                 let existingSeg = dayData[idx].segments.find(s => s.set === segmentSet && s.part === segmentPart && s.intention === intention);
                 if (existingSeg) existingSeg.count += weight;
@@ -1464,16 +1582,16 @@
               }
             }
           }
-          
+
           const maxHistory = Math.max(...dayData.map(d => d.total), 0);
-          
+
           if (maxHistory > 0) {
             dayData.forEach((day) => {
               const bar = document.createElement("div");
               bar.className = "stats__history-bar";
               if (day.total > 0) {
                 bar.style.height = `${(day.total / maxHistory) * 100}%`;
-                
+
                 const sortedSegments = [...day.segments].sort((a, b) => {
                   const getRank = (s) => {
                     const segIndex = (s.set === 5) ? 25 : (s.set * 5 + s.part);
@@ -1482,7 +1600,7 @@
                   };
                   return getRank(a) - getRank(b);
                 });
-                
+
                 sortedSegments.forEach(seg => {
                   historyLegendValues[seg.set] += seg.count;
                   const segment = document.createElement("div");
@@ -1500,7 +1618,7 @@
               historyChart.appendChild(bar);
             });
           }
-          
+
           const historyLegend = document.getElementById("nav-stats-history-legend");
           historyLegend.replaceChildren();
           setRows.forEach((rowIndices) => {
@@ -1568,18 +1686,19 @@
           const descriptions = {
             1: `${getLangText("l006", "Start with selected Mystery")} / ${getLangText("l007", "Start with last state")}`,
             2: getLangText("l009", "Haptic feedback (vibration)"),
-            3: getLangText("l010", "Screen brightness"),
-            4: getLangText("l011", "Wallpaper brightness"),
-            5: getLangText("l012", "Screen orientation"),
-            6: getLangText("l021", "Auto shutdown after inactivity"),
-            7: tutorial.deviceInfo.body,
+            3: getLangText("l021", "Auto shutdown after inactivity"),
+            4: getLangText("l010", "Screen brightness"),
+            5: getLangText("l055", "Date/time"),
+            6: getLangText("l011", "Wallpaper brightness"),
+            7: getLangText("l012", "Screen orientation"),
+            8: tutorial.deviceInfo.body,
           };
 
           return descriptions[page];
         }
 
         function getSettingsMapTitle(page) {
-          return page === 7 ? tutorial.deviceInfo.short : getSettingsPageBody(page);
+          return page === 8 ? tutorial.deviceInfo.short : getSettingsPageBody(page);
         }
 
         function getPointCopy(key) {
@@ -1633,14 +1752,24 @@
 
             return statsCopy[key];
           }
-          if (key.startsWith("settings")) {
-            const page = Number(key.replace("settings", ""));
+          const settingsPageByKey = {
+            settings1: 1,
+            settings2: 2,
+            settings6: 3,
+            settings3: 4,
+            datetime: 5,
+            settings4: 6,
+            settings5: 7,
+            settings7: 8,
+          };
+          if (Object.hasOwn(settingsPageByKey, key)) {
+            const page = settingsPageByKey[key];
 
-            if (page === 7) return tutorial.deviceInfo;
+            if (page === 8) return tutorial.deviceInfo;
 
             return {
               short: `${tutorial.settings.short} ${page}`,
-              title: `${tutorial.settings.short} ${page}/7`,
+              title: `${tutorial.settings.short} ${page}/8`,
               body: getSettingsPageBody(page),
             };
           }
@@ -1663,11 +1792,12 @@
             { key: "stats-parts", column: 2, row: 7 },
             { key: "settings1", column: 4, row: 3 },
             { key: "settings2", column: 4, row: 4 },
-            { key: "settings3", column: 4, row: 5 },
-            { key: "settings4", column: 4, row: 6 },
-            { key: "settings5", column: 4, row: 7 },
-            { key: "settings6", column: 4, row: 8 },
-            { key: "settings7", column: 4, row: 9 },
+            { key: "settings6", column: 4, row: 5 },
+            { key: "settings3", column: 4, row: 6 },
+            { key: "datetime", column: 4, row: 7 },
+            { key: "settings4", column: 4, row: 8 },
+            { key: "settings5", column: 4, row: 9 },
+            { key: "settings7", column: 4, row: 10 },
           ];
         }
 
@@ -1684,7 +1814,7 @@
             button.style.gridRow = String(item.row);
             button.dataset.optional = String(Boolean(item.optional));
             button.dataset.action = String(Boolean(item.action));
-            button.dataset.settings = String(item.key.startsWith("settings"));
+            button.dataset.settings = String(item.key.startsWith("settings") || item.key === "datetime");
             button.dataset.history = String(item.key === "stats-history");
             button.setAttribute("aria-label", copy.title);
             if (item.key === activeMapKey) button.setAttribute("aria-current", "page");
@@ -1755,6 +1885,8 @@
           document.getElementById("nav-settings2-option-haptic").textContent = getLangText("l009", "Haptic feedback\n(vibration)");
           document.getElementById("nav-settings3-title").textContent = getLangText("l005", "Settings");
           document.getElementById("nav-settings3-option-brightness").textContent = getLangText("l010", "Screen brightness");
+          document.getElementById("nav-datetime-title").textContent = getLangText("l005", "Settings");
+          document.getElementById("nav-datetime-subtitle").textContent = getLangText("l055", "Date/time");
           document.getElementById("nav-settings4-title").textContent = getLangText("l005", "Settings");
           document.getElementById("nav-settings4-option-wallpaper").textContent = getLangText("l011", "Wallpaper brightness");
           document.getElementById("nav-settings5-title").textContent = getLangText("l005", "Settings");
@@ -1872,11 +2004,11 @@
           if (view === "stats-history") showHistoryGestureHint();
           positionPanels(view);
 
-          [...horizontalViews, ...statsViews, "settings1", "settings2", "settings3", "settings4", "settings5", "settings6", "settings7"].forEach((name) => {
+          [...horizontalViews, ...statsViews, "settings1", "settings2", "settings6", "settings3", "datetime", "settings4", "settings5", "settings7"].forEach((name) => {
             device.classList.toggle(`device--${name}`, name === view);
           });
           device.classList.toggle("device--stats", view.startsWith("stats-"));
-          device.classList.toggle("device--settings", view.startsWith("settings"));
+          device.classList.toggle("device--settings", view.startsWith("settings") || view === "datetime");
 
           if (view === "rosary" && revealWallpaper) {
             if (animate) {

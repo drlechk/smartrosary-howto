@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Def. 1",
-            title: "Definições 1/7: início",
+            title: "Definições 1/8: comportamento inicial",
             body: "Escolha se o rosário começa com o mistério selecionado ou retoma o último estado guardado.",
           },
           settings2: {
             short: "Def. 2",
-            title: "Definições 2/7: háptica",
+            title: "Definições 2/8: háptica",
             body: "Ative ou desative o retorno háptico. Uma vibração breve confirma as interações.",
           },
-          settings3: {
+          settings6: {
             short: "Def. 3",
-            title: "Definições 3/7: brilho do ecrã",
+            title: "Definições 3/8: desligar automático",
+            body: "Escolha quanto tempo o SmartRosary espera sem atividade antes de se desligar automaticamente.",
+          },
+          settings3: {
+            short: "Def. 4",
+            title: "Definições 4/8: brilho do ecrã",
             body: "Ajuste o brilho do ecrã. Reduza-o para maior autonomia ou aumente-o em ambientes luminosos.",
           },
+          datetime: {
+            short: "Def. 5",
+            title: "Definições 5/8: data e hora",
+            body: "Mostra a data e a hora atuais. Os seletores usam o relógio sincronizado com o navegador na maquete.",
+          },
           settings4: {
-            short: "Def. 4",
-            title: "Definições 4/7: brilho do fundo",
+            short: "Def. 6",
+            title: "Definições 6/8: brilho do fundo",
             body: "Defina a intensidade com que o fundo aparece atrás do ecrã do rosário.",
           },
           settings5: {
-            short: "Def. 5",
-            title: "Definições 5/7: orientação",
+            short: "Def. 7",
+            title: "Definições 7/8: orientação",
             body: "Rode a orientação do ecrã para corresponder à forma como o dispositivo é usado ou segurado.",
-          },
-          settings6: {
-            short: "Def. 6",
-            title: "Definições 6/7: desligar automático",
-            body: "Escolha quanto tempo o SmartRosary espera sem atividade antes de se desligar automaticamente.",
           },
           settings7: {
             short: "Info do dispositivo",
-            title: "Definições 7/7: informações do dispositivo",
+            title: "Definições 8/8: informações do dispositivo",
             body: "A última página mostra o ID do dispositivo, as versões do firmware e idioma e o código QR do SmartRosary.",
           },
         },

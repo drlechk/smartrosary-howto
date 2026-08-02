@@ -357,6 +357,20 @@ window.registerNvsEditorFixture({
         "encoding": "utf-8"
       },
       {
+        "namespace": "lang",
+        "key": "l055",
+        "value": "Datum/Uhrzeit",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l056",
+        "value": "Zeit/Datum anpassen",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
         "namespace": "mysteries",
         "key": "mS",
         "value": "-\nFreudenvolle (Mo. | Sa.)\nLichtreiche (Do.)\nSchmerzhafte (Di. | Fr.)\nGlorreiche (Mi. | So.)\nKorone\nAnliegen",

@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Settings 1",
-            title: "Settings 1/7: start behavior",
+            title: "Settings 1/8: start behavior",
             body: "Choose whether the rosary starts with the selected mystery or resumes from the last saved state.",
           },
           settings2: {
             short: "Settings 2",
-            title: "Settings 2/7: haptics",
+            title: "Settings 2/8: haptics",
             body: "Enable or disable haptic feedback. It confirms interactions with a short vibration.",
           },
-          settings3: {
+          settings6: {
             short: "Settings 3",
-            title: "Settings 3/7: screen brightness",
+            title: "Settings 3/8: auto shutdown",
+            body: "Choose how long SmartRosary waits without activity before it powers itself off.",
+          },
+          settings3: {
+            short: "Settings 4",
+            title: "Settings 4/8: screen brightness",
             body: "Adjust the display brightness. Lower it for longer runtime or raise it for brighter surroundings.",
           },
+          datetime: {
+            short: "Settings 5",
+            title: "Settings 5/8: date and time",
+            body: "View the current date and time. The rollers show the browser-synced clock used by the mockup.",
+          },
           settings4: {
-            short: "Settings 4",
-            title: "Settings 4/7: wallpaper brightness",
+            short: "Settings 6",
+            title: "Settings 6/8: wallpaper brightness",
             body: "Set how strongly the wallpaper is visible behind the Rosary screen.",
           },
           settings5: {
-            short: "Settings 5",
-            title: "Settings 5/7: orientation",
+            short: "Settings 7",
+            title: "Settings 7/8: orientation",
             body: "Rotate the display orientation so the screen matches how the device is worn or held.",
-          },
-          settings6: {
-            short: "Settings 6",
-            title: "Settings 6/7: auto shutdown",
-            body: "Choose how long SmartRosary waits without activity before it powers itself off.",
           },
           settings7: {
             short: "Device Info",
-            title: "Settings 7/7: Device Info",
+            title: "Settings 8/8: Device Info",
             body: "The last settings page shows the device ID, firmware and language versions, and the QR code for the SmartRosary website.",
           },
         },

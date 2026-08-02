@@ -357,6 +357,20 @@ window.registerNvsEditorFixture({
         "encoding": "utf-8"
       },
       {
+        "namespace": "lang",
+        "key": "l055",
+        "value": "Dies/tempus",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l056",
+        "value": "Tempus/diem compone",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
         "namespace": "mysteries",
         "key": "mS",
         "value": "-\ngaudiosa (lun.|sab.)\nluminosa (iov.)\ndolorosa (mar.|ven.)\ngloriosa (mer.|dom.)\nCoronula\nIntentio",

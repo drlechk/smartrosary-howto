@@ -357,6 +357,20 @@ window.registerNvsEditorFixture({
         "encoding": "utf-8"
       },
       {
+        "namespace": "lang",
+        "key": "l055",
+        "value": "Data/hora",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l056",
+        "value": "Ajustar data/hora",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
         "namespace": "mysteries",
         "key": "mS",
         "value": "-\nGozosos (seg. | sáb.)\nLuminosos (qui.)\nDolorosos (ter. | sex.)\nGloriosos (qua. | dom.)\nTerço da Misericórdia\nIntenção",

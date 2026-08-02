@@ -6,7 +6,7 @@
 
       let statsData = window.MOCKUP_STATS_DATA || null;
       let historyDataBuffer = null;
-      
+
       if (window.MOCKUP_HISTORY_B64) {
         const binaryString = atob(window.MOCKUP_HISTORY_B64);
         const len = binaryString.length;
@@ -94,6 +94,17 @@
       const settings6Title = document.getElementById("settings6-title");
       const settings6OptionShutdown = document.getElementById("settings6-option-shutdown");
       const settings6ShutdownNever = document.getElementById("settings6-shutdown-never");
+      const datetimeNum = document.getElementById("datetime-num");
+      const datetimeTitle = document.getElementById("datetime-title");
+      const datetimeSubtitle = document.getElementById("datetime-subtitle");
+      const datetimeRollers = {
+        hour: document.querySelector(".datetime__roller--hour"),
+        minute: document.querySelector(".datetime__roller--minute"),
+        second: document.querySelector(".datetime__roller--second"),
+        day: document.querySelector(".datetime__roller--day"),
+        month: document.querySelector(".datetime__roller--month"),
+        year: document.querySelector(".datetime__roller--year"),
+      };
       const settings7Url = document.getElementById("settings7-url");
       const settings7More = document.getElementById("settings7-more");
       const settings7Qr = document.getElementById("settings7-qr");
@@ -230,25 +241,25 @@
         pl: {
           title: "Tajemnice",
           mysteryTitle: "Tajemnica",
-          settingsNum: "1/7",
+          settingsNum: "1/8",
           settingsTitle: "Ustawienia",
           settingsOptionSelected: "Rozpocznij różaniec z wybraną Tajemnicą",
           settingsOptionLast: "Rozpocznij różaniec z ostatnim stanem",
-          settings2Num: "2/7",
+          settings2Num: "2/8",
           settings2Title: "Ustawienia",
           settings2OptionHaptic: "Haptyczna informacja zwrotna (wibracja)",
-          settings3Num: "3/7",
+          settings3Num: "4/8",
           settings3Title: "Ustawienia",
           settings3OptionBrightness: "Jasność ekranu",
           settings3Value: "60%",
-          settings4Num: "4/7",
+          settings4Num: "6/8",
           settings4Title: "Ustawienia",
           settings4OptionTapBrightness: "Jasność tapety",
           settings4Value: "0%",
-          settings5Num: "5/7",
+          settings5Num: "7/8",
           settings5Title: "Ustawienia",
           settings5OptionOrientation: "Orientacja ekranu",
-          settings6Num: "6/7",
+          settings6Num: "3/8",
           settings6Title: "Ustawienia",
           settings6OptionShutdown: "Auto wyłączenie",
           settings7Url: "rosary-A1B2D3E4",
@@ -264,25 +275,25 @@
         en: {
           title: "Mysteries",
           mysteryTitle: "Mystery",
-          settingsNum: "1/7",
+          settingsNum: "1/8",
           settingsTitle: "Settings",
           settingsOptionSelected: "Start rosary with selected Mystery",
           settingsOptionLast: "Start rosary with last state",
-          settings2Num: "2/7",
+          settings2Num: "2/8",
           settings2Title: "Settings",
           settings2OptionHaptic: "Haptic feedback (vibration)",
-          settings3Num: "3/7",
+          settings3Num: "4/8",
           settings3Title: "Settings",
           settings3OptionBrightness: "Screen brightness",
           settings3Value: "60%",
-          settings4Num: "4/7",
+          settings4Num: "6/8",
           settings4Title: "Settings",
           settings4OptionTapBrightness: "Wallpaper brightness",
           settings4Value: "0%",
-          settings5Num: "5/7",
+          settings5Num: "7/8",
           settings5Title: "Settings",
           settings5OptionOrientation: "Screen orientation",
-          settings6Num: "6/7",
+          settings6Num: "3/8",
           settings6Title: "Settings",
           settings6OptionShutdown: "Auto shutdown",
           settings7Url: "rosary-A1B2D3E4",
@@ -298,25 +309,25 @@
         de: {
           title: "Geheimnisse",
           mysteryTitle: "Geheimnis",
-          settingsNum: "1/7",
+          settingsNum: "1/8",
           settingsTitle: "Einstellungen",
           settingsOptionSelected: "Rosenkranz mit gewähltem Geheimnis starten",
           settingsOptionLast: "Rosenkranz mit letztem Zustand starten",
-          settings2Num: "2/7",
+          settings2Num: "2/8",
           settings2Title: "Einstellungen",
           settings2OptionHaptic: "Haptische Rückmeldung (Vibration)",
-          settings3Num: "3/7",
+          settings3Num: "4/8",
           settings3Title: "Einstellungen",
           settings3OptionBrightness: "Bildschirmhelligkeit",
           settings3Value: "60%",
-          settings4Num: "4/7",
+          settings4Num: "6/8",
           settings4Title: "Einstellungen",
           settings4OptionTapBrightness: "Hintergrundhelligkeit",
           settings4Value: "0%",
-          settings5Num: "5/7",
+          settings5Num: "7/8",
           settings5Title: "Einstellungen",
           settings5OptionOrientation: "Bildschirmausrichtung",
-          settings6Num: "6/7",
+          settings6Num: "3/8",
           settings6Title: "Einstellungen",
           settings6OptionShutdown: "Automatisches Herunterfahren",
           settings7Url: "rosary-A1B2D3E4",
@@ -395,14 +406,14 @@
       const historyBucketKeys = ["l045", "l046", "l047", "l048"];
       const historyBucketFallbacks = ["day", "week", "month", "year"];
       const historyBucketBars = [12, 7, 31, 12];
-      
+
       function formatHistoryLabel(bucketIndex, startTs, endTs) {
          const s = new Date(startTs * 1000);
          const e = new Date((endTs - 1) * 1000);
-         
+
          const fmt = (d) => `${d.getDate()}.${d.getMonth() + 1}.${String(d.getFullYear()).slice(-2).padStart(2, '0')}`;
          const fmtMY = (d) => `${d.getMonth() + 1}.${String(d.getFullYear()).slice(-2).padStart(2, '0')}`;
-         
+
          if (bucketIndex === 0) {
             return fmt(s);
          } else if (bucketIndex === 1) {
@@ -418,12 +429,12 @@
       function getHistoryDataset(bucketIndex, offset) {
         const numBars = historyBucketBars[bucketIndex];
         const data = Array.from({length: numBars}, () => ({total: 0, segments: []}));
-        
+
         const anchorTime = Math.floor(Date.now() / 1000);
         const anchorDate = new Date(anchorTime * 1000);
         let startTs = 0;
         let endTs = 0;
-        
+
         if (bucketIndex === 0) {
           anchorDate.setDate(anchorDate.getDate() + offset);
           startTs = new Date(anchorDate.getFullYear(), anchorDate.getMonth(), anchorDate.getDate()).getTime() / 1000;
@@ -442,26 +453,26 @@
           startTs = new Date(anchorDate.getFullYear(), 0, 1).getTime() / 1000;
           endTs = new Date(anchorDate.getFullYear() + 1, 0, 1).getTime() / 1000;
         }
-        
+
         const label = formatHistoryLabel(bucketIndex, startTs, endTs);
         if (!historyDataBuffer) return { data, label };
-        
+
         const view = new DataView(historyDataBuffer);
         const recordSize = 5;
         const recordCount = Math.floor(historyDataBuffer.byteLength / recordSize);
-        
+
         for (let i = 0; i < recordCount; i++) {
           const ts = view.getUint32(i * recordSize, true);
           const b0 = view.getUint8(i * recordSize + 4);
-          
+
           if (ts < startTs || ts >= endTs) continue;
-          
+
           const intention = (b0 & 1) === 1;
           const noDateTime = ((b0 >> 1) & 1) === 1;
           if (noDateTime) continue;
           const dec = (b0 >> 2) & 7;
           const pk = (b0 >> 5) & 7;
-          
+
           let idx = 0;
           if (bucketIndex === 0) {
             idx = Math.floor((ts - startTs) / (2 * 3600));
@@ -471,7 +482,7 @@
             const d = new Date(ts * 1000);
             idx = d.getMonth();
           }
-          
+
           if (idx >= 0 && idx < numBars) {
             let segmentSet = 0, segmentPart = 0, weight = 1;
             if (dec === 0) {
@@ -482,7 +493,7 @@
                segmentSet = (pk <= 4) ? pk : 0;
                segmentPart = (dec >= 1 && dec <= 5) ? dec - 1 : 0;
             }
-            
+
             let barData = data[idx];
             let existingSeg = barData.segments.find(s => s.set === segmentSet && s.part === segmentPart && s.intention === intention);
             if (existingSeg) {
@@ -493,7 +504,7 @@
             barData.total += weight;
           }
         }
-        
+
         return {
           data: data,
           label: formatHistoryLabel(bucketIndex, startTs, endTs)
@@ -513,12 +524,13 @@
         intentions: { left: "rosary", right: "intentions-list" },
         "intentions-list": { left: "intentions" },
         settings1: { up: "rosary", down: "settings2" },
-        settings2: { up: "settings1", down: "settings3" },
-        settings3: { up: "settings2", down: "settings4" },
-        settings4: { up: "settings3", down: "settings5" },
-        settings5: { up: "settings4", down: "settings6" },
-        settings6: { up: "settings5", down: "settings7" },
-        settings7: { up: "settings6" },
+        settings2: { up: "settings1", down: "settings6" },
+        settings6: { up: "settings2", down: "settings3" },
+        settings3: { up: "settings6", down: "datetime" },
+        datetime: { up: "settings3", down: "settings4" },
+        settings4: { up: "datetime", down: "settings5" },
+        settings5: { up: "settings4", down: "settings7" },
+        settings7: { up: "settings5" },
       };
       const screenPositions = {
         mystery: { x: -2, y: 0 },
@@ -533,11 +545,12 @@
         "intentions-list": { x: 2, y: 0 },
         settings1: { x: 0, y: 1 },
         settings2: { x: 0, y: 2 },
-        settings3: { x: 0, y: 3 },
-        settings4: { x: 0, y: 4 },
-        settings5: { x: 0, y: 5 },
-        settings6: { x: 0, y: 6 },
-        settings7: { x: 0, y: 7 },
+        settings6: { x: 0, y: 3 },
+        settings3: { x: 0, y: 4 },
+        datetime: { x: 0, y: 5 },
+        settings4: { x: 0, y: 6 },
+        settings5: { x: 0, y: 7 },
+        settings7: { x: 0, y: 8 },
         fwupdate: { x: 1, y: 6 },
       };
       const transitionClasses = [
@@ -629,6 +642,64 @@
 
       function updateTime() {
         timeDisplay.textContent = timeControl.value || "18:25:09";
+      }
+
+      function formatTwoDigits(value) {
+        return String(value).padStart(2, "0");
+      }
+
+      function setDatetimeRoller(roller, values) {
+        if (!roller) return;
+
+        const rows = Array.from(roller.querySelectorAll(".mystery__row"));
+        rows.forEach((row, index) => {
+          const span = row.querySelector("span");
+
+          if (span) span.textContent = values[index] ?? "";
+          row.classList.toggle("mystery__row--selected", index === 1);
+        });
+      }
+
+      function updateDatetimeRollers() {
+        const now = new Date();
+        const previousDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+        const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const second = now.getSeconds();
+        const month = now.getMonth() + 1;
+        const year = now.getFullYear();
+
+        setDatetimeRoller(datetimeRollers.hour, [
+          formatTwoDigits((hour + 23) % 24),
+          formatTwoDigits(hour),
+          formatTwoDigits((hour + 1) % 24),
+        ]);
+        setDatetimeRoller(datetimeRollers.minute, [
+          formatTwoDigits((minute + 59) % 60),
+          formatTwoDigits(minute),
+          formatTwoDigits((minute + 1) % 60),
+        ]);
+        setDatetimeRoller(datetimeRollers.second, [
+          formatTwoDigits((second + 59) % 60),
+          formatTwoDigits(second),
+          formatTwoDigits((second + 1) % 60),
+        ]);
+        setDatetimeRoller(datetimeRollers.day, [
+          formatTwoDigits(previousDay.getDate()),
+          formatTwoDigits(now.getDate()),
+          formatTwoDigits(nextDay.getDate()),
+        ]);
+        setDatetimeRoller(datetimeRollers.month, [
+          formatTwoDigits(month === 1 ? 12 : month - 1),
+          formatTwoDigits(month),
+          formatTwoDigits(month === 12 ? 1 : month + 1),
+        ]);
+        setDatetimeRoller(datetimeRollers.year, [
+          String(year - 1),
+          String(year),
+          String(year + 1),
+        ]);
       }
 
       function updateBrowserTime() {
@@ -724,8 +795,9 @@
         const isSettings5 = viewName === "settings5";
         const isSettings6 = viewName === "settings6";
         const isSettings7 = viewName === "settings7";
+        const isDatetime = viewName === "datetime";
         const isFwUpdate = viewName === "fwupdate";
-        const isSettings = isSettings1 || isSettings2 || isSettings3 || isSettings4 || isSettings5 || isSettings6 || isSettings7;
+        const isSettings = isSettings1 || isSettings2 || isSettings3 || isSettings4 || isSettings5 || isSettings6 || isSettings7 || isDatetime;
 
         device.classList.toggle("device--mysteries", isMysteries);
         device.classList.toggle("device--stats", isStats);
@@ -741,6 +813,7 @@
         device.classList.toggle("device--settings5", isSettings5);
         device.classList.toggle("device--settings6", isSettings6);
         device.classList.toggle("device--settings7", isSettings7);
+        device.classList.toggle("device--datetime", isDatetime);
         device.classList.toggle("device--rosary", !isMysteries && !isStats && !isMystery && !isIntentions && !isIntentionsList && !isSettings && !isFwUpdate);
       }
 
@@ -773,7 +846,7 @@
           const direction = button.dataset.navDirection;
           const target = navigationMap[currentView]?.[direction];
           let hasAction = currentView === "rosary" && direction === "up";
-          
+
           if (currentView === "stats-history") {
             if (direction === "left") hasAction = true;
             if (direction === "right") hasAction = currentHistoryOffset < 0;
@@ -1142,19 +1215,19 @@ function renderRosaryMysteryScrollText() {
         function createLegendItem(label, color, valueInFifths) {
           const whole = Math.floor(valueInFifths / 5);
           const frac = valueInFifths % 5;
-          
+
           const item = document.createElement("span");
           item.style.display = "inline-flex";
           item.style.alignItems = "center";
-          
+
           const swatch = document.createElement("i");
           swatch.className = "stats-color";
           swatch.style.backgroundColor = color;
           swatch.style.boxShadow = `0 0 6px ${color}`;
-          
+
           item.appendChild(swatch);
           item.appendChild(document.createTextNode(`${label} ${whole}`));
-          
+
           if (frac > 0) {
             const dots = document.createElement("div");
             dots.style.display = "inline-flex";
@@ -1191,7 +1264,7 @@ function renderRosaryMysteryScrollText() {
             donut.style.background = `conic-gradient(from 90deg, #808080 0deg 360deg)`;
           }
         }
-        
+
         const setRows = [[0, 1, 2], [3, 4], [5]];
         setRows.forEach((rowIndices) => {
           const rowDiv = document.createElement("div");
@@ -1245,13 +1318,13 @@ function renderRosaryMysteryScrollText() {
         statsHistorySelector.textContent = getLangText(bucketKey, bucketFallback);
         statsHistoryChart.replaceChildren();
         statsHistoryLegend.replaceChildren();
-        
+
         const historyDataResult = getHistoryDataset(currentHistoryBucketIndex, currentHistoryOffset);
         const currentDataset = historyDataResult.data;
         statsHistoryLabel.textContent = historyDataResult.label;
         const maxHistory = Math.max(...currentDataset.map(d => d.total), 0);
         let legendValues = [0, 0, 0, 0, 0, 0];
-        
+
         if (maxHistory > 0) {
           currentDataset.forEach((dayData) => {
             const bar = document.createElement("div");
@@ -1259,7 +1332,7 @@ function renderRosaryMysteryScrollText() {
             if (dayData.total > 0) {
               const h = (dayData.total / maxHistory) * 100;
               bar.style.height = `${h}%`;
-              
+
               const sortedSegments = [...dayData.segments].sort((a, b) => {
                 const getRank = (s) => {
                   const segIndex = (s.set === 5) ? 25 : (s.set * 5 + s.part);
@@ -1271,17 +1344,17 @@ function renderRosaryMysteryScrollText() {
                 };
                 return getRank(a) - getRank(b);
               });
-              
+
               sortedSegments.forEach(seg => {
                 legendValues[seg.set] += seg.count;
-                
+
                 const segment = document.createElement("div");
                 segment.className = "stats__history-segment";
                 if (seg.intention) segment.classList.add("stats__history-segment--intention");
-                
+
                 const segH = (seg.count / dayData.total) * 100;
                 segment.style.setProperty("--h", `${segH}%`);
-                
+
                 if (seg.set === 5) {
                   segment.style.setProperty("--c", statsSetColors[5]);
                 } else {
@@ -1293,7 +1366,7 @@ function renderRosaryMysteryScrollText() {
             statsHistoryChart.appendChild(bar);
           });
         }
-        
+
         const rows = [[0, 1, 2], [3, 4], [5]];
         rows.forEach((rowIndices) => {
           const rowDiv = document.createElement("div");
@@ -1316,28 +1389,33 @@ function renderRosaryMysteryScrollText() {
         intentionsListTitle.textContent = getLangText("l004", "Intentions");
         renderIntentionsRoller();
         renderIntentionDetail();
-        settingsNum.textContent = "1/7";
+        settingsNum.textContent = "1/8";
         settingsTitle.textContent = getLangText("l005", "Settings");
         settingsOptionSelected.textContent = getLangText("l006", "Start the rosary\nwith the selected Mystery");
         settingsOptionLast.textContent = getLangText("l007", "Start the rosary\nwith the last state");
-        settings2Num.textContent = "2/7";
+        settings2Num.textContent = "2/8";
         settings2Title.textContent = getLangText("l005", "Settings");
         settings2OptionHaptic.textContent = getLangText("l009", "Haptic feedback\n(vibration)");
-        settings3Num.textContent = "3/7";
+        settings3Num.textContent = "4/8";
         settings3Title.textContent = getLangText("l005", "Settings");
         settings3OptionBrightness.textContent = getLangText("l010", "Screen brightness");
         setDisplayBrightness(brightnessControl.value);
-        settings4Num.textContent = "4/7";
+        settings4Num.textContent = "6/8";
         settings4Title.textContent = getLangText("l005", "Settings");
         settings4OptionTapBrightness.textContent = getLangText("l011", "Wallpaper brightness");
-        settings5Num.textContent = "5/7";
+        settings5Num.textContent = "7/8";
         settings5Title.textContent = getLangText("l005", "Settings");
         settings5OptionOrientation.textContent = getLangText("l012", "Screen orientation");
 
-        settings6Num.textContent = "6/7";
+        settings6Num.textContent = "3/8";
         settings6Title.textContent = getLangText("l005", "Settings");
         settings6OptionShutdown.textContent = getLangText("l021", "Auto shutdown\nafter inactivity");
         settings6ShutdownNever.textContent = getLangText("l022", "Never");
+
+        if (datetimeNum) datetimeNum.textContent = "5/8";
+        if (datetimeTitle) datetimeTitle.textContent = getLangText("l005", "Settings");
+        if (datetimeSubtitle) datetimeSubtitle.textContent = getLangText("l055", "Date/time");
+
         updateVersionInfo();
         fwupdateTitle.textContent = getLangText("l013", "System\nupdate");
         fwupdateFile.textContent = "firmware.bin";
@@ -1563,6 +1641,8 @@ function renderRosaryMysteryScrollText() {
       backgroundControl.addEventListener("change", updateBackground);
       backgroundOpacityControl.addEventListener("input", updateBackground);
       updateBrowserTimeMode();
+      updateDatetimeRollers();
+      setInterval(updateDatetimeRollers, 1000);
       settings4Slider.setAttribute("aria-valuenow", backgroundOpacityControl.value);
       setDisplayBrightness(brightnessControl.value);
       updateBattery();

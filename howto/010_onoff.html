@@ -541,6 +541,7 @@
             <option value="settings5">Settings5</option>
             <option value="settings6">Settings6</option>
             <option value="settings7">Settings7</option>
+            <option value="datetime">Datetime</option>
             <option value="fwupdate">FWUpdate</option>
           </select>
         </label>
@@ -790,7 +791,7 @@
             </div>
 
             <div class="screen-panel settings-view settings" data-screen="settings1" aria-hidden="true">
-              <div class="settings__num" id="settings-num">1/7</div>
+              <div class="settings__num" id="settings-num">1/8</div>
               <h1 class="settings__title" id="settings-title">Ustawienia</h1>
               <div class="settings__option settings__option--first">
                 <div class="settings__label" id="settings-option-selected">Rozpocznij różaniec z wybraną Tajemnicą</div>
@@ -803,7 +804,7 @@
             </div>
 
             <div class="screen-panel settings2-view settings" data-screen="settings2" aria-hidden="true">
-              <div class="settings__num" id="settings2-num">2/7</div>
+              <div class="settings__num" id="settings2-num">2/8</div>
               <h1 class="settings__title" id="settings2-title">Ustawienia</h1>
               <div class="settings__option settings__option--single">
                 <div class="settings__label" id="settings2-option-haptic">Haptyczna informacja zwrotna (wibracja)</div>
@@ -812,7 +813,7 @@
             </div>
 
             <div class="screen-panel settings3-view settings" data-screen="settings3" aria-hidden="true">
-              <div class="settings__num" id="settings3-num">3/7</div>
+              <div class="settings__num" id="settings3-num">4/8</div>
               <h1 class="settings__title" id="settings3-title">Ustawienia</h1>
               <div class="settings__option settings__option--single">
                 <div class="settings__label" id="settings3-option-brightness">Jasność ekranu</div>
@@ -826,7 +827,7 @@
             </div>
 
             <div class="screen-panel settings4-view settings" data-screen="settings4" aria-hidden="true">
-              <div class="settings__num" id="settings4-num">4/7</div>
+              <div class="settings__num" id="settings4-num">6/8</div>
               <h1 class="settings__title" id="settings4-title">Ustawienia</h1>
               <div class="settings__option settings__option--single">
                 <div class="settings__label" id="settings4-option-tap-brightness">Jasność tapety</div>
@@ -840,7 +841,7 @@
             </div>
 
             <div class="screen-panel settings5-view settings" data-screen="settings5" aria-hidden="true">
-              <div class="settings__num" id="settings5-num">5/7</div>
+              <div class="settings__num" id="settings5-num">7/8</div>
               <h1 class="settings__title" id="settings5-title">Ustawienia</h1>
               <div class="settings__option settings__option--single">
                 <div class="settings__label" id="settings5-option-orientation">Orientacja ekranu</div>
@@ -853,7 +854,7 @@
             </div>
 
             <div class="screen-panel settings6-view settings" data-screen="settings6" aria-hidden="true">
-              <div class="settings__num" id="settings6-num">6/7</div>
+              <div class="settings__num" id="settings6-num">3/8</div>
               <h1 class="settings__title" id="settings6-title">Ustawienia</h1>
               <div class="settings__option settings__option--single">
                 <div class="settings__label" id="settings6-option-shutdown">Auto wyłączenie</div>
@@ -871,6 +872,54 @@
                 <rect width="40" height="40" fill="#fff"></rect>
               </svg>
               <div class="settings__qr-more" id="settings7-more">v1.28 · pl v1.0</div>
+            </div>
+
+            <div class="screen-panel datetime-view settings" data-screen="datetime" aria-hidden="true">
+              <div class="settings__num" id="datetime-num">5/8</div>
+              <h1 class="settings__title datetime__title" id="datetime-title">Ustawienia</h1>
+              <div class="settings__subtitle datetime__subtitle" id="datetime-subtitle">Data/czas</div>
+
+              <!-- Time Rollers (y: 88) -->
+              <div class="mystery__roller datetime__roller datetime__roller--hour" role="list">
+                <div class="mystery__row" role="listitem"><span>17</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>18</span></div>
+                <div class="mystery__row" role="listitem"><span>19</span></div>
+              </div>
+              <div class="datetime__sep datetime__sep--time-left">:</div>
+
+              <div class="mystery__roller datetime__roller datetime__roller--minute" role="list">
+                <div class="mystery__row" role="listitem"><span>24</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>25</span></div>
+                <div class="mystery__row" role="listitem"><span>26</span></div>
+              </div>
+              <div class="datetime__sep datetime__sep--time-right">:</div>
+
+              <div class="mystery__roller datetime__roller datetime__roller--second" role="list">
+                <div class="mystery__row" role="listitem"><span>08</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>09</span></div>
+                <div class="mystery__row" role="listitem"><span>10</span></div>
+              </div>
+
+              <!-- Date Rollers (y: 138) -->
+              <div class="mystery__roller datetime__roller datetime__roller--day" role="list">
+                <div class="mystery__row" role="listitem"><span>06</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>07</span></div>
+                <div class="mystery__row" role="listitem"><span>08</span></div>
+              </div>
+              <div class="datetime__sep datetime__sep--date-left">.</div>
+
+              <div class="mystery__roller datetime__roller datetime__roller--month" role="list">
+                <div class="mystery__row" role="listitem"><span>17</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>18</span></div>
+                <div class="mystery__row" role="listitem"><span>19</span></div>
+              </div>
+              <div class="datetime__sep datetime__sep--date-right">.</div>
+
+              <div class="mystery__roller datetime__roller datetime__roller--year" role="list">
+                <div class="mystery__row" role="listitem"><span>2025</span></div>
+                <div class="mystery__row mystery__row--selected" role="listitem"><span>2026</span></div>
+                <div class="mystery__row" role="listitem"><span>2027</span></div>
+              </div>
             </div>
 
             <div class="screen-panel fwupdate-view fwupdate" data-screen="fwupdate" aria-hidden="true">
@@ -1107,7 +1156,7 @@
           renderStep(Math.min(steps.length - 1, currentStep + 1));
         });
 
-        
+
         const howtoSelector = document.getElementById("howto-selector");
         if (howtoSelector) {
           howtoSelector.value = "010_onoff.html";
@@ -1121,7 +1170,7 @@
           selectLanguage(languageSelect.value);
         });
 
-        
+
         function buildBeads() {
           const beads = document.getElementById("beads");
           if (!beads) return;

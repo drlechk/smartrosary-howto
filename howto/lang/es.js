@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Ajustes 1",
-            title: "Ajustes 1/7: inicio",
+            title: "Ajustes 1/8: comportamiento inicial",
             body: "Elige si el rosario empieza con el misterio seleccionado o continúa desde el último estado guardado.",
           },
           settings2: {
             short: "Ajustes 2",
-            title: "Ajustes 2/7: háptica",
+            title: "Ajustes 2/8: háptica",
             body: "Activa o desactiva la respuesta háptica. Una vibración breve confirma las interacciones.",
           },
-          settings3: {
+          settings6: {
             short: "Ajustes 3",
-            title: "Ajustes 3/7: brillo de pantalla",
+            title: "Ajustes 3/8: apagado automático",
+            body: "Elige cuánto tiempo espera SmartRosary sin actividad antes de apagarse automáticamente.",
+          },
+          settings3: {
+            short: "Ajustes 4",
+            title: "Ajustes 4/8: brillo de pantalla",
             body: "Ajusta el brillo de la pantalla. Bájalo para más autonomía o súbelo en entornos luminosos.",
           },
+          datetime: {
+            short: "Ajustes 5",
+            title: "Ajustes 5/8: fecha y hora",
+            body: "Muestra la fecha y hora actuales. Los selectores usan el reloj sincronizado con el navegador en la maqueta.",
+          },
           settings4: {
-            short: "Ajustes 4",
-            title: "Ajustes 4/7: brillo del fondo",
+            short: "Ajustes 6",
+            title: "Ajustes 6/8: brillo del fondo",
             body: "Define con qué intensidad se ve el fondo detrás de la pantalla del rosario.",
           },
           settings5: {
-            short: "Ajustes 5",
-            title: "Ajustes 5/7: orientación",
+            short: "Ajustes 7",
+            title: "Ajustes 7/8: orientación",
             body: "Gira la orientación de la pantalla para adaptarla a cómo llevas o sujetas el dispositivo.",
-          },
-          settings6: {
-            short: "Ajustes 6",
-            title: "Ajustes 6/7: apagado automático",
-            body: "Elige cuánto tiempo espera SmartRosary sin actividad antes de apagarse automáticamente.",
           },
           settings7: {
             short: "Info del dispositivo",
-            title: "Ajustes 7/7: información del dispositivo",
+            title: "Ajustes 8/8: información del dispositivo",
             body: "La última página de ajustes muestra el ID del dispositivo, las versiones de firmware e idioma y el código QR de SmartRosary.",
           },
         },

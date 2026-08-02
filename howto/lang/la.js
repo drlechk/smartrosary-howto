@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Opt. 1",
-            title: "Optiones 1/7: initium",
-            body: "Elige utrum rosarium a mysterio electo incipiat an statum novissime servatum recipiat.",
+            title: "Optiones 1/8: initium",
+            body: "Elige utrum rosarium a mysterio electo incipiat an statum novissime servatum resumere debeat.",
           },
           settings2: {
             short: "Opt. 2",
-            title: "Optiones 2/7: tactus",
+            title: "Optiones 2/8: tactus",
             body: "Responsionem hapticam activa vel exstingue. Brevis vibratio actiones confirmat.",
           },
-          settings3: {
+          settings6: {
             short: "Opt. 3",
-            title: "Optiones 3/7: claritas screen",
+            title: "Optiones 3/8: exstinctio automatica",
+            body: "Elige quam diu SmartRosary sine actione maneat antequam se ipsum exstinguat.",
+          },
+          settings3: {
+            short: "Opt. 4",
+            title: "Optiones 4/8: claritas screen",
             body: "Claritatem conspicui compone. Minue ad usum diuturniorem vel auge in loco claro.",
           },
+          datetime: {
+            short: "Opt. 5",
+            title: "Optiones 5/8: dies et tempus",
+            body: "Diem et tempus praesens ostendit. Rotulae horologium cum navigatro in exemplo synchronizatum monstrant.",
+          },
           settings4: {
-            short: "Opt. 4",
-            title: "Optiones 4/7: claritas fundi",
+            short: "Opt. 6",
+            title: "Optiones 6/8: claritas fundi",
             body: "Constitue quam clare imago fundi post paginam rosarii appareat.",
           },
           settings5: {
-            short: "Opt. 5",
-            title: "Optiones 5/7: orientatio",
+            short: "Opt. 7",
+            title: "Optiones 7/8: orientatio",
             body: "Orientationem conspicui verte ut modo gerendi vel tenendi instrumenti congruat.",
-          },
-          settings6: {
-            short: "Opt. 6",
-            title: "Optiones 6/7: exstinctio automatica",
-            body: "Elige quam diu SmartRosary sine actione maneat antequam se ipsum exstinguat.",
           },
           settings7: {
             short: "Info dispositivi",
-            title: "Optiones 7/7: notitiae dispositivi",
+            title: "Optiones 8/8: notitiae dispositivi",
             body: "Ultima pagina identitatem dispositivi, versiones firmware et linguae, atque codicem QR SmartRosary ostendit.",
           },
         },

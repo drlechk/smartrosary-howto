@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Régl. 1",
-            title: "Réglages 1/7 : démarrage",
-            body: "Choisissez si le rosaire commence avec le mystère sélectionné ou reprend le dernier état enregistré.",
+            title: "Réglages 1/8 : démarrage",
+            body: "Choisissez si le rosaire démarre avec le mystère sélectionné ou reprend le dernier état enregistré.",
           },
           settings2: {
             short: "Régl. 2",
-            title: "Réglages 2/7 : retour haptique",
+            title: "Réglages 2/8 : retour haptique",
             body: "Activez ou désactivez le retour haptique. Une courte vibration confirme les interactions.",
           },
-          settings3: {
+          settings6: {
             short: "Régl. 3",
-            title: "Réglages 3/7 : luminosité de l’écran",
+            title: "Réglages 3/8 : arrêt automatique",
+            body: "Choisissez le délai d’inactivité après lequel SmartRosary s’éteint automatiquement.",
+          },
+          settings3: {
+            short: "Régl. 4",
+            title: "Réglages 4/8 : luminosité de l’écran",
             body: "Réglez la luminosité de l’écran. Baissez-la pour plus d’autonomie ou augmentez-la dans un environnement lumineux.",
           },
+          datetime: {
+            short: "Régl. 5",
+            title: "Réglages 5/8 : date et heure",
+            body: "Affiche la date et l’heure actuelles. Les rouleaux utilisent l’horloge synchronisée avec le navigateur dans la maquette.",
+          },
           settings4: {
-            short: "Régl. 4",
-            title: "Réglages 4/7 : luminosité du fond",
+            short: "Régl. 6",
+            title: "Réglages 6/8 : luminosité du fond",
             body: "Définissez l’intensité avec laquelle le fond apparaît derrière l’écran du rosaire.",
           },
           settings5: {
-            short: "Régl. 5",
-            title: "Réglages 5/7 : orientation",
+            short: "Régl. 7",
+            title: "Réglages 7/8 : orientation",
             body: "Tournez l’orientation de l’écran pour l’adapter à la manière dont l’appareil est porté ou tenu.",
-          },
-          settings6: {
-            short: "Régl. 6",
-            title: "Réglages 6/7 : arrêt automatique",
-            body: "Choisissez le délai d’inactivité après lequel SmartRosary s’éteint automatiquement.",
           },
           settings7: {
             short: "Infos appareil",
-            title: "Réglages 7/7 : informations appareil",
+            title: "Réglages 8/8 : informations appareil",
             body: "La dernière page affiche l’identifiant de l’appareil, les versions du firmware et de la langue, ainsi que le QR code SmartRosary.",
           },
         },

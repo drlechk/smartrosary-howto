@@ -357,6 +357,20 @@ window.registerNvsEditorFixture({
         "encoding": "utf-8"
       },
       {
+        "namespace": "lang",
+        "key": "l055",
+        "value": "Date/time",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l056",
+        "value": "Adjust time/date",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
         "namespace": "mysteries",
         "key": "mS",
         "value": "-\nJoyful (Mon. | Sat.)\nLuminous (Thu.)\nSorrowful (Tue. | Fri.)\nGlorious (Wed. | Sun.)\nChaplet\nIntention",

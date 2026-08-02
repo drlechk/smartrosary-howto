@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Ustaw. 1",
-            title: "Ustawienia 1/7: sposób startu",
+            title: "Ustawienia 1/8: sposób startu",
             body: "Wybierz, czy różaniec ma zaczynać się od wybranej tajemnicy, czy od ostatnio zapisanego stanu.",
           },
           settings2: {
             short: "Ustaw. 2",
-            title: "Ustawienia 2/7: haptyka",
+            title: "Ustawienia 2/8: haptyka",
             body: "Włącz lub wyłącz informację haptyczną. Krótka wibracja potwierdza interakcje z urządzeniem.",
           },
-          settings3: {
+          settings6: {
             short: "Ustaw. 3",
-            title: "Ustawienia 3/7: jasność ekranu",
+            title: "Ustawienia 3/8: automatyczne wyłączenie",
+            body: "Wybierz, po jakim czasie bez aktywności SmartRosary ma się automatycznie wyłączyć.",
+          },
+          settings3: {
+            short: "Ustaw. 4",
+            title: "Ustawienia 4/8: jasność ekranu",
             body: "Dostosuj jasność wyświetlacza. Zmniejsz ją dla dłuższej pracy lub zwiększ w jasnym otoczeniu.",
           },
+          datetime: {
+            short: "Ustaw. 5",
+            title: "Ustawienia 5/8: data i czas",
+            body: "Sprawdź bieżącą datę i godzinę. Rolki pokazują zegar zsynchronizowany z przeglądarką w makiecie.",
+          },
           settings4: {
-            short: "Ustaw. 4",
-            title: "Ustawienia 4/7: jasność tapety",
+            short: "Ustaw. 6",
+            title: "Ustawienia 6/8: jasność tapety",
             body: "Ustaw, jak mocno tapeta ma być widoczna za ekranem różańca.",
           },
           settings5: {
-            short: "Ustaw. 5",
-            title: "Ustawienia 5/7: orientacja",
+            short: "Ustaw. 7",
+            title: "Ustawienia 7/8: orientacja",
             body: "Obróć orientację ekranu, aby wyświetlacz pasował do sposobu noszenia lub trzymania urządzenia.",
-          },
-          settings6: {
-            short: "Ustaw. 6",
-            title: "Ustawienia 6/7: automatyczne wyłączenie",
-            body: "Wybierz, po jakim czasie bez aktywności SmartRosary ma się automatycznie wyłączyć.",
           },
           settings7: {
             short: "Info urządzenia",
-            title: "Ustawienia 7/7: informacje o urządzeniu",
+            title: "Ustawienia 8/8: informacje o urządzeniu",
             body: "Ostatnia strona ustawień pokazuje identyfikator urządzenia, wersje firmware i języka oraz kod QR strony SmartRosary.",
           },
         },

@@ -228,37 +228,42 @@
           },
           settings1: {
             short: "Einst. 1",
-            title: "Einstellungen 1/7: Startverhalten",
-            body: "Hier legst du fest, ob der Rosenkranz mit dem gewählten Geheimnis oder mit dem zuletzt gespeicherten Zustand startet.",
+            title: "Einstellungen 1/8: Startverhalten",
+            body: "Wähle, ob der Rosenkranz mit dem gewählten Geheimnis startet oder den letzten gespeicherten Zustand fortsetzt.",
           },
           settings2: {
             short: "Einst. 2",
-            title: "Einstellungen 2/7: Haptik",
+            title: "Einstellungen 2/8: Haptik",
             body: "Hier aktivierst oder deaktivierst du die haptische Rückmeldung. Sie bestätigt Eingaben mit einer kurzen Vibration.",
           },
-          settings3: {
+          settings6: {
             short: "Einst. 3",
-            title: "Einstellungen 3/7: Bildschirmhelligkeit",
+            title: "Einstellungen 3/8: Automatisches Ausschalten",
+            body: "Hier bestimmst du, nach welcher Zeit ohne Aktivität sich SmartRosary automatisch ausschaltet.",
+          },
+          settings3: {
+            short: "Einst. 4",
+            title: "Einstellungen 4/8: Bildschirmhelligkeit",
             body: "Dieser Punkt steuert die Helligkeit des Displays. Reduziere sie für längere Laufzeit oder erhöhe sie für hellere Umgebung.",
           },
+          datetime: {
+            short: "Einst. 5",
+            title: "Einstellungen 5/8: Datum und Uhrzeit",
+            body: "Zeigt das aktuelle Datum und die aktuelle Uhrzeit. Die Rollen verwenden die mit dem Browser synchronisierte Uhr der Vorschau.",
+          },
           settings4: {
-            short: "Einst. 4",
-            title: "Einstellungen 4/7: Hintergrundbild-Helligkeit",
+            short: "Einst. 6",
+            title: "Einstellungen 6/8: Hintergrundbild-Helligkeit",
             body: "Hier stellst du ein, wie stark das Hintergrundbild hinter dem Rosenkranz-Bildschirm sichtbar ist.",
           },
           settings5: {
-            short: "Einst. 5",
-            title: "Einstellungen 5/7: Ausrichtung",
+            short: "Einst. 7",
+            title: "Einstellungen 7/8: Ausrichtung",
             body: "Mit dieser Einstellung drehst du die Displayausrichtung, damit die Anzeige zur getragenen Position passt.",
-          },
-          settings6: {
-            short: "Einst. 6",
-            title: "Einstellungen 6/7: Automatisches Ausschalten",
-            body: "Hier bestimmst du, nach welcher Zeit ohne Aktivität sich SmartRosary automatisch ausschaltet.",
           },
           settings7: {
             short: "Geräteinfo",
-            title: "Einstellungen 7/7: Geräteinfo",
+            title: "Einstellungen 8/8: Geräteinfo",
             body: "Die letzte Einstellungsseite zeigt Gerätekennung, Firmware- und Sprachversion sowie den QR-Code zur SmartRosary-Webseite.",
           },
         },
