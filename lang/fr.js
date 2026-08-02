@@ -5,7 +5,7 @@ window.registerNvsEditorFixture({
   "state": {
     "format": "smartrosary-language-v1",
     "language": "fr",
-    "version": "1.2",
+    "version": "1.37",
     "partitionSize": 20480,
     "nvsVersion": 2,
     "namespaceOrder": [
@@ -358,6 +358,41 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "lang",
+        "key": "l050",
+        "value": "Envoi\ndu fond",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l051",
+        "value": "Envoi\ndu fond",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l052",
+        "value": "Échec de l’envoi. Réessayez",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l053",
+        "value": "Fond envoyé",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l054",
+        "value": "Avertissement date/heure\n\nL'horloge n'est pas correctement réglée.\nConnectez l'app pour synchroniser date et heure.",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
         "key": "l055",
         "value": "Date/heure",
         "storageType": "blob",
@@ -371,16 +406,23 @@ window.registerNvsEditorFixture({
         "encoding": "utf-8"
       },
       {
-        "namespace": "mysteries",
-        "key": "mS",
-        "value": "-\nJoyeux (lun. | sam.)\nLumineux (jeu.)\nDouloureux (mar. | ven.)\nGlorieux (mer. | dim.)\nChapelet\nIntention",
+        "namespace": "lang",
+        "key": "l057",
+        "value": "Mise à jour du firmware réussie\nVersion %s  %s",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l058",
+        "value": "Échec de la mise à jour du firmware\nVeuillez réessayer.",
         "storageType": "blob",
         "encoding": "utf-8"
       },
       {
         "namespace": "mysteries",
-        "key": "mT0",
-        "value": "",
+        "key": "mS",
+        "value": "-\nJoyeux (lun. | sam.)\nLumineux (jeu.)\nDouloureux (mar. | ven.)\nGlorieux (mer. | dim.)\nChapelet\nIntention",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -421,55 +463,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m00",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m10",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m20",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m30",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m40",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m50",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m01",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m11",
         "value": "I. L'Annonciation de la Bienheureuse Vierge Marie   -",
         "storageType": "blob",
@@ -500,13 +493,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m51",
         "value": "V. Le Recouvrement de l'Enfant Jésus au Temple   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m02",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -547,13 +533,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m03",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m13",
         "value": "I. La Prière au Jardin de Gethsémani   -",
         "storageType": "blob",
@@ -584,13 +563,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m53",
         "value": "V. La Mort du Seigneur sur la Croix   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m04",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -631,97 +603,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m05",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m15",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m25",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m35",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m45",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m55",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m00i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m10i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m20i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m30i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m40i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m50i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m01i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m11i",
         "value": "Tu nous as créés, ô Dieu, à Ton image et à Ta ressemblance. Nous devons cultiver cette ressemblance tout au long de notre vie.   -",
         "storageType": "blob",
@@ -752,13 +633,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m51i",
         "value": "Tu nous as créés, Seigneur, pour Toi, et notre cœur est sans repos tant qu'il ne repose pas en Toi. Rappelle-nous Ton amour, car sans Toi rien ni personne ne peut nous donner le vrai bonheur.   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m02i",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -799,13 +673,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m03i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m13i",
         "value": "Lorsqu'une nuit obscure tombe sur l'âme, lorsque la peur de l'avenir qui approche nous accable... Cherchons aide et consolation auprès de Dieu par l'Ange de la Consolation.   -",
         "storageType": "blob",
@@ -841,13 +708,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m04i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m14i",
         "value": "Le Christ est ressuscité, et Il nous donne aussi part à Sa victoire spirituelle... Demandons ce don afin de puiser à cette source pour nous-mêmes et pour toute l'Église.   -",
         "storageType": "blob",
@@ -878,48 +738,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m54i",
         "value": "Nous Te louons, ô Dieu, d'avoir couronné au Ciel Ta Mère bien-aimée... Demandons-lui d'aider tous les peuples, dans le plan de salut de Dieu, à parvenir au salut.   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m05i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m15i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m25i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m35i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m45i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m55i",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       }

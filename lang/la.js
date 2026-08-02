@@ -5,7 +5,7 @@ window.registerNvsEditorFixture({
   "state": {
     "format": "smartrosary-language-v1",
     "language": "la",
-    "version": "1.2",
+    "version": "1.37",
     "partitionSize": 20480,
     "nvsVersion": 2,
     "namespaceOrder": [
@@ -358,15 +358,64 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "lang",
+        "key": "l050",
+        "value": "Missio\nimaginis fundi",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l051",
+        "value": "Imago fundi\nmittitur",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l052",
+        "value": "Missio defecit. Iterum tenta",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l053",
+        "value": "Imago fundi missa",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l054",
+        "value": "Monitum diei/horae\n\nHorologium recte non positum est.\nConiunge app ut diem horamque synchronizes.",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
         "key": "l055",
-        "value": "Dies/tempus",
+        "value": "Dies/hora",
         "storageType": "blob",
         "encoding": "utf-8"
       },
       {
         "namespace": "lang",
         "key": "l056",
-        "value": "Tempus/diem compone",
+        "value": "Tempus/Diem aptare",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l057",
+        "value": "Renovatio firmware successit\nVersio %s  %s",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l058",
+        "value": "Renovatio firmware defecit\nIterum conare, quaeso.",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -374,13 +423,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "mS",
         "value": "-\ngaudiosa (lun.|sab.)\nluminosa (iov.)\ndolorosa (mar.|ven.)\ngloriosa (mer.|dom.)\nCoronula\nIntentio",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "mT0",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -421,55 +463,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m00",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m10",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m20",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m30",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m40",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m50",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m01",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m11",
         "value": "I. Annuntiatio BMV   -",
         "storageType": "blob",
@@ -500,13 +493,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m51",
         "value": "V. Inventio in templo   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m02",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -547,13 +533,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m03",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m13",
         "value": "I. Oratio in horto Gethsemani   -",
         "storageType": "blob",
@@ -584,13 +563,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m53",
         "value": "V. Mors in Cruce   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m04",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -631,97 +603,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m05",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m15",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m25",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m35",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m45",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m55",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m00i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m10i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m20i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m30i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m40i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m50i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m01i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m11i",
         "value": "Creasti nos, Deus, ad imaginem et similitudinem tuam. Hanc similitudinem per totam vitam nostram augere debemus.   -",
         "storageType": "blob",
@@ -752,13 +633,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m51i",
         "value": "Creasti nos, Domine, ad Te, et inquietum est cor nostrum donec requiescat in Te. Te per totam vitam quaerimus; sine Te autem nihil neque quisquam veram felicitatem nobis dare potest.   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m02i",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -799,13 +673,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m03i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m13i",
         "value": "Cum nox obscura in anima dominatur, cum timor futurae rei appropinquantis sudorem frigidum nobis exprimit, tunc auxilium et consolationem apud Deum quaerimus per Angelum Consolationis.   -",
         "storageType": "blob",
@@ -841,13 +708,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m04i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m14i",
         "value": "Christus resurrexit, sed nobis quoque spiritualem participationem Resurrectionis suae dat per participationem in Sacrificio Missae Sanctae. Iesus vult ut quam uberrime ex hoc fonte hauriamus, tam pro nobis quam pro tota Ecclesia.   -",
         "storageType": "blob",
@@ -878,48 +738,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m54i",
         "value": "Te, Deus, laudamus propter coronationem in caelo dilectae Matris Salvatoris nostri, Iesu Christi. Fac et nos humiles servos humillimae Reginae caeli et terrae. Omnibus omnia fieri debemus, ut in magno consilio salutis Tuae omnibus hominibus ad salutem adiuvandam prosimus.   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m05i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m15i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m25i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m35i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m45i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m55i",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       }

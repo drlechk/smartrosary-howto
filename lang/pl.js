@@ -5,7 +5,7 @@ window.registerNvsEditorFixture({
   "state": {
     "format": "smartrosary-language-v1",
     "language": "pl",
-    "version": "1.2",
+    "version": "1.37",
     "partitionSize": 20480,
     "nvsVersion": 2,
     "namespaceOrder": [
@@ -358,6 +358,41 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "lang",
+        "key": "l050",
+        "value": "Wgrywanie\nTapety",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l051",
+        "value": "Wgrywanie\nTapety",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l052",
+        "value": "Wgrywanie nieudane. Spróbuj ponownie",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l053",
+        "value": "Tapeta wgrana",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l054",
+        "value": "Ostrzeżenie daty\n\nZegar nieustawiony.\nPołącz z aplikacją, by zsynchronizować.",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
         "key": "l055",
         "value": "Data/czas",
         "storageType": "blob",
@@ -371,16 +406,23 @@ window.registerNvsEditorFixture({
         "encoding": "utf-8"
       },
       {
-        "namespace": "mysteries",
-        "key": "mS",
-        "value": "-\nradosne (pon.|so.)\nświałta (czw.)\nbolesne (wt.|pt.)\nchwalebne (śr.|niedz.)\nKoronka\nIntencja",
+        "namespace": "lang",
+        "key": "l057",
+        "value": "Aktualizacja firmware zakończona pomyślnie\nWersja %s  %s",
+        "storageType": "blob",
+        "encoding": "utf-8"
+      },
+      {
+        "namespace": "lang",
+        "key": "l058",
+        "value": "Aktualizacja firmware nie powiodła się\nSpróbuj ponownie.",
         "storageType": "blob",
         "encoding": "utf-8"
       },
       {
         "namespace": "mysteries",
-        "key": "mT0",
-        "value": "",
+        "key": "mS",
+        "value": "-\nradosne (pon.|so.)\nświałta (czw.)\nbolesne (wt.|pt.)\nchwalebne (śr.|niedz.)\nKoronka\nIntencja",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -421,55 +463,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m00",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m10",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m20",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m30",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m40",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m50",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m01",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m11",
         "value": "I. Zwiastowanie NMP   -",
         "storageType": "blob",
@@ -500,13 +493,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m51",
         "value": "V. Znalezienie w świątyni   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m02",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -547,13 +533,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m03",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m13",
         "value": "I. Modlitwa w Ogrójcu   -",
         "storageType": "blob",
@@ -584,13 +563,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m53",
         "value": "V. Śmierć na Krzyżu   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m04",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -631,97 +603,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m05",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m15",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m25",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m35",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m45",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m55",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m00i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m10i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m20i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m30i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m40i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m50i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m01i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m11i",
         "value": "Stworzyłeś nas, Boże, na obraz i podobieństwo swoje. Mamy to podobieństwo rozwijać w ciągu całego naszego życia.   -",
         "storageType": "blob",
@@ -752,13 +633,6 @@ window.registerNvsEditorFixture({
         "namespace": "mysteries",
         "key": "m51i",
         "value": "Stworzyłeś nas, Panie, dla siebie i niespokojne jest serce nasze, dopóki nie spocznie w Tobie. Szukamy Ciebie całe życie, a bez Ciebie nic i nikt nam nie da prawdziwego szczęścia.   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m02i",
-        "value": "",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -799,13 +673,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m03i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m13i",
         "value": "Gdy ciemna noc zapanuje w duszy, gdy lęk przed zbliżającą się przyszłością wyciska nam zimny pot, wtedy szukamy pomocy i pociechy u Boga za pośrednictwem Anioła Pocieszenia.   -",
         "storageType": "blob",
@@ -841,13 +708,6 @@ window.registerNvsEditorFixture({
       },
       {
         "namespace": "mysteries",
-        "key": "m04i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
         "key": "m14i",
         "value": "Chrystus zmartwychwstał, ale i nam daje duchowy udział w swoim Zmartwychwstaniu przez uczestnictwo w Ofierze Mszy Świętej. Jezus chce, byśmy jak najobficiej czerpali z tego źródła zarówno dla siebie, jak i dla całego Kościoła.   -",
         "storageType": "blob",
@@ -863,7 +723,7 @@ window.registerNvsEditorFixture({
       {
         "namespace": "mysteries",
         "key": "m34i",
-        "value": "Trzeba nastawić nasz czuły odbiornik duchowy nawet na najcichsze słowa Ducha Świętego, by usłyszeć i zrozumieć Jego wymagania, a następnie chętnie wprowadzić je w życie. Bo życie w Duchu Świętym jest źródłem najczystszej radości.   -",
+        "value": "Trzeba nastawić się na słowa Ducha Świętego, by usłyszeć Jego wymagania i chętnie wprowadzić je w życie. Życie w Duchu Świętym to źródło najczystszej radości.   -",
         "storageType": "blob",
         "encoding": "utf-8"
       },
@@ -877,49 +737,7 @@ window.registerNvsEditorFixture({
       {
         "namespace": "mysteries",
         "key": "m54i",
-        "value": "Ciebie, Boże, chwalimy za ukoronowanie w niebie ukochanej Matki naszego Zbawiciela, Jezusa Chrystusa. Uczyń i nas pokornymi sługami najpokorniejszej Królowej nieba i ziemi. Mamy stać się wszystkim dla wszystkich, aby w wielkim Twym planie zbawienia wszystkim ludziom do zbawienia dopomóc.   -",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m05i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m15i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m25i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m35i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m45i",
-        "value": "",
-        "storageType": "blob",
-        "encoding": "utf-8"
-      },
-      {
-        "namespace": "mysteries",
-        "key": "m55i",
-        "value": "",
+        "value": "Ciebie, Boże, chwalimy za ukoronowanie w niebie Maryi. Uczyń nas pokornymi sługami Królowej nieba i ziemi, byśmy w Twym planie zbawienia mogli wszystkim dopomóc.   -",
         "storageType": "blob",
         "encoding": "utf-8"
       }
